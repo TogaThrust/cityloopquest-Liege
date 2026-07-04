@@ -1,0 +1,6 @@
+Traductions à contrôler
+Généré le 2026-07-04T17:20:00.846Z
+
+Aucun problème de traduction détecté par la Factory.
+
+Fichier structuré pour correction ChatGPT : data/traductions-a-corriger.json

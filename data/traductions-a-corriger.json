@@ -1,0 +1,29 @@
+{
+  "format": "clq-translation-fixes-v1",
+  "version": 1,
+  "exportedAt": "2026-07-04T17:20:00.846Z",
+  "cityName": "Liège",
+  "citySlug": "liege",
+  "sourceLanguage": "fr",
+  "supportedLanguages": [
+    "fr",
+    "nl",
+    "en",
+    "de",
+    "it",
+    "es",
+    "pl",
+    "ar",
+    "cn",
+    "ja"
+  ],
+  "summary": {
+    "total": 0,
+    "audioBlocking": 0,
+    "generationBlocking": 0,
+    "byLang": {}
+  },
+  "instructions": "Remplis correctedText pour chaque entrée. Conserve id, target, sourceText et currentText inchangés. Pour un POI parcours, la correction est propagée à tous les parcours (petit/moyen/grand) portant le même nom — une seule entrée par POI suffit.",
+  "items": [],
+  "allItems": []
+}

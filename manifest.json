@@ -1,0 +1,33 @@
+{
+  "name": "CityLoop Quest Liège",
+  "short_name": "CLQ Liège",
+  "start_url": "/index.html?pwa=1",
+  "display": "standalone",
+  "background_color": "#b30000",
+  "theme_color": "#b30000",
+  "description": "Liège, la Cité ardente, combine principauté médiévale, Meuse, patrimoine religieux, culture populaire, industrie, université, gastronomie et architecture contemporaine.",
+  "orientation": "landscape",
+  "scope": "./",
+  "categories": [
+    "navigation",
+    "travel"
+  ],
+  "lang": "fr",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "images/cityLoopQuest_Liege_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/cityLoopQuest_Liege_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+

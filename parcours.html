@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Choisissez votre Circuit</title>
+
+  <script>(function(){var u=navigator.userAgent||'';document.write('<link rel="manifest" href="'+(/android/i.test(u)?'manifest-android.json':'manifest.json')+'">');})();</script>
+  <meta name="theme-color" content="#ffffff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+  <link rel="stylesheet" href="carte.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="circuit.css?v=51">
+
+  <script src="api-base.js"></script>
+  <script src="js/clq-sw-register.js"></script>
+  <script src="js/access-control.js?v=full-access-2"></script>
+  <script src="js/access-guard.js" defer></script>
+
+  <script>
+    window.APP_CONFIG = {
+      API_BASE:
+        localStorage.getItem('api_base') ||
+        location.origin.replace(':5173', ':8080')
+    };
+    window.setApiBase = function () {
+      const cur = localStorage.getItem('api_base') || '';
+      const v = prompt('API base (ex: http://192.168.129.13:8080)', cur);
+      if (v) { localStorage.setItem('api_base', v); alert('OK, relance la page.'); }
+    };
+  </script>
+
+  <script src="circuit-data.js?v=1783185600889"></script>
+  <script src="circuit.js"></script>
+  <script src="translations/translationManager.js"></script>
+  <script src="translations/languageSelector.js"></script>
+</head>
+<body>
+
+  <div id="orientation-warning" style="display:none;">
+    <div id="startup-content">
+      <p>
+        <span data-translate="orientation_message">Pour une meilleure experience, veuillez pivoter votre appareil en mode paysage.</span>
+      </p>
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <div id="lang-anchor" class="lang-anchor"></div>
+
+  <div class="corner-buttons">
+    <button type="button" class="circuit grand"
+            data-circuit="grand"
+            onclick="return confirmChoice('grand')"
+            data-translate-html="grand_circuit">Grand Circuit</button>
+    <button type="button" class="circuit moyen"
+            data-circuit="moyen"
+            onclick="return confirmChoice('moyen')"
+            data-translate-html="medium_circuit">Circuit moyen</button>
+    <button type="button" class="circuit petit"
+            data-circuit="petit"
+            onclick="return confirmChoice('petit')"
+            data-translate-html="short_circuit">Petit Circuit</button>
+
+    <div id="confirm-popup" class="popup-confirm">
+      <div id="confirm-popup-text" class="popup-title">
+        Êtes-vous sûr ?<br><small>Vous êtes sur le point de lancer ce parcours.</small>
+      </div>
+      <div class="popup-actions">
+        <button id="confirm-no" type="button" class="no"
+                onclick="return cancelCircuitSelection()">Non</button>
+        <button id="confirm-yes" type="button" class="yes"
+                onclick="return proceedToStartPointPopup()">Oui</button>
+      </div>
+    </div>
+
+    <div id="popup" class="popup-confirm popup-start">
+      <div id="popup-text" class="popup-title" data-translate="start_point_prompt">Où souhaitez-vous commencer le parcours ?</div>
+      <div class="popup-actions">
+        <button id="start-grand-place" type="button" class="start-option"
+                onclick="chooseStartPoint('grand_place')"
+                data-translate="start_point_grand_place">Grand-Place</button>
+        <button id="start-gare" type="button" class="start-option"
+                onclick="chooseStartPoint('gare')"
+                data-translate="start_point_gare">Gare Calatrava</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="startup-warning" style="display:none;">
+    <div id="startup-content">
+      <p><strong>x️ <span data-translate="tip_install_app">Astuce :</span></strong>
+        <span data-translate="tip_install_text">Pour le confort d'utilisation, installer cette application sur votre téléphone ou tablette. Pour cela, cliquez sur exporter puis écran d'accueil. Une connexion internet est néanmoins nécessaire.</span><br><br>
+        <span data-translate="orientation_message">Pour une meilleure experience, veuillez pivoter votre appareil en mode paysage.</span>.
+      </p>
+      <button id="startup-ok" type="button">OK</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+    let selectedCircuit = '';
+    let selectedStartPoint = 'grand_place';
+    let map;
+    let polylines = [];
+    let cachedStartDistances = null;
+
+    const START_POINT_INDICES = {
+      grand_place: 1,
+      gare: 47
+    };
+
+    const CIRCUIT_CONFIRM_LABELS = {
+      grand: { key: 'confirm_circuit_name_grand', fallback: 'grand circuit' },
+      moyen: { key: 'confirm_circuit_name_moyen', fallback: 'circuit moyen' },
+      petit: { key: 'confirm_circuit_name_petit', fallback: 'petit circuit' },
+      circuit: { key: '', fallback: 'circuit' }
+    };
+    const CIRCUIT_DISPLAY_ORDER = ['petit', 'moyen', 'grand'];
+
+    function waitUntil(predicate, interval, timeout) {
+      interval = interval || 50;
+      timeout = timeout || 10000;
+      return new Promise(function(resolve, reject) {
+        var start = Date.now();
+        function tick() {
+          try {
+            if (predicate()) return resolve();
+          } catch (e) {}
+          if (Date.now() - start > timeout) return reject(new Error('waitUntil timeout'));
+          setTimeout(tick, interval);
+        }
+        tick();
+      });
+    }
+
+    function getTranslationValue(key, fallback) {
+      if (!key) return fallback;
+      if (window.translationManager && typeof window.translationManager.translate === 'function') {
+        var translated = window.translationManager.translate(key);
+        if (translated && translated !== key) {
+          return translated;
+        }
+      }
+      return fallback;
+    }
+
+    function getAvailableCircuitNames() {
+      if (typeof availableCircuits !== 'undefined' && Array.isArray(availableCircuits) && availableCircuits.length) {
+        return CIRCUIT_DISPLAY_ORDER.filter(function(name) {
+          return availableCircuits.includes(name) && Array.isArray(circuits[name]) && circuits[name].length > 1;
+        });
+      }
+
+      return CIRCUIT_DISPLAY_ORDER.filter(function(name) {
+        return Array.isArray(circuits[name]) && circuits[name].length > 1;
+      });
+    }
+
+    function isCircuitAvailable(circuit) {
+      return getAvailableCircuitNames().includes(circuit);
+    }
+
+    const CIRCUIT_TRANSLATION_KEYS = {
+      grand: 'grand_circuit',
+      moyen: 'medium_circuit',
+      petit: 'short_circuit'
+    };
+
+    function formatDurationCompact(minutes) {
+      var min = Math.max(0, Math.round(Number(minutes) || 0));
+      if (min <= 0) return '0 min';
+      var hours = Math.floor(min / 60);
+      var rest = min % 60;
+      if (hours && rest) return hours + 'h' + (rest < 10 ? '0' : '') + rest;
+      if (hours) return hours + 'h';
+      return rest + ' min';
+    }
+
+    function formatDistanceKm(distanceKm) {
+      var lang = (window.translationManager && window.translationManager.getCurrentLanguage && window.translationManager.getCurrentLanguage()) || 'fr';
+      var value = Math.round(Number(distanceKm) * 10) / 10;
+      var useComma = ['fr', 'de', 'nl', 'it', 'pl'].indexOf(String(lang).toLowerCase()) >= 0;
+      var formatted = useComma ? String(value).replace('.', ',') : String(value);
+      return formatted + ' km';
+    }
+
+    function haversineKm(lat1, lng1, lat2, lng2) {
+      var toRad = function(deg) { return deg * Math.PI / 180; };
+      var r = 6371;
+      var dLat = toRad(lat2 - lat1);
+      var dLng = toRad(lng2 - lng1);
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+      return r * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function computeEstimateFromCircuitIndices(indices) {
+      if (!indices || indices.length < 2 || typeof locations === 'undefined') return null;
+      var totalKm = 0;
+      for (var i = 0; i < indices.length - 1; i++) {
+        var a = locations[indices[i] - 1];
+        var b = locations[indices[i + 1] - 1];
+        if (!a || !b) continue;
+        totalKm += haversineKm(a.lat, a.lng, b.lat, b.lng);
+      }
+      totalKm *= 1.3;
+      var poiCount = Math.max(1, indices.length - 1);
+      var walkingTimeMinutes = Math.max(1, Math.round((totalKm / 4.5) * 60));
+      var listeningTimeMinutes = poiCount * 7;
+      return {
+        distanceKm: Math.round(totalKm * 10) / 10,
+        walkingTimeMinutes: walkingTimeMinutes,
+        listeningTimeMinutes: listeningTimeMinutes,
+        totalTimeMinutes: walkingTimeMinutes + listeningTimeMinutes
+      };
+    }
+
+    function getCircuitEstimate(circuit) {
+      if (typeof circuitEstimates !== 'undefined' && circuitEstimates && circuitEstimates[circuit]) {
+        return circuitEstimates[circuit];
+      }
+      if (typeof circuits !== 'undefined' && circuits && circuits[circuit]) {
+        return computeEstimateFromCircuitIndices(circuits[circuit]);
+      }
+      return null;
+    }
+
+    function buildCircuitButtonLabel(circuit) {
+      var translationKey = CIRCUIT_TRANSLATION_KEYS[circuit];
+      if (translationKey) {
+        var translated = getTranslationValue(translationKey, '');
+        if (translated && translated !== translationKey && translated.indexOf('km') >= 0) {
+          return translated.replace(/<br\s*\/?>/gi, '<br>');
+        }
+      }
+
+      var estimate = getCircuitEstimate(circuit);
+      if (!estimate) return getTranslationValue(translationKey, circuit);
+
+      var walkLabel = getTranslationValue('circuit_walk_label', 'marche');
+      var totalLabel = getTranslationValue('circuit_total_label', 'total');
+      var nameFallback = {
+        grand: getTranslationValue('confirm_circuit_name_grand', 'grand circuit'),
+        moyen: getTranslationValue('confirm_circuit_name_moyen', 'circuit moyen'),
+        petit: getTranslationValue('confirm_circuit_name_petit', 'petit circuit')
+      };
+      var title = nameFallback[circuit] || circuit;
+      if (translationKey) {
+        var rawName = getTranslationValue(translationKey, '');
+        if (rawName && rawName !== translationKey) {
+          title = rawName.split('<br>')[0].split('\n')[0];
+        }
+      }
+
+      return title + '<br>' +
+        formatDistanceKm(estimate.distanceKm) + ' · ' +
+        formatDurationCompact(estimate.walkingTimeMinutes) + ' ' + walkLabel + ' · ' +
+        formatDurationCompact(estimate.totalTimeMinutes) + ' ' + totalLabel;
+    }
+
+    function updateCircuitButtons() {
+      var available = getAvailableCircuitNames();
+      var singleCircuit = available.length === 1;
+
+      document.querySelectorAll('.circuit').forEach(function(btn) {
+        var circuit = btn.dataset.circuit;
+        var isAvailable = available.includes(circuit);
+        btn.style.display = isAvailable ? '' : 'none';
+        btn.disabled = !isAvailable;
+
+        if (isAvailable && singleCircuit) {
+          btn.removeAttribute('data-translate-html');
+          btn.innerHTML = getTranslationValue('circuit_single', 'Circuit');
+        } else if (isAvailable) {
+          btn.removeAttribute('data-translate-html');
+          btn.innerHTML = buildCircuitButtonLabel(circuit);
+        }
+      });
+    }
+
+    function hideStartPopup() {
+      var popup = document.getElementById('popup');
+      if (popup) popup.style.display = 'none';
+    }
+
+    function getCircuitConfirmLabel(circuit) {
+      if (getAvailableCircuitNames().length === 1) return getTranslationValue('circuit_single', 'circuit');
+      var config = CIRCUIT_CONFIRM_LABELS[circuit];
+      if (!config) return circuit || '';
+      return getTranslationValue(config.key, config.fallback);
+    }
+
+    function previewSelectedCircuit() {
+      if (!selectedCircuit || !isCircuitAvailable(selectedCircuit) || !map) return;
+
+      clearCircuits();
+
+      var path = circuits[selectedCircuit].map(function(i) {
+        return [locations[i - 1].lat, locations[i - 1].lng];
+      });
+      var polyline = L.polyline(path, {
+        color: getColor(selectedCircuit),
+        weight: 5
+      }).addTo(map);
+      polylines.push(polyline);
+      map.fitBounds(polyline.getBounds(), { padding: [20, 20] });
+    }
+
+    function placeLanguageSelector() {
+      var sel = document.getElementById('language-selector');
+      var anchor = document.getElementById('lang-anchor');
+      if (sel && anchor) anchor.appendChild(sel);
+    }
+
+    var parcoursLayoutRecalibrationBound = false;
+
+    function recalibrateParcoursLayout() {
+      try {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      } catch (e) {}
+
+      var vv = window.visualViewport;
+      var mapEl = document.getElementById('map');
+      if (vv && mapEl) {
+        var height = Math.round(vv.height || window.innerHeight);
+        if (height > 0) {
+          document.documentElement.style.height = height + 'px';
+          document.body.style.height = height + 'px';
+          mapEl.style.height = height + 'px';
+        }
+      }
+
+      if (!map) return;
+
+      var center = map.getCenter();
+      var zoom = map.getZoom();
+
+      map.invalidateSize({ animate: false, pan: false });
+
+      /* Micro-mouvement : reproduit l'effet d'un toucher carte en PWA paysage. */
+      try {
+        map.panBy([1, 1], { animate: false, noMoveStart: true });
+        map.panBy([-1, -1], { animate: false, noMoveStart: true });
+      } catch (e) {}
+
+      map.setView(center, zoom, { animate: false });
+      map.invalidateSize({ animate: false, pan: false });
+    }
+
+    function scheduleParcoursLayoutRecalibration() {
+      [0, 80, 180, 350, 700, 1200].forEach(function(delay) {
+        setTimeout(recalibrateParcoursLayout, delay);
+      });
+    }
+
+    function bindParcoursLayoutRecalibration() {
+      if (parcoursLayoutRecalibrationBound) return;
+      parcoursLayoutRecalibrationBound = true;
+
+      var rerun = function() {
+        scheduleParcoursLayoutRecalibration();
+      };
+
+      window.addEventListener('resize', rerun);
+      window.addEventListener('orientationchange', rerun);
+      window.addEventListener('pageshow', rerun);
+
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', rerun);
+        window.visualViewport.addEventListener('scroll', rerun);
+      }
+    }
+
+    function initCircuitMap() {
+      if (map || typeof L === 'undefined') return;
+
+      bindParcoursLayoutRecalibration();
+
+      map = L.map('map', {
+        zoomControl: false,
+        dragging: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+        scrollWheelZoom: false,
+        boxZoom: false,
+        keyboard: false
+      });
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap'
+      }).addTo(map);
+
+      showAllCircuits();
+      scheduleParcoursLayoutRecalibration();
+    }
+
+    function clearCircuits() {
+      polylines.forEach(function(line) {
+        if (map && line) map.removeLayer(line);
+      });
+      polylines = [];
+    }
+
+    function getColor(circuit) {
+      if (circuit === 'grand') return 'blue';
+      if (circuit === 'moyen') return 'orange';
+      if (circuit === 'petit') return 'green';
+    }
+
+    function confirmChoice(circuit) {
+      if (!isCircuitAvailable(circuit)) return false;
+
+      if (!window.checkPageAccess('parcours.html', circuit)) {
+        return false;
+      }
+
+      selectedCircuit = circuit;
+      selectedStartPoint = 'grand_place';
+      cachedStartDistances = null;
+
+      hideStartPopup();
+      previewSelectedCircuit();
+      showCircuitConfirmation();
+
+      return true;
+    }
+
+    function showCircuitConfirmation() {
+      var confirmPopup = document.getElementById('confirm-popup');
+      if (!confirmPopup) {
+        proceedToStartPointPopup();
+        return;
+      }
+
+      updateConfirmPopupText(selectedCircuit);
+      confirmPopup.style.display = 'block';
+    }
+
+    function hideCircuitConfirmation() {
+      var confirmPopup = document.getElementById('confirm-popup');
+      if (confirmPopup) confirmPopup.style.display = 'none';
+    }
+
+    function cancelCircuitSelection() {
+      hideCircuitConfirmation();
+      hideStartPopup();
+      showAllCircuits();
+      selectedCircuit = '';
+      selectedStartPoint = 'grand_place';
+      document.querySelectorAll('.circuit').forEach(function(btn) { btn.disabled = false; });
+      return false;
+    }
+
+    function proceedToStartPointPopup() {
+      hideCircuitConfirmation();
+
+      if (!selectedCircuit || !isCircuitAvailable(selectedCircuit)) {
+        document.querySelectorAll('.circuit').forEach(function(btn) { btn.disabled = false; });
+        return false;
+      }
+
+      if (!polylines.length) {
+        previewSelectedCircuit();
+      }
+
+      chooseStartPoint('default');
+      return false;
+    }
+
+    function updateConfirmPopupText(circuit) {
+      circuit = circuit || selectedCircuit;
+      var confirmText = document.getElementById('confirm-popup-text');
+      if (confirmText) {
+        var titleBase = getTranslationValue('confirm_circuit_title', 'Êtes-vous sûr ?');
+        var subtitleBase = getTranslationValue('confirm_circuit_subtitle', 'Vous êtes sur le point de lancer ce parcours.');
+        var circuitLabel = circuit ? getCircuitConfirmLabel(circuit) : '';
+        var message = circuitLabel
+          ? getTranslationValue('confirm_circuit_message', 'Vous avez choisi le {circuit}.').replace('{circuit}', circuitLabel)
+          : getTranslationValue('confirm_circuit_message_default', 'Vous avez choisi ce parcours.');
+        confirmText.innerHTML = message + '<br>' + titleBase + '<br><small>' + subtitleBase + '</small>';
+      }
+
+      var confirmYes = document.getElementById('confirm-yes');
+      if (confirmYes) {
+        confirmYes.textContent = getTranslationValue('confirm_circuit_yes', 'Oui');
+      }
+
+      var confirmNo = document.getElementById('confirm-no');
+      if (confirmNo) {
+        confirmNo.textContent = getTranslationValue('confirm_circuit_no', 'Non');
+      }
+    }
+
+    function updatePopupTitle() {
+      var popupText = document.getElementById('popup-text');
+      if (!popupText) return;
+
+      var promptText = getTranslationValue('start_point_prompt', 'Où souhaitez-vous commencer le parcours ?');
+      var subtitleText = getTranslationValue('start_point_prompt_distance', 'Distance à vol d\'oiseau');
+      popupText.innerHTML = promptText + '<br><small>' + subtitleText + '</small>';
+    }
+
+    function resolveCircuitKey(circuit, startPoint) {
+      if (startPoint === 'gare') {
+        var variantKey = circuit + '_gare';
+        if (circuits[variantKey]) return variantKey;
+      }
+      return circuit;
+    }
+
+    function refreshStartButtonBaseLabels() {
+      ['start-grand-place', 'start-gare'].forEach(function(id) {
+        var btn = document.getElementById(id);
+        if (!btn) return;
+        var translateKey = btn.getAttribute('data-translate');
+        var baseLabel = '';
+
+        if (translateKey && window.translationManager && typeof window.translationManager.translate === 'function') {
+          var translated = window.translationManager.translate(translateKey);
+          if (translated && translated !== translateKey) {
+            baseLabel = translated.trim();
+          }
+        }
+
+        if (!baseLabel) {
+          baseLabel = (btn.textContent || '').split('⬢')[0].trim();
+        }
+
+        btn.dataset.baseLabel = baseLabel;
+        btn.textContent = baseLabel;
+      });
+    }
+
+    function getStartLocation(key) {
+      var index = START_POINT_INDICES[key];
+      if (!index || !Array.isArray(locations)) return null;
+      return locations[index - 1] || null;
+    }
+
+    function computeDistanceMeters(lat1, lon1, lat2, lon2) {
+      var toRad = function(deg) { return deg * Math.PI / 180; };
+      var R = 6371000;
+      var dLat = toRad(lat2 - lat1);
+      var dLon = toRad(lon2 - lon1);
+      var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    }
+
+    function formatDistance(meters) {
+      if (!Number.isFinite(meters) || meters < 0) return null;
+      if (meters < 1000) {
+        return Math.round(meters / 10) * 10 + ' m';
+      }
+      var km = meters / 1000;
+      return km.toFixed(km >= 10 ? 0 : 1) + ' km';
+    }
+
+    function applyStartDistanceLabels(distances) {
+      ['grand_place', 'gare'].forEach(function(key) {
+        var btnId = key === 'grand_place' ? 'start-grand-place' : 'start-gare';
+        var btn = document.getElementById(btnId);
+        if (!btn) return;
+        var baseLabel = btn.dataset.baseLabel || (btn.textContent || '').trim();
+        var distance = distances && distances[key];
+        if (distance && Number.isFinite(distance)) {
+          var formatted = formatDistance(distance);
+          btn.textContent = formatted ? baseLabel + ' ⬢ ' + formatted : baseLabel;
+        } else {
+          btn.textContent = baseLabel;
+        }
+      });
+    }
+
+    function updateStartPointDistances(force) {
+      refreshStartButtonBaseLabels();
+      applyStartDistanceLabels(null);
+
+      if (cachedStartDistances && !force) {
+        applyStartDistanceLabels(cachedStartDistances);
+        return;
+      }
+
+      if (!navigator.geolocation) {
+        applyStartDistanceLabels(null);
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var distances = { grand_place: null, gare: null };
+
+        var grandLoc = getStartLocation('grand_place');
+        if (grandLoc) {
+          distances.grand_place = computeDistanceMeters(latitude, longitude, grandLoc.lat, grandLoc.lng);
+        }
+
+        var gareLoc = getStartLocation('gare');
+        if (gareLoc) {
+          distances.gare = computeDistanceMeters(latitude, longitude, gareLoc.lat, gareLoc.lng);
+        }
+
+        cachedStartDistances = distances;
+        applyStartDistanceLabels(distances);
+      }, function() {
+        cachedStartDistances = null;
+        applyStartDistanceLabels(null);
+      }, {
+        enableHighAccuracy: false,
+        maximumAge: 60000,
+        timeout: 8000
+      });
+    }
+
+    function chooseStartPoint(startPoint) {
+      selectedStartPoint = startPoint;
+      var resolvedCircuit = resolveCircuitKey(selectedCircuit, startPoint);
+
+      localStorage.setItem('selectedCircuit', selectedCircuit);
+      localStorage.setItem('selectedCircuitStart', startPoint);
+      localStorage.setItem('selectedCircuitResolved', resolvedCircuit);
+
+      sessionStorage.setItem('clq_fresh_circuit_start', '1');
+      localStorage.setItem('liege_currentIndex', '0');
+      localStorage.removeItem('tourCompleted');
+      localStorage.removeItem('liege_audio_heard_indices');
+      localStorage.removeItem('liege_audio_clicked_index');
+      localStorage.removeItem('liege_audio_completed_indices');
+      localStorage.removeItem('liege_quizEnabled');
+      localStorage.removeItem('liege_completedQuizQuestions');
+      localStorage.removeItem('liege_quizStopped');
+
+      localStorage.removeItem('museumMode');
+      localStorage.removeItem('museumData');
+      localStorage.removeItem('selectedMuseum');
+      localStorage.removeItem('liege_forceTarget');
+
+      var parcoursType = { grand: 'long', moyen: 'moyen', petit: 'court' }[selectedCircuit];
+      if (parcoursType) {
+        localStorage.setItem('liege_parcoursType', parcoursType);
+      }
+
+      hideStartPopup();
+      window.location.href = 'main.html';
+    }
+
+    function showAllCircuits() {
+      if (!map || typeof circuits === 'undefined' || typeof locations === 'undefined') return;
+
+      clearCircuits();
+      var group = L.featureGroup();
+
+      getAvailableCircuitNames().forEach(function(circuitName) {
+        var path = circuits[circuitName].map(function(i) {
+          return [locations[i - 1].lat, locations[i - 1].lng];
+        });
+        var polyline = L.polyline(path, {
+          color: getColor(circuitName),
+          weight: 5
+        });
+        polyline.addTo(map);
+        group.addLayer(polyline);
+        polylines.push(polyline);
+      });
+
+      if (group.getLayers().length) {
+        map.fitBounds(group.getBounds(), { padding: [20, 20] });
+        map.once('moveend', scheduleParcoursLayoutRecalibration);
+      } else {
+        scheduleParcoursLayoutRecalibration();
+      }
+
+      updateCircuitButtons();
+      hideStartPopup();
+      hideCircuitConfirmation();
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCircuitButtons();
+      initCircuitMap();
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var urlLang = urlParams.get('lang');
+      if (urlLang) {
+        localStorage.setItem('selectedLanguage', urlLang);
+        sessionStorage.setItem('webLanguageSelected', 'true');
+      }
+
+      if (window.languageSelector) {
+        window.languageSelector.createSelector();
+        placeLanguageSelector();
+      }
+
+      waitUntil(function() {
+        return window.translationManager && window.translationManager.isLoaded;
+      }).then(function() {
+        updateCircuitButtons();
+        updatePopupTitle();
+        updateConfirmPopupText(selectedCircuit);
+      }).catch(function() {});
+    });
+
+    document.addEventListener('languageChanged', function() {
+      updateCircuitButtons();
+      updatePopupTitle();
+      updateStartPointDistances(true);
+      updateConfirmPopupText(selectedCircuit);
+    });
+  </script>
+
+  <script>
+    function isInstalledPwaContext() {
+      try {
+        if (localStorage.getItem('pwa-installed') === 'true') return true;
+        var params = new URLSearchParams(window.location.search || '');
+        if (params.get('pwa') === '1') return true;
+      } catch (e) {}
+      try {
+        if (window.matchMedia('(display-mode: standalone)').matches) return true;
+        if (window.matchMedia('(display-mode: fullscreen)').matches) return true;
+        if (window.navigator && window.navigator.standalone === true) return true;
+      } catch (e) {}
+      return false;
+    }
+
+    function checkOrientation() {
+      var warning = document.getElementById('orientation-warning');
+      if (!warning) return;
+      var isLandscape = window.innerWidth > window.innerHeight;
+      if (isLandscape || isInstalledPwaContext()) {
+        warning.style.display = 'none';
+        if (typeof scheduleParcoursLayoutRecalibration === 'function') {
+          scheduleParcoursLayoutRecalibration();
+        }
+      } else {
+        warning.style.display = 'flex';
+        if (window.translationManager && typeof window.translationManager.applyTranslations === 'function') {
+          window.translationManager.applyTranslations();
+        }
+      }
+    }
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', checkOrientation);
+    window.addEventListener('load', checkOrientation);
+    if (screen.orientation) {
+      screen.orientation.addEventListener('change', checkOrientation);
+    }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.translationManager && typeof window.translationManager.init === 'function') {
+        window.translationManager.init().then(function() {
+          window.translationManager.applyTranslations();
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
+

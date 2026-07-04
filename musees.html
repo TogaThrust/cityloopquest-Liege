@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityLoop Quest Liège - Musées</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="translations/translationManager.js"></script>
+  <script src="translations/languageSelector.js"></script>
+  <script src="js/access-guard.js" defer></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+    h1, h2 { text-align: center; }
+    .museum-category { margin-top: 40px; }
+    .museum { display: flex; align-items: center; margin-bottom: 20px; }
+    .museum img { max-width: 150px; margin-right: 20px; }
+    .museum-info { flex: 1; }
+    .museum-description { margin-top: 1em; display: block; }
+    .museum-meta-line { display: block; margin-top: 0.35em; }
+    .museum-meta-multiline { display: block; margin-top: 0.35em; white-space: pre-line; }
+    button { margin-top: 10px; }
+    button:disabled { background-color: #cccccc; color: #666666; cursor: not-allowed; opacity: 0.7; }
+    #return-btn { display: block; margin: 40px auto; padding: 10px 20px; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="header-content">
+      <img src="images/icone titre0.png" alt="Icone 0" class="header-img left">
+      <h1 id="mainTitle">CityLoop Quest Liège</h1>
+      <img src="images/icone titre1.png" alt="Icone 1" class="header-img right">
+    </div>
+  </header>
+
+  <h1 id="page-title">🏛️ Musées à visiter à Liège</h1>
+  <div class="museum-category">
+    <h2 id="category-title">Musées et patrimoine</h2>
+    <div id="museum-list"></div>
+  </div>
+  <button class="back-button" id="back-button">RETOUR</button>
+  <script src="js/clq-city-config.js"></script>
+  <script>
+    let translations = {};
+    let museumsData = [];
+
+    function currentLang() {
+      let lang = (localStorage.getItem('selectedLanguage') || 'fr').toLowerCase();
+      if (lang === 'cn') lang = 'zh';
+      if (lang === 'jp') lang = 'ja';
+      if (lang === 'zh' && translations.cn) return 'cn';
+      if (lang === 'ja' && translations.jp) return 'jp';
+      return translations[lang] ? lang : 'fr';
+    }
+
+    function t(key) {
+      const lang = currentLang();
+      const pack = translations[lang] || translations.fr || {};
+      return pack[key] || (translations.fr || {})[key] || '';
+    }
+
+    function museumDescription(museum) {
+      const lang = currentLang();
+      return (
+        museum.descriptions?.[lang]
+        || museum.descriptions?.fr
+        || museum.description
+        || ''
+      );
+    }
+
+    function formatPageTitle(cityName) {
+      const title = t('title');
+      if (title.includes('{{city}}')) return title.replace(/\{\{city\}\}/g, cityName);
+      const titleIn = t('titleIn');
+      return [title, titleIn, cityName].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+    }
+
+    async function loadTranslations() {
+      try {
+        const response = await fetch('translations/translations_musees.json');
+        translations = await response.json();
+        if (translations.zh && !translations.cn) translations.cn = { ...translations.zh };
+        if (translations.ja && !translations.jp) translations.jp = { ...translations.ja };
+        applyTranslations();
+        renderMuseumList();
+      } catch (error) {
+        console.error('Erreur lors du chargement des traductions:', error);
+      }
+    }
+
+    function applyTranslations() {
+      const cityName = (window.CLQ_CITY && window.CLQ_CITY.name) || 'Liège';
+      const mainTitle = document.getElementById('mainTitle');
+      if (mainTitle) mainTitle.textContent = t('mainTitle') || 'CityLoop Quest Liège';
+      const pageTitle = document.getElementById('page-title');
+      if (pageTitle) pageTitle.textContent = formatPageTitle(cityName);
+      const categoryTitle = document.getElementById('category-title');
+      if (categoryTitle) categoryTitle.textContent = t('artHeritage');
+      const backButton = document.getElementById('back-button');
+      if (backButton) backButton.textContent = t('backButton');
+    }
+
+    function forceTargetStorageKey() {
+      const prefix = (window.CLQ_CITY && window.CLQ_CITY.storagePrefix) || 'liege';
+      return prefix + '_forceTarget';
+    }
+
+    function museumImage(museum) {
+      const photo = museum.photos?.[0] || {};
+      return (
+        photo.directImageUrl ||
+        photo.downloadUrl ||
+        photo.fileUrl ||
+        photo.imageUrl ||
+        photo.url ||
+        museum.image ||
+        museum.imagePath ||
+        photo.savedPath ||
+        photo.sourcePath ||
+        photo.dataUrl ||
+        ''
+      );
+    }
+
+    function showMuseumConfirmPopup(museum, payload) {
+      if (document.getElementById('museum-confirm-popup')) return;
+
+      const overlay = document.createElement('div');
+      overlay.id = 'museum-confirm-popup';
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.background = 'rgba(0,0,0,0.7)';
+      overlay.style.display = 'flex';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.zIndex = '9999';
+
+      const box = document.createElement('div');
+      box.style.background = '#fffbe6';
+      box.style.border = '4px solid #b8860b';
+      box.style.borderRadius = '18px';
+      box.style.boxShadow = '0 0 24px #0008';
+      box.style.padding = '32px 24px 24px';
+      box.style.maxWidth = '400px';
+      box.style.textAlign = 'center';
+      box.style.position = 'relative';
+
+      const icon = document.createElement('div');
+      icon.style.fontSize = '3em';
+      icon.style.marginBottom = '10px';
+      icon.textContent = '⚔️🐉';
+      box.appendChild(icon);
+
+      const title = document.createElement('div');
+      title.textContent = t('popupTitle') || 'Avertissement !';
+      title.style.fontWeight = 'bold';
+      title.style.fontSize = '1.3em';
+      title.style.color = '#b30000';
+      title.style.marginBottom = '10px';
+      box.appendChild(title);
+
+      const msg = document.createElement('div');
+      const fallback = `Le guidage du parcours va être interrompu pour vous mener vers <strong>${String(museum.name || 'ce musée')}</strong>.`;
+      msg.innerHTML = (t('popupMessage') || fallback).replace('<strong>', '').replace('</strong>', '');
+      msg.style.marginBottom = '22px';
+      msg.style.color = '#222';
+      box.appendChild(msg);
+
+      const btns = document.createElement('div');
+      btns.style.display = 'flex';
+      btns.style.justifyContent = 'center';
+      btns.style.gap = '18px';
+
+      const btnYes = document.createElement('button');
+      btnYes.textContent = t('popupYes') || 'Oui';
+      btnYes.style.background = '#2ecc40';
+      btnYes.style.color = '#fff';
+      btnYes.style.fontWeight = 'bold';
+      btnYes.style.border = 'none';
+      btnYes.style.borderRadius = '8px';
+      btnYes.style.padding = '10px 18px';
+      btnYes.style.fontSize = '1em';
+      btnYes.style.cursor = 'pointer';
+      btnYes.addEventListener('click', () => {
+        document.body.removeChild(overlay);
+        localStorage.setItem(forceTargetStorageKey(), JSON.stringify(payload));
+        window.location.href = 'main.html';
+      });
+
+      const btnNo = document.createElement('button');
+      btnNo.textContent = t('popupNo') || 'Non';
+      btnNo.style.background = '#e74c3c';
+      btnNo.style.color = '#fff';
+      btnNo.style.fontWeight = 'bold';
+      btnNo.style.border = 'none';
+      btnNo.style.borderRadius = '8px';
+      btnNo.style.padding = '10px 18px';
+      btnNo.style.fontSize = '1em';
+      btnNo.style.cursor = 'pointer';
+      btnNo.addEventListener('click', () => {
+        document.body.removeChild(overlay);
+      });
+
+      btns.appendChild(btnYes);
+      btns.appendChild(btnNo);
+      box.appendChild(btns);
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+    }
+
+    function goToMuseumByIndex(index) {
+      const museum = window.CLQ_MUSEUMS && window.CLQ_MUSEUMS[index];
+      if (!museum) return;
+
+      const lat = Number(museum.lat);
+      const lng = Number(museum.lng);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+
+      showMuseumConfirmPopup(museum, {
+        name: museum.name || 'Musée',
+        lat,
+        lng,
+        audio: museum.audio || '',
+        image: museumImage(museum),
+        info: [museum.address, museumDescription(museum)].filter(Boolean).join(' - '),
+      });
+    }
+
+    function formatMultiline(value) {
+      return String(value || '')
+        .replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]))
+        .replace(/\n/g, '<br>');
+    }
+
+    function renderMuseumList() {
+      const target = document.getElementById('museum-list');
+      if (!target) return;
+      const escapeHtml = (value) => String(value || '').replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+      if (!Array.isArray(museumsData) || museumsData.length === 0) {
+        target.innerHTML = `<p>${escapeHtml(t('emptyMessage') || 'Musées à compléter.')}</p>`;
+        return;
+      }
+      target.innerHTML = museumsData.map((museum, index) => {
+        const image = museumImage(museum);
+        const hasCoords = Number.isFinite(Number(museum.lat)) && Number.isFinite(Number(museum.lng));
+        const description = museumDescription(museum);
+        const addressLine = museum.address
+          ? `<span class="museum-meta-line">${escapeHtml(t('addressLabel') || 'Adresse :')} ${escapeHtml(museum.address)}</span>`
+          : '';
+        const hoursLine = museum.openingHours
+          ? `<span class="museum-meta-multiline">${escapeHtml(t('hoursLabel') || 'Horaires :')} ${formatMultiline(museum.openingHours)}</span>`
+          : '';
+        const pricingLine = museum.pricing
+          ? `<span class="museum-meta-multiline">${escapeHtml(t('pricingLabel') || 'Tarifs :')} ${formatMultiline(museum.pricing)}</span>`
+          : '';
+        const descriptionBlock = description
+          ? `<span class="museum-description">${formatMultiline(description)}</span>`
+          : '';
+        return `
+          <div class="museum">
+            ${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(museum.name || 'Musée')}" />` : ''}
+            <div class="museum-info">
+              <strong>${escapeHtml(museum.name || 'Musée')}</strong>
+              ${addressLine}
+              ${hoursLine}
+              ${pricingLine}
+              ${descriptionBlock}
+              ${hasCoords ? `<br/><button type="button" onclick="goToMuseumByIndex(${index})">${escapeHtml(t('goButton') || 'Y aller ?')}</button>` : ''}
+              ${museum.website ? `<br/><a href="${escapeHtml(museum.website)}" target="_blank" rel="noreferrer">${escapeHtml(t('websiteLink') || 'Site web')}</a>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    fetch('data/museums_generated.json')
+      .then((r) => r.json())
+      .then((museums) => {
+        museumsData = Array.isArray(museums) ? museums : [];
+        window.CLQ_MUSEUMS = museumsData;
+        renderMuseumList();
+      })
+      .catch(() => {
+        museumsData = [];
+        renderMuseumList();
+      });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      loadTranslations();
+      if (window.languageSelector) {
+        window.languageSelector.createSelector();
+        window.languageSelector.updateSelectorValue?.();
+      }
+      document.addEventListener('languageChanged', () => {
+        applyTranslations();
+        renderMuseumList();
+      });
+      const backButton = document.getElementById('back-button');
+      if (backButton) backButton.addEventListener('click', () => { window.location.href = 'culture.html'; });
+    });
+  </script>
+</body>
+</html>

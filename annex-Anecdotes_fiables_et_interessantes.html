@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anecdotes fiables et intéressantes - CityLoop Quest Liège</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="api-base.js"></script>
+  <script src="js/access-control.js"></script>
+  <script src="translations/translationManager.js"></script>
+  <script src="translations/languageSelector.js"></script>
+  <script src="js/access-guard.js" defer></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    h1 { margin-bottom: 30px; }
+    .generated-gallery { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); max-width: 900px; margin: 0 auto 24px; }
+    .generated-gallery img { width: 100%; border-radius: 12px; }
+    iframe { width: min(760px, 92vw); min-height: 48vh; border: 0; border-radius: 12px; }
+    .info-text { margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #c8102e; color: #333; max-width: 760px; margin-left: auto; margin-right: auto; text-align: left; line-height: 1.6; }
+    .culture-inline-photo { max-width: 320px; margin: 14px auto 22px; text-align: center; }
+    .culture-inline-photo img { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+    .culture-inline-photo figcaption { font-size: 0.9rem; color: #555; margin-top: 6px; font-style: italic; }
+  </style>
+</head>
+<body>
+<header class="main-header">
+  <div class="header-content">
+    <img src="images/icone titre0.png" alt="Icone 0" class="header-img left">
+    <h1>CityLoop Quest Liège</h1>
+    <img src="images/icone titre1.png" alt="Icone 1" class="header-img right">
+  </div>
+</header>
+<h1>Anecdotes fiables et intéressantes</h1>
+<section class="generated-gallery"><figure><img src="images/culture/Anecdotes_fiables_et_interessantes.jpg" alt="le saviez vous" /></figure></section>
+<section><iframe src="https://www.youtube.com/embed/A4KCmsaTOd0" title="Vidéo" loading="lazy" allowfullscreen></iframe></section>
+<div class="info-text"><p>Le Perron a connu une vie mouvementée : après le sac de Liège en 1468, Charles le Téméraire le fit emporter à Bruges. Son retour après la mort du duc fut bien plus qu’un transport de pierre ; il répara symboliquement l’honneur politique de la cité.</p>
+<p>La place Saint-Lambert paraît ouverte et moderne, mais elle recouvre le cœur le plus sacré de l’ancienne ville. La cathédrale disparue était immense. Marcher sur cette place, c’est traverser un vide urbain créé par une révolution et rempli ensuite par la mémoire.</p>
+<p>La sauce lapin ne doit pas son nom à un pauvre animal mijoté dans la casserole. L’explication la plus racontée renvoie à une famille Lapin associée à la recette. Voilà une bonne nouvelle pour les lapins et une excellente excuse pour commander des boulets.</p>
+<p>Liège aime aussi les surnoms : la Cité ardente, Lîdje en wallon, Outremeuse, La Violette, La Belle Liégeoise. Ces noms ne sont pas de simples étiquettes touristiques ; ils montrent une ville qui personnalise ses lieux comme des personnages familiers.</p></div>
+<a class="back-button" href="culture.html" data-translate="back_button">BACK</a>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  window.languageSelector?.createSelector?.();
+  window.languageSelector?.updateSelectorValue?.();
+});
+</script>
+<script>
+window.CLQ_PAGE_I18N = {"title":{"fr":"Anecdotes fiables et intéressantes","nl":"Betrouwbare en interessante anekdotes","en":"Reliable and Interesting Anecdotes","de":"Verlässliche und interessante Anekdoten","it":"Curiosità affidabili e interessanti","es":"Anécdotas fiables e interesantes","pl":"Ciekawe i sprawdzone ciekawostki","ar":"طرائف موثوقة ومثيرة للاهتمام","cn":"可靠有趣的轶事","ja":"信頼できる面白い豆知識"},"content":{"fr":"Le Perron a connu une vie mouvementée : après le sac de Liège en 1468, Charles le Téméraire le fit emporter à Bruges. Son retour après la mort du duc fut bien plus qu’un transport de pierre ; il répara symboliquement l’honneur politique de la cité.\n\nLa place Saint-Lambert paraît ouverte et moderne, mais elle recouvre le cœur le plus sacré de l’ancienne ville. La cathédrale disparue était immense. Marcher sur cette place, c’est traverser un vide urbain créé par une révolution et rempli ensuite par la mémoire.\n\nLa sauce lapin ne doit pas son nom à un pauvre animal mijoté dans la casserole. L’explication la plus racontée renvoie à une famille Lapin associée à la recette. Voilà une bonne nouvelle pour les lapins et une excellente excuse pour commander des boulets.\n\nLiège aime aussi les surnoms : la Cité ardente, Lîdje en wallon, Outremeuse, La Violette, La Belle Liégeoise. Ces noms ne sont pas de simples étiquettes touristiques ; ils montrent une ville qui personnalise ses lieux comme des personnages familiers.","nl":"De Perron heeft een bewogen leven gekend: na de plundering van Luik in 1468 liet Karel de Stoute hem naar Brugge overbrengen. Zijn terugkeer na de dood van de hertog was veel meer dan een steentransport; ze herstelde symbolisch de politieke eer van de stad.\n\nHet Sint-Lambertusplein oogt open en modern, maar het bedekt het heiligste hart van de oude stad. De verdwenen kathedraal was enorm. Over dit plein wandelen, is een stedelijke leegte doorkruisen die door een revolutie werd gecreëerd en daarna door de herinnering werd gevuld.\n\nDe saus lapin dankt haar naam niet aan een arm konijn dat in de pan suddert. De meest vertelde verklaring verwijst naar een familie Lapin die met het recept in verband wordt gebracht. Dat is goed nieuws voor de konijnen en een uitstekend excuus om boulets te bestellen.\n\nLuik houdt ook van bijnamen: de Vurige Stede, Lîdje in het Waals, Outremeuse, La Violette, La Belle Liégeoise. Die namen zijn niet zomaar toeristische etiketten; ze tonen een stad die haar plekken personifieert als vertrouwde personages.","en":"Le Perron has had a turbulent life: after the Sack of Liège in 1468, Charles the Bold had it taken to Bruges. Its return after the duke’s death was much more than a transport of stone; it symbolically restored the city’s political honor.\n\nSaint-Lambert Square may seem open and modern, but it covers the most sacred heart of the old city. The vanished cathedral was immense. To walk across this square is to cross an urban void created by a revolution and then filled by memory.\n\nSauce lapin does not owe its name to a poor animal stewing in the pot. The most commonly told explanation points to a Lapin family associated with the recipe. That is good news for rabbits and an excellent excuse to order boulets.\n\nLiège also loves nicknames: the Fiery City, Lîdje in Walloon, Outremeuse, La Violette, La Belle Liégeoise. These names are not mere tourist labels; they show a city that turns its places into familiar characters.","de":"Le Perron hat ein bewegtes Leben hinter sich: Nach der Plünderung von Lüttich im Jahr 1468 ließ Karl der Kühne ihn nach Brügge bringen. Seine Rückkehr nach dem Tod des Herzogs war weit mehr als ein bloßer Transport von Stein; sie stellte symbolisch die politische Ehre der Stadt wieder her.\n\nDer Place Saint-Lambert wirkt offen und modern, doch er bedeckt den heiligsten Kern der alten Stadt. Die verschwundene Kathedrale war gewaltig. Wer über diesen Platz geht, durchquert eine städtische Leere, die durch eine Revolution entstanden und später mit Erinnerung gefüllt wurde.\n\nDie Sauce Lapin verdankt ihren Namen nicht einem armen Tier, das im Topf geschmort wurde. Die am häufigsten erzählte Erklärung verweist auf eine Familie Lapin, die mit dem Rezept in Verbindung gebracht wird. Das sind gute Nachrichten für die Kaninchen und eine ausgezeichnete Ausrede, um Boulets zu bestellen.\n\nLüttich liebt auch Spitznamen: die „Cité ardente“, Lîdje auf Wallonisch, Outremeuse, La Violette, La Belle Liégeoise. Diese Namen sind nicht bloß touristische Etiketten; sie zeigen eine Stadt, die ihre Orte wie vertraute Figuren personifiziert.","it":"Le Perron ha avuto una vita turbolenta: dopo il sacco di Liegi nel 1468, Carlo il Temerario lo fece portare a Bruges. Il suo ritorno dopo la morte del duca fu molto più di un semplice trasporto di pietre; riparò simbolicamente l’onore politico della città.\n\nPlace Saint-Lambert appare aperta e moderna, ma ricopre il cuore più sacro dell’antica città. La cattedrale scomparsa era immensa. Camminare su questa piazza նշանակում attraversare un vuoto urbano creato da una rivoluzione e poi riempito dalla memoria.\n\nLa salsa lapin non deve il suo nome a un povero animale stufato in pentola. La spiegazione più diffusa rimanda a una famiglia Lapin associata alla ricetta. Ecco una buona notizia per i conigli e un’ottima scusa per ordinare dei boulets.\n\nLiegi ama anche i soprannomi: la Cité ardente, Lîdje in vallone, Outremeuse, La Violette, La Belle Liégeoise. Questi nomi non sono semplici etichette turistiche; mostrano una città che dà ai suoi luoghi la personalità di personaggi familiari.","es":"Le Perron tuvo una vida agitada: después del saqueo de Lieja en 1468, Carlos el Temerario hizo que lo llevaran a Brujas. Su regreso tras la muerte del duque fue mucho más que un traslado de piedra; reparó simbólicamente el honor político de la ciudad.\n\nLa plaza Saint-Lambert parece abierta y moderna, pero cubre el corazón más sagrado de la antigua ciudad. La catedral desaparecida era inmensa. Caminar por esta plaza es atravesar un vacío urbano creado por una revolución y luego lleno por la memoria.\n\nLa salsa lapin no debe su nombre a un pobre animal guisado en la cazuela. La explicación que más se cuenta remite a una familia Lapin asociada con la receta. He aquí una buena noticia para los conejos y una excelente excusa para pedir boulets.\n\nLieja también aprecia los apodos: la Cité ardente, Lîdje en valón, Outremeuse, La Violette, La Belle Liégeoise. Estos nombres no son simples etiquetas turísticas; muestran una ciudad que personaliza sus lugares como si fueran personajes familiares.","pl":"Perron miał burzliwe dzieje: po splądrowaniu Liège w 1468 roku Karol Zuchwały kazał go przewieźć do Brugii. Jego powrót po śmierci księcia był czymś znacznie więcej niż tylko transportem kamienia; symbolicznie naprawił polityczny honor miasta.\n\nPlac Saint-Lambert wydaje się otwarty i nowoczesny, lecz kryje pod sobą najświętsze serce dawnego miasta. Nieistniejąca już katedra była ogromna. Spacer po tym placu to przemierzanie miejskiej pustki, stworzonej przez rewolucję, a następnie wypełnionej pamięcią.\n\nSos lapin nie zawdzięcza swojej nazwy biednemu zwierzęciu duszonemu w garnku. Najczęściej przywoływane wyjaśnienie odsyła do rodziny Lapin, związanej z tym przepisem. To dobra wiadomość dla królików i doskonała wymówka, by zamówić boulets.\n\nLiège lubi też przydomki: Cité ardente, Lîdje po walońsku, Outremeuse, La Violette, La Belle Liégeoise. Te nazwy nie są jedynie turystycznymi etykietami; pokazują miasto, które nadaje swoim miejscom osobowość niczym dobrze znanym postaciom.","ar":"شهد «البيرون» حياةً حافلة بالأحداث: فبعد نهب لييج سنة 1468، أمره شارل الجريء بأن يُنقل إلى بروج. وكانت عودته بعد وفاة الدوق أكثر من مجرد نقلٍ للحجارة؛ إذ أعادت رمزيًا شرف المدينة السياسي.\n\nتبدو ساحة سان لامبير مفتوحة وعصرية، لكنها تغطي القلب الأقدس للمدينة القديمة. كانت الكاتدرائية التي اختفت هائلة الحجم. إن المشي في هذه الساحة هو عبور فراغٍ حضري صنعته ثورة ثم امتلأ لاحقًا بالذاكرة.\n\nلا يعود اسم صلصة «لابان» إلى حيوانٍ مسكين يُطهى على نار هادئة في القدر. أما التفسير الأكثر تداولًا فيشير إلى عائلة لابان المرتبطة بالوصفة. وهذه أخبار جيدة للأرانب، وعذر ممتاز لطلب كرات اللحم.\n\nوتحب لييج أيضًا الألقاب: «المدينة المتقدة»، و«لييج» بالوالونية، و«أوترموز»، و«الفيوليت»، و«اللييجية الجميلة». هذه الأسماء ليست مجرد تسميات سياحية؛ إنها تُظهر مدينةً تشخصن أمكنتها كما لو كانت شخصيات مألوفة.","cn":"Perron经历了跌宕起伏的命运：1468年列日遭洗劫后，勃艮第公爵大胆查理将它运走，带到了布鲁日。公爵去世后，它的回归远不只是把一块石头运回来；这在象征意义上修复了这座城市的政治尊严。\n\n圣朗贝尔广场看起来开阔而现代，但它覆盖着古城最神圣的核心。那座已消失的大教堂曾规模宏大。走过这座广场，就像穿越一片由革命造成、随后又被记忆填满的城市空白。\n\nlapin酱并不是因为锅里炖着一只可怜的兔子才得名。最广为流传的说法指向一个与这道菜有关的拉潘家族。对兔子来说，这是个好消息；而对点一份肉丸的食客来说，这也是一个绝佳的理由。\n\n列日也喜欢昵称：烈焰之城、瓦隆语中的Lîdje、Outremeuse、La Violette、La Belle Liégeoise。这些名字并不只是旅游标签；它们展现了一座会把自己的地方当作熟悉角色来赋予个性的城市。","ja":"ペロンは波乱に満ちた歩みをたどってきました。1468年のリエージュ略奪ののち、シャルル突進公はこれをブルージュへ運ばせました。公の死後に戻されたことは、単なる石の移送以上の意味を持っていました。それは、都市の政治的な名誉を象徴的に回復する出来事だったのです。\n\nサン＝ランベール広場は開放的で現代的に見えますが、かつての都市で最も神聖な中心部の上に広がっています。失われた大聖堂は巨大でした。この広場を歩くことは、革命によって生まれ、その後記憶によって満たされた都市の空白を横切ることなのです。\n\nラパン・ソースは、鍋の中で煮込まれた哀れなウサギにその名を負っているわけではありません。最もよく語られる説明では、このレシピに結びついたラパン家に由来するとされています。これはウサギたちにとって朗報であり、ブーレットを注文するための絶好の口実でもあります。\n\nリエージュは愛称も大好きです。炎の都、ワロン語での Lîdje、ウートルムーズ、ラ・ヴィオレット、ラ・ベル・リエジョワーズ。これらの名前は単なる観光用の呼び札ではありません。街が、自らの場所を親しい登場人物のように擬人化していることを示しているのです。"}};
+window.CLQ_CULTURE_IMAGE_URLS = {"images/culture/Anecdotes_fiables_et_interessantes.jpg":"images/culture/Anecdotes_fiables_et_interessantes.jpg"};
+(function () {
+  function normalizeLang(lang) {
+    lang = String(lang || "").toLowerCase();
+    if (!lang) lang = String(localStorage.getItem("selectedLanguage") || "fr").toLowerCase();
+    if (lang === "jp") return "ja";
+    if (lang === "zh") return "cn";
+    return lang;
+  }
+  function resolveLang(event) {
+    var stored = normalizeLang(localStorage.getItem("selectedLanguage") || "");
+    var fromEvent = event && event.detail && event.detail.language;
+    if (fromEvent) return normalizeLang(fromEvent);
+    return stored || "fr";
+  }
+  function pick(map, lang) {
+    if (!map) return "";
+    var exact = map[lang];
+    if (exact != null && String(exact).trim() !== "") return exact;
+    if (map.fr && String(map.fr).trim() !== "") return map.fr;
+    if (map.en && String(map.en).trim() !== "") return map.en;
+    return "";
+  }
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>"']/g, function (ch) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch];
+    });
+  }
+  function resolveCultureImageSrc(src) {
+    var map = window.CLQ_CULTURE_IMAGE_URLS || {};
+    return map[src] || src;
+  }
+  function cultureTextToHtml(text) {
+    function esc(value) {
+      return String(value || "").replace(/[&<>"']/g, function (ch) {
+        return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch];
+      });
+    }
+    var blocks = String(text || "").split(/\n{2,}/).filter(Boolean);
+    return blocks.map(function (block) {
+      var inline = block.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)\s*$/);
+      if (inline) {
+        var caption = inline[1].trim();
+        var src = resolveCultureImageSrc(inline[2].trim());
+        return '<figure class="culture-inline-photo"><img src="' + esc(src) + '" alt="' + esc(caption) + '" loading="lazy" /><figcaption>' + esc(caption) + '</figcaption></figure>';
+      }
+      return "<p>" + esc(block).replace(/\n/g, "<br>") + "</p>";
+    }).join("\n");
+  }
+  function applyCultureI18n(event) {
+    var lang = resolveLang(event);
+    var data = window.CLQ_PAGE_I18N || {};
+    var title = pick(data.title, lang);
+    if (title) {
+      document.title = title + " - CityLoop Quest Liège";
+      var h1 = document.querySelector("body > h1");
+      if (h1) h1.textContent = title;
+    }
+    var content = pick(data.content, lang);
+    var container = document.querySelector(".info-text");
+    if (container && content) container.innerHTML = cultureTextToHtml(content);
+    document.querySelectorAll("[data-title-i18n]").forEach(function (el) {
+      try {
+        var map = JSON.parse(el.getAttribute("data-title-i18n") || "{}");
+        var label = pick(map, lang);
+        if (label) {
+          var prefix = el.getAttribute("data-title-prefix") || "";
+          el.textContent = prefix + label;
+        }
+      } catch (_) {}
+    });
+    document.documentElement.lang = lang === "cn" ? "zh" : lang;
+  }
+  document.addEventListener("languageChanged", applyCultureI18n);
+  function bootCultureI18n() {
+    applyCultureI18n();
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootCultureI18n);
+  } else {
+    bootCultureI18n();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Espace Culturel Liège</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="translations/translationManager.js"></script>
+  <script src="translations/languageSelector.js"></script>
+  <script src="api-base.js"></script>
+  <script src="js/access-control.js"></script>
+  <script src="js/access-guard.js" defer></script>
+</head>
+<body>
+<header class="main-header">
+  <div class="header-content">
+    <img src="images/icone titre0.png" alt="Icone 0" class="header-img left">
+    <h1>CityLoop Quest Liège</h1>
+    <img src="images/icone titre1.png" alt="Icone 1" class="header-img right">
+  </div>
+</header>
+
+<main style="text-align:center; padding:20px;">
+  <h2 data-translate="culture_subtitle">Explorez le patrimoine culturel de Liège</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:600px; margin:auto;">
+    <button data-culture-target="annex-Origines_et_developpement.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Origines et développement&quot;,&quot;nl&quot;:&quot;Oorsprong en ontwikkeling&quot;,&quot;en&quot;:&quot;Origins and Development&quot;,&quot;de&quot;:&quot;Ursprung und Entwicklung&quot;,&quot;it&quot;:&quot;Origini e sviluppo&quot;,&quot;es&quot;:&quot;Orígenes y desarrollo&quot;,&quot;pl&quot;:&quot;Początki i rozwój&quot;,&quot;ar&quot;:&quot;الأصول والتطور&quot;,&quot;cn&quot;:&quot;起源与发展&quot;,&quot;ja&quot;:&quot;起源と発展&quot;}">📍 Origines et développement</button>
+    <button data-culture-target="annex-Grandes_periodes_historiques.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Grandes périodes historiques&quot;,&quot;nl&quot;:&quot;Belangrijke historische periodes&quot;,&quot;en&quot;:&quot;Major Historical Periods&quot;,&quot;de&quot;:&quot;Wichtige historische Epochen&quot;,&quot;it&quot;:&quot;Grandi periodi storici&quot;,&quot;es&quot;:&quot;Grandes periodos históricos&quot;,&quot;pl&quot;:&quot;Najważniejsze okresy historyczne&quot;,&quot;ar&quot;:&quot;الفترات التاريخية الكبرى&quot;,&quot;cn&quot;:&quot;重要历史时期&quot;,&quot;ja&quot;:&quot;歴史の主な時代&quot;}">📍 Grandes périodes historiques</button>
+    <button data-culture-target="annex-Personnages_marquants.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Personnages marquants&quot;,&quot;nl&quot;:&quot;Opvallende figuren&quot;,&quot;en&quot;:&quot;Notable Figures&quot;,&quot;de&quot;:&quot;Bedeutende Persönlichkeiten&quot;,&quot;it&quot;:&quot;Personaggi illustri&quot;,&quot;es&quot;:&quot;Figuras destacadas&quot;,&quot;pl&quot;:&quot;Wybitne postacie&quot;,&quot;ar&quot;:&quot;شخصيات بارزة&quot;,&quot;cn&quot;:&quot;重要人物&quot;,&quot;ja&quot;:&quot;主な人物&quot;}">📍 Personnages marquants</button>
+    <button data-culture-target="annex-Traditions_et_evenements.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Traditions et événements&quot;,&quot;nl&quot;:&quot;Tradities en evenementen&quot;,&quot;en&quot;:&quot;Traditions and Events&quot;,&quot;de&quot;:&quot;Traditionen und Veranstaltungen&quot;,&quot;it&quot;:&quot;Tradizioni ed eventi&quot;,&quot;es&quot;:&quot;Tradiciones y eventos&quot;,&quot;pl&quot;:&quot;Tradycje i wydarzenia&quot;,&quot;ar&quot;:&quot;التقاليد والفعاليات&quot;,&quot;cn&quot;:&quot;传统与活动&quot;,&quot;ja&quot;:&quot;伝統とイベント&quot;}">📍 Traditions et événements</button>
+    <button data-culture-target="annex-Architecture_locale.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Architecture locale&quot;,&quot;nl&quot;:&quot;Lokale architectuur&quot;,&quot;en&quot;:&quot;Local Architecture&quot;,&quot;de&quot;:&quot;Lokale Architektur&quot;,&quot;it&quot;:&quot;Architettura locale&quot;,&quot;es&quot;:&quot;Arquitectura local&quot;,&quot;pl&quot;:&quot;Architektura lokalna&quot;,&quot;ar&quot;:&quot;العمارة المحلية&quot;,&quot;cn&quot;:&quot;本地建筑&quot;,&quot;ja&quot;:&quot;地域の建築&quot;}">📍 Architecture locale</button>
+    <button data-culture-target="annex-Quartiers_et_ambiances.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Quartiers et ambiances&quot;,&quot;nl&quot;:&quot;Wijken en sferen&quot;,&quot;en&quot;:&quot;Neighborhoods and Atmospheres&quot;,&quot;de&quot;:&quot;Viertel und Atmosphäre&quot;,&quot;it&quot;:&quot;Quartieri e atmosfere&quot;,&quot;es&quot;:&quot;Barrios y ambientes&quot;,&quot;pl&quot;:&quot;Dzielnice i atmosfera&quot;,&quot;ar&quot;:&quot;الأحياء والأجواء&quot;,&quot;cn&quot;:&quot;街区与氛围&quot;,&quot;ja&quot;:&quot;地区と雰囲気&quot;}">📍 Quartiers et ambiances</button>
+    <button data-culture-target="annex-Specialites_locales.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Spécialités locales&quot;,&quot;nl&quot;:&quot;Lokale specialiteiten&quot;,&quot;en&quot;:&quot;Local Specialties&quot;,&quot;de&quot;:&quot;Lokale Spezialitäten&quot;,&quot;it&quot;:&quot;Specialità locali&quot;,&quot;es&quot;:&quot;Especialidades locales&quot;,&quot;pl&quot;:&quot;Lokalne specjały&quot;,&quot;ar&quot;:&quot;التخصصات المحلية&quot;,&quot;cn&quot;:&quot;当地特色&quot;,&quot;ja&quot;:&quot;郷土料理&quot;}">📍 Spécialités locales</button>
+    <button data-culture-target="annex-Lieux_et_habitudes_gourmandes.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Lieux et habitudes gourmandes&quot;,&quot;nl&quot;:&quot;Eetplekken en eetgewoonten&quot;,&quot;en&quot;:&quot;Food Spots and Habits&quot;,&quot;de&quot;:&quot;Beliebte Orte und Essgewohnheiten&quot;,&quot;it&quot;:&quot;Luoghi e abitudini golose&quot;,&quot;es&quot;:&quot;Lugares y costumbres gastronómicas&quot;,&quot;pl&quot;:&quot;Miejsca i zwyczaje kulinarne&quot;,&quot;ar&quot;:&quot;أماكن وعادات الذواقة&quot;,&quot;cn&quot;:&quot;美食地点与习惯&quot;,&quot;ja&quot;:&quot;食のスポットと習慣&quot;}">📍 Lieux et habitudes gourmandes</button>
+    <button data-culture-target="annex-Se_deplacer.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Se déplacer&quot;,&quot;nl&quot;:&quot;Je verplaatsen&quot;,&quot;en&quot;:&quot;Getting Around&quot;,&quot;de&quot;:&quot;Fortbewegung&quot;,&quot;it&quot;:&quot;Come spostarsi&quot;,&quot;es&quot;:&quot;Cómo moverse&quot;,&quot;pl&quot;:&quot;Poruszanie się&quot;,&quot;ar&quot;:&quot;التنقل&quot;,&quot;cn&quot;:&quot;出行方式&quot;,&quot;ja&quot;:&quot;移動手段&quot;}">📍 Se déplacer</button>
+    <button data-culture-target="annex-Meilleurs_moments_de_visite.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Meilleurs moments de visite&quot;,&quot;nl&quot;:&quot;Beste bezoektijden&quot;,&quot;en&quot;:&quot;Best Times to Visit&quot;,&quot;de&quot;:&quot;Beste Reisezeiten&quot;,&quot;it&quot;:&quot;I periodi migliori per visitare&quot;,&quot;es&quot;:&quot;Mejores momentos para visitar&quot;,&quot;pl&quot;:&quot;Najlepszy czas na wizytę&quot;,&quot;ar&quot;:&quot;أفضل أوقات الزيارة&quot;,&quot;cn&quot;:&quot;最佳游览时间&quot;,&quot;ja&quot;:&quot;おすすめの訪問時期&quot;}">📍 Meilleurs moments de visite</button>
+    <button data-culture-target="annex-Conseils_famille_et_accessibilite.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Conseils famille et accessibilité&quot;,&quot;nl&quot;:&quot;Tips voor families en toegankelijkheid&quot;,&quot;en&quot;:&quot;Family and Accessibility Tips&quot;,&quot;de&quot;:&quot;Familien- und Barrierefreiheitstipps&quot;,&quot;it&quot;:&quot;Consigli per famiglie e accessibilità&quot;,&quot;es&quot;:&quot;Consejos para familias y accesibilidad&quot;,&quot;pl&quot;:&quot;Porady dla rodzin i dostępność&quot;,&quot;ar&quot;:&quot;نصائح للعائلات وسهولة الوصول&quot;,&quot;cn&quot;:&quot;家庭与无障碍建议&quot;,&quot;ja&quot;:&quot;家族向け・バリアフリーのヒント&quot;}">📍 Conseils famille et accessibilité</button>
+    <button data-culture-target="annex-Anecdotes_fiables_et_interessantes.html" data-requires-full="0" data-title-prefix="📍 " data-title-i18n="{&quot;fr&quot;:&quot;Anecdotes fiables et intéressantes&quot;,&quot;nl&quot;:&quot;Betrouwbare en interessante anekdotes&quot;,&quot;en&quot;:&quot;Reliable and Interesting Anecdotes&quot;,&quot;de&quot;:&quot;Verlässliche und interessante Anekdoten&quot;,&quot;it&quot;:&quot;Curiosità affidabili e interessanti&quot;,&quot;es&quot;:&quot;Anécdotas fiables e interesantes&quot;,&quot;pl&quot;:&quot;Ciekawe i sprawdzone ciekawostki&quot;,&quot;ar&quot;:&quot;طرائف موثوقة ومثيرة للاهتمام&quot;,&quot;cn&quot;:&quot;可靠有趣的轶事&quot;,&quot;ja&quot;:&quot;信頼できる面白い豆知識&quot;}">📍 Anecdotes fiables et intéressantes</button>
+    <button data-culture-target="musees.html" data-requires-full="0" data-translate="culture_btn_3">🏛️ Musées</button>
+  </div>
+  <div style="margin-top:40px;"></div>
+</main>
+
+<button class="back-button" id="back-button" data-translate="back_button">BACK</button>
+
+<script>
+function initCulturePage() {
+  if (window.translationManager?.isLoaded) {
+    window.languageSelector?.createSelector?.();
+    window.languageSelector?.updateSelectorValue?.();
+  } else {
+    setTimeout(initCulturePage, 100);
+  }
+}
+function goToCulturePage(target, requiresFull) {
+  if (requiresFull && window.checkPageAccess && !window.checkPageAccess(target)) return;
+  window.location.href = target;
+}
+document.addEventListener('DOMContentLoaded', () => {
+  initCulturePage();
+  function normalizeLang(lang) {
+    lang = String(lang || localStorage.getItem('selectedLanguage') || 'fr').toLowerCase();
+    if (lang === 'jp') return 'ja';
+    if (lang === 'zh') return 'cn';
+    return lang;
+  }
+  function pickTitle(map, lang) {
+    const exact = map && map[lang];
+    if (exact != null && String(exact).trim() !== "") return exact;
+    if (map && map.fr && String(map.fr).trim() !== "") return map.fr;
+    if (map && map.en && String(map.en).trim() !== "") return map.en;
+    return "";
+  }
+  function resolveLang(event) {
+    const stored = normalizeLang(localStorage.getItem('selectedLanguage') || '');
+    const fromEvent = event?.detail?.language;
+    if (fromEvent) return normalizeLang(fromEvent);
+    return stored || 'fr';
+  }
+  function applyCultureLabels(event) {
+    const lang = resolveLang(event);
+    document.querySelectorAll('[data-title-i18n]').forEach((el) => {
+      try {
+        const map = JSON.parse(el.getAttribute('data-title-i18n') || '{}');
+        const label = pickTitle(map, lang);
+        if (label) el.textContent = (el.getAttribute('data-title-prefix') || '') + label;
+      } catch (_) {}
+    });
+  }
+  document.addEventListener('languageChanged', applyCultureLabels);
+  applyCultureLabels();
+  document.querySelectorAll('[data-culture-target]').forEach((btn) => {
+    btn.addEventListener('click', () => goToCulturePage(btn.dataset.cultureTarget, btn.dataset.requiresFull === '1'));
+  });
+  const backButton = document.getElementById('back-button');
+  if (backButton) backButton.addEventListener('click', () => { window.location.href = 'main.html'; });
+});
+</script>
+</body>
+</html>

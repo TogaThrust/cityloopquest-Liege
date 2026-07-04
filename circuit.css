@@ -1,0 +1,267 @@
+/* parcours.html - structure coins issue du squelette CLQ */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  max-width: 100vw;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+
+#map,
+.leaflet-container {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#orientation-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff5f5;
+  color: #222;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.2rem;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#startup-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+#startup-content {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #000;
+  background: #f9f9f9;
+  border-radius: 10px;
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+}
+
+#startup-ok {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.lang-anchor {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 3000;
+  pointer-events: auto;
+}
+
+.corner-buttons {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: 100vw;
+  max-height: 100vh;
+  pointer-events: none;
+  z-index: 5000;
+  box-sizing: border-box;
+}
+
+.corner-buttons button,
+.corner-buttons .popup-confirm {
+  pointer-events: auto;
+}
+
+button.circuit {
+  position: fixed;
+  width: 200px;
+  max-width: calc(50vw - 10px);
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  touch-action: manipulation;
+  z-index: 5100;
+}
+
+button.circuit.grand {
+  top: 0;
+  left: 0;
+  background-color: blue;
+}
+
+button.circuit.moyen {
+  top: 0;
+  right: 0;
+  background-color: orange;
+}
+
+button.circuit.petit {
+  bottom: 0;
+  left: 0;
+  background-color: green;
+}
+
+button.circuit:hover {
+  opacity: 0.9;
+}
+
+.popup-confirm {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  transform: none;
+  background: #fff;
+  padding: 15px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  text-align: center;
+  z-index: 5200;
+  font-size: 16px;
+  width: min(320px, calc(50vw - 20px));
+  max-width: calc(50vw - 10px);
+  box-sizing: border-box;
+  border: 2px solid #333;
+  touch-action: manipulation;
+}
+
+.popup-confirm .popup-title {
+  margin-bottom: 12px;
+  color: #14365c;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.popup-confirm .popup-title small {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+.popup-confirm .popup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.popup-confirm button {
+  margin: 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  touch-action: manipulation;
+  min-height: 44px;
+}
+
+.popup-confirm .yes,
+.popup-confirm button.yes {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.popup-confirm .no,
+.popup-confirm button.no {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.popup-confirm button.start-option {
+  background-color: #14365c;
+  color: #fff;
+  min-width: 140px;
+}
+
+#confirm-popup.popup-confirm,
+#popup.popup-confirm {
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+
+#popup.popup-start .popup-actions {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#popup.popup-start .popup-actions button {
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  button.circuit {
+    width: 150px;
+    max-width: calc(50vw - 5px);
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  .popup-confirm {
+    font-size: 14px;
+    padding: 10px;
+    width: min(220px, calc(50vw - 10px));
+    max-width: calc(50vw - 10px);
+  }
+
+  .popup-confirm button {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  button.circuit {
+    width: 120px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}

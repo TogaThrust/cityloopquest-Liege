@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spécialités locales - CityLoop Quest Liège</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="api-base.js"></script>
+  <script src="js/access-control.js"></script>
+  <script src="translations/translationManager.js"></script>
+  <script src="translations/languageSelector.js"></script>
+  <script src="js/access-guard.js" defer></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    h1 { margin-bottom: 30px; }
+    .generated-gallery { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); max-width: 900px; margin: 0 auto 24px; }
+    .generated-gallery img { width: 100%; border-radius: 12px; }
+    iframe { width: min(760px, 92vw); min-height: 48vh; border: 0; border-radius: 12px; }
+    .info-text { margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #c8102e; color: #333; max-width: 760px; margin-left: auto; margin-right: auto; text-align: left; line-height: 1.6; }
+    .culture-inline-photo { max-width: 320px; margin: 14px auto 22px; text-align: center; }
+    .culture-inline-photo img { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+    .culture-inline-photo figcaption { font-size: 0.9rem; color: #555; margin-top: 6px; font-style: italic; }
+  </style>
+</head>
+<body>
+<header class="main-header">
+  <div class="header-content">
+    <img src="images/icone titre0.png" alt="Icone 0" class="header-img left">
+    <h1>CityLoop Quest Liège</h1>
+    <img src="images/icone titre1.png" alt="Icone 1" class="header-img right">
+  </div>
+</header>
+<h1>Spécialités locales</h1>
+<section class="generated-gallery"><figure><img src="images/culture/Specialites_locales.jpg" alt="Gastronomie" /></figure></section>
+<section><iframe src="https://www.youtube.com/embed/SwIH21eA1hE" title="Vidéo" loading="lazy" allowfullscreen></iframe></section>
+<div class="info-text"><p>Le boulet à la liégeoise est le plat qui résume le mieux l’appétit local. On parle de boulet, pas de boulette : le mot sonne plus solide, plus généreux, plus liégeois. La sauce lapin, sucrée-salée, associe notamment sirop de Liège, oignons, vinaigre, parfois raisins ou bière selon les recettes.</p>
+<p>La gaufre de Liège fonctionne sur un autre registre : pâte dense, morceaux de sucre perlé, caramélisation irrégulière et parfum de rue. Elle se mange chaude, sans cérémonie, souvent en marchant. Inutile d’en faire trop : une bonne gaufre n’a pas besoin d’un roman de chantilly.</p>
+<p>Les bouquètes, crêpes de sarrasin souvent liées aux périodes de fête, les lacquemants, le pèkèt et les bières locales complètent le paysage. La gastronomie liégeoise n’est pas légère, mais elle a le mérite d’assumer franchement son côté convivial.</p>
+<p>Le plus intéressant est de goûter ces spécialités dans leur contexte : une friterie de quartier, une brasserie près du Perron, une terrasse en Outremeuse, un marché du dimanche. À Liège, le goût vient rarement seul ; il arrive avec une voix, une table serrée et une discussion qui démarre sans demander la permission.</p></div>
+<a class="back-button" href="culture.html" data-translate="back_button">BACK</a>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  window.languageSelector?.createSelector?.();
+  window.languageSelector?.updateSelectorValue?.();
+});
+</script>
+<script>
+window.CLQ_PAGE_I18N = {"title":{"fr":"Spécialités locales","nl":"Lokale specialiteiten","en":"Local Specialties","de":"Lokale Spezialitäten","it":"Specialità locali","es":"Especialidades locales","pl":"Lokalne specjały","ar":"التخصصات المحلية","cn":"当地特色","ja":"郷土料理"},"content":{"fr":"Le boulet à la liégeoise est le plat qui résume le mieux l’appétit local. On parle de boulet, pas de boulette : le mot sonne plus solide, plus généreux, plus liégeois. La sauce lapin, sucrée-salée, associe notamment sirop de Liège, oignons, vinaigre, parfois raisins ou bière selon les recettes.\n\nLa gaufre de Liège fonctionne sur un autre registre : pâte dense, morceaux de sucre perlé, caramélisation irrégulière et parfum de rue. Elle se mange chaude, sans cérémonie, souvent en marchant. Inutile d’en faire trop : une bonne gaufre n’a pas besoin d’un roman de chantilly.\n\nLes bouquètes, crêpes de sarrasin souvent liées aux périodes de fête, les lacquemants, le pèkèt et les bières locales complètent le paysage. La gastronomie liégeoise n’est pas légère, mais elle a le mérite d’assumer franchement son côté convivial.\n\nLe plus intéressant est de goûter ces spécialités dans leur contexte : une friterie de quartier, une brasserie près du Perron, une terrasse en Outremeuse, un marché du dimanche. À Liège, le goût vient rarement seul ; il arrive avec une voix, une table serrée et une discussion qui démarre sans demander la permission.","nl":"De boulet à la liégeoise is het gerecht dat de lokale eetlust het best samenvat. We spreken van boulet, niet van boulette: het woord klinkt steviger, gulziger, meer Luiks. De saus lapin, zoetzuur, combineert onder meer Luikse siroop, uien, azijn, en volgens het recept soms rozijnen of bier.\n\nDe Luikse wafel werkt volgens een ander principe: dicht deeg, stukjes parelsuiker, onregelmatige karamellisatie en een geur van de straat. Je eet ze warm, zonder ceremonie, vaak al wandelend. Overdrijf niet: een goede wafel heeft geen roman van slagroom nodig.\n\nDe bouquètes, boekweitpannenkoeken die vaak met feestperiodes verbonden zijn, de lacquemants, de pèkèt en de lokale bieren vervolledigen het landschap. De Luikse gastronomie is niet licht, maar heeft het voordeel haar gezellige kant voluit te omarmen.\n\nHet interessantst is om deze specialiteiten in hun context te proeven: een frietkot in de buurt, een brasserie bij de Perron, een terras in Outremeuse, een zondagsmarkt. In Luik komt smaak zelden alleen; ze verschijnt met een stem, een dicht opeengedrongen tafel en een gesprek dat zonder toestemming op gang komt.","en":"The boulet à la Liégeoise is the dish that best sums up the local appetite. We say boulet, not bouletta: the word sounds more solid, more generous, more Liégeois. The sauce lapin, sweet and savory, notably combines Sirop de Liège, onions, vinegar, and sometimes raisins or beer depending on the recipe.\n\nThe Liège waffle works in a different register: dense dough, grains of pearl sugar, uneven caramelization, and the scent of the street. It is eaten hot, without ceremony, often while walking. There is no need to overdo it: a good waffle does not need a whole novel of whipped cream.\n\nBouquètes, buckwheat pancakes often associated with festive periods, lacquemants, pèkèt, and local beers complete the picture. The gastronomy of Liège is not light, but it has the merit of unapologetically embracing its convivial side.\n\nThe most interesting thing is to taste these specialties in their context: a neighborhood chip shop, a brasserie near the Perron, a terrace in Outremeuse, a Sunday market. In Liège, flavor rarely comes alone; it arrives with a voice, a tightly packed table, and a conversation that starts without asking permission.","de":"Der Boulet à la Liégeoise ist das Gericht, das den lokalen Appetit am besten zusammenfasst. Man spricht von Boulet, nicht von Boulette: Das Wort klingt kräftiger, großzügiger, typischer für Lüttich. Die süß-salzige Sauce Lapin verbindet unter anderem Liège-Sirup, Zwiebeln, Essig, je nach Rezept auch Rosinen oder Bier.\n\nDie Lütticher Waffel funktioniert auf einer anderen Ebene: dichter Teig, Stückchen von Perlzucker, unregelmäßige Karamellisierung und ein Duft nach Straße. Man isst sie heiß, ohne Zeremonie, oft im Gehen. Übertreiben muss man es nicht: Eine gute Waffel braucht keinen Roman aus Schlagsahne.\n\nDie Bouquètes, meist mit Festzeiten verbundene Buchweizenpfannkuchen, die Lacquemants, der Pèkèt und die lokalen Biere vervollständigen das Bild. Die Lütticher Gastronomie ist nicht leicht, hat aber den Vorzug, ihren geselligen Charakter offen und ohne Umschweife zu bejahen.\n\nAm interessantesten ist es, diese Spezialitäten in ihrem Umfeld zu kosten: in einer Frittenbude im Viertel, in einer Brasserie nahe dem Perron, auf einer Terrasse in Outremeuse, auf einem Sonntagsmarkt. In Lüttich kommt der Geschmack selten allein; er erscheint mit einer Stimme, einem engen Tisch und einem Gespräch, das beginnt, ohne um Erlaubnis zu fragen.","it":"Il boulet à la liégeoise è il piatto che riassume meglio l’appetito locale. Si parla di boulet, non di boulette: la parola suona più robusta, più generosa, più di Liegi. La salsa lapin, agrodolce, associa in particolare sciroppo di Liège, cipolle, aceto, talvolta uvetta o birra a seconda delle ricette.\n\nLa gaufre de Liège funziona su un altro registro: impasto denso, pezzi di zucchero perlato, caramellizzazione irregolare e profumo di strada. Si mangia calda, senza cerimonie, spesso camminando. Inutile esagerare: una buona gaufre non ha bisogno di un romanzo di panna montata.\n\nLe bouquètes, crêpes di grano saraceno spesso legate ai periodi di festa, i lacquemants, il pèkèt e le birre locali completano il paesaggio. La gastronomia di Liegi non è leggera, ma ha il merito di assumere apertamente il suo lato conviviale.\n\nLa cosa più interessante è assaggiare queste specialità nel loro contesto: una friterie di quartiere, una brasserie vicino al Perron, una terrazza a Outremeuse, un mercato della domenica. A Liegi, il gusto raramente arriva da solo; arriva con una voce, un tavolo stretto e una conversazione che inizia senza chiedere il permesso.","es":"El boulet à la liégeoise es el plato que mejor resume el apetito local. Se habla de boulet, no de boulette: la palabra suena más sólida, más generosa, más de Lieja. La salsa lapin, agridulce, combina en particular sirope de Lieja, cebollas, vinagre y, según las recetas, a veces pasas o cerveza.\n\nLa gaufre de Liège funciona en otro registro: masa densa, trozos de azúcar perlado, caramelo irregular y aroma de calle. Se come caliente, sin ceremonia, a menudo caminando. No hace falta exagerar: una buena gaufre no necesita una novela de nata montada.\n\nLas bouquètes, crêpes de trigo sarraceno a menudo ligadas a las épocas festivas, los lacquemants, el pèkèt y las cervezas locales completan el panorama. La gastronomía de Lieja no es ligera, pero tiene el mérito de asumir de frente su lado convivial.\n\nLo más interesante es probar estas especialidades en su contexto: una friterie de barrio, una brasserie cerca del Perron, una terraza en Outremeuse, un mercado dominical. En Lieja, el sabor rara vez llega solo; llega con una voz, una mesa apretada y una conversación que empieza sin pedir permiso.","pl":"Boulet po liégejsku to danie, które najlepiej oddaje miejscowy apetyt. Mówi się boulet, a nie bouletta: słowo brzmi mocniej, obficiej, bardziej po liégejsku. Sos lapin, słodko-słony, łączy zwłaszcza syrop z Liège, cebulę, ocet, czasem rodzynki lub piwo, zależnie od przepisu.\n\nGofra z Liège działa na innej zasadzie: gęste ciasto, kawałki cukru perlistego, nierówna karmelizacja i zapach ulicy. Je się ją na ciepło, bez ceremonii, często w drodze. Nie ma sensu przesadzać: dobra gofra nie potrzebuje całego romansu z bitą śmietaną.\n\nBouquètes, czyli placki z gryki, często związane z okresami świątecznymi, lacquemants, pèkèt i lokalne piwa dopełniają tego obrazu. Gastronomia Liège nie należy do lekkich, ale ma tę zaletę, że bez ogródek przyznaje się do swojego towarzyskiego charakteru.\n\nNajciekawiej jest smakować te specjały w ich naturalnym otoczeniu: w osiedlowej frytkarni, w brasserie niedaleko Perron, na tarasie w Outremeuse, na niedzielnym targu. W Liège smak rzadko przychodzi sam; pojawia się razem z głosem, ściśniętym stołem i rozmową, która zaczyna się bez proszenia o pozwolenie.","ar":"إنّ البوليه على الطريقة اللّييجية هو الطبق الذي يختصر على أفضل وجه شهية أهل المدينة. هنا نتحدث عن «boulet» لا عن «boulette»؛ فالكلمة تبدو أكثر صلابة، وأكثر سخاءً، وأكثر لِييجية. أما صلصة الأرنب، الحلوة المالحة، فتجمع خصوصًا بين شراب لييج والبصل والخل، وأحيانًا الزبيب أو الجعة بحسب الوصفات.\n\nتسير فطيرة لييج على وتيرة أخرى: عجينة كثيفة، وقطع من السكر اللؤلؤي، وتكرمل غير منتظم، ورائحة الشارع. تُؤكل ساخنة، من دون مراسم، وغالبًا أثناء المشي. لا داعي للمبالغة: فالفطيرة الجيدة لا تحتاج إلى رواية من الكريمة المخفوقة.\n\nأما البوكِتات، وهي فطائر الحنطة السوداء المرتبطة غالبًا بمواسم الاحتفالات، واللاكمان، والبِكِت، والجِعات المحلية، فتُكمل المشهد. فالمطبخ اللّييجي ليس خفيفًا، لكنه يمتاز بصدق واضح في جانبه الاجتماعي المرح.\n\nوالأكثر متعة هو تذوق هذه التخصصات في سياقها: في محل بطاطا مقلية في الحي، أو في حانة قرب البيرون، أو على شرفة في أونتريهوز، أو في سوق الأحد. في لييج، نادرًا ما يأتي الطعم وحده؛ بل يأتي مع صوت، وطاولة متقاربة، وحديث يبدأ من دون استئذان.","cn":"列日肉丸最能概括当地人的口味。这里说的是“boulet”，不是“boulette”：这个词听起来更扎实、更丰盛，也更有列日气息。拉宾酱是甜咸口味的，通常会加入列日糖浆、洋葱、醋，有时根据配方还会放葡萄干或啤酒。\n\n列日华夫饼则属于另一种风格：面团浓密，加入砂糖颗粒，焦糖化不均匀，带着街头的香气。它通常热着吃，不讲究仪式，常常是一边走一边吃。无需过分渲染：一块好华夫饼不需要一大段鲜奶油的“故事”。\n\n荞麦煎饼 bouquètes、通常与节庆时节有关的 lacquemants、pèkèt 以及本地啤酒，共同构成了这片饮食风景。列日美食并不轻盈，但它的优点在于毫不掩饰自己热闹亲切的一面。\n\n最有意思的，是在它们原本的环境中品尝这些特色美食：街区里的炸薯条店、靠近 Perron 的小餐馆、Outremeuse 的露台，或是周日市集。在列日，味道很少会单独到来；它总会伴随着一把声音、一张紧挨着的桌子，以及一场无需邀请就已开始的谈话。","ja":"リエージュ風ブーレットは、この土地の食欲を最もよく表す料理です。ここではブーレット、つまり小さな肉団子ではなくブーレットと言います。そのほうが、よりしっかりしていて、よりたっぷりで、よりリエージュらしく響くからです。甘じょっぱいラパンソースには、とくにリエージュ・シロップ、玉ねぎ、酢が使われ、レシピによってはレーズンやビールが加わることもあります。\n\nリエージュ風ワッフルはまた別の世界です。生地はずっしりとしていて、パールシュガーの粒が入り、焼き色は不規則にキャラメル化し、街角の香りを漂わせます。熱いうちに、気取らず、たいていは歩きながら食べます。あまり飾り立てる必要はありません。おいしいワッフルに、生クリームの長い語りは要らないのです。\n\n祭りの時期と結びつくことの多いそば粉のクレープ、ブケット、ラクマン、ペケ、そして地元のビールが、この土地の食文化をさらに彩ります。リエージュの料理は軽くはありませんが、その親しみやすさを堂々と受け入れているところに魅力があります。\n\nいちばん面白いのは、こうした名物をその場の空気の中で味わうことです。街角のフリトゥール、ペロン近くのブラッスリー、オーレムーズのテラス、日曜の市場。リエージュでは、味はたいてい単独ではやって来ません。声と、肩を寄せ合うテーブルと、断りもなく始まる会話を伴ってやって来るのです。"}};
+window.CLQ_CULTURE_IMAGE_URLS = {"images/culture/Specialites_locales.jpg":"images/culture/Specialites_locales.jpg"};
+(function () {
+  function normalizeLang(lang) {
+    lang = String(lang || "").toLowerCase();
+    if (!lang) lang = String(localStorage.getItem("selectedLanguage") || "fr").toLowerCase();
+    if (lang === "jp") return "ja";
+    if (lang === "zh") return "cn";
+    return lang;
+  }
+  function resolveLang(event) {
+    var stored = normalizeLang(localStorage.getItem("selectedLanguage") || "");
+    var fromEvent = event && event.detail && event.detail.language;
+    if (fromEvent) return normalizeLang(fromEvent);
+    return stored || "fr";
+  }
+  function pick(map, lang) {
+    if (!map) return "";
+    var exact = map[lang];
+    if (exact != null && String(exact).trim() !== "") return exact;
+    if (map.fr && String(map.fr).trim() !== "") return map.fr;
+    if (map.en && String(map.en).trim() !== "") return map.en;
+    return "";
+  }
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>"']/g, function (ch) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch];
+    });
+  }
+  function resolveCultureImageSrc(src) {
+    var map = window.CLQ_CULTURE_IMAGE_URLS || {};
+    return map[src] || src;
+  }
+  function cultureTextToHtml(text) {
+    function esc(value) {
+      return String(value || "").replace(/[&<>"']/g, function (ch) {
+        return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch];
+      });
+    }
+    var blocks = String(text || "").split(/\n{2,}/).filter(Boolean);
+    return blocks.map(function (block) {
+      var inline = block.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)\s*$/);
+      if (inline) {
+        var caption = inline[1].trim();
+        var src = resolveCultureImageSrc(inline[2].trim());
+        return '<figure class="culture-inline-photo"><img src="' + esc(src) + '" alt="' + esc(caption) + '" loading="lazy" /><figcaption>' + esc(caption) + '</figcaption></figure>';
+      }
+      return "<p>" + esc(block).replace(/\n/g, "<br>") + "</p>";
+    }).join("\n");
+  }
+  function applyCultureI18n(event) {
+    var lang = resolveLang(event);
+    var data = window.CLQ_PAGE_I18N || {};
+    var title = pick(data.title, lang);
+    if (title) {
+      document.title = title + " - CityLoop Quest Liège";
+      var h1 = document.querySelector("body > h1");
+      if (h1) h1.textContent = title;
+    }
+    var content = pick(data.content, lang);
+    var container = document.querySelector(".info-text");
+    if (container && content) container.innerHTML = cultureTextToHtml(content);
+    document.querySelectorAll("[data-title-i18n]").forEach(function (el) {
+      try {
+        var map = JSON.parse(el.getAttribute("data-title-i18n") || "{}");
+        var label = pick(map, lang);
+        if (label) {
+          var prefix = el.getAttribute("data-title-prefix") || "";
+          el.textContent = prefix + label;
+        }
+      } catch (_) {}
+    });
+    document.documentElement.lang = lang === "cn" ? "zh" : lang;
+  }
+  document.addEventListener("languageChanged", applyCultureI18n);
+  function bootCultureI18n() {
+    applyCultureI18n();
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootCultureI18n);
+  } else {
+    bootCultureI18n();
+  }
+})();
+</script>
+</body>
+</html>

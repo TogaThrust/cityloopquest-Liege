@@ -1,0 +1,230 @@
+[
+  {
+    "title": "Origines et développement",
+    "titleI18n": {
+      "fr": "Origines et développement",
+      "nl": "Oorsprong en ontwikkeling",
+      "en": "Origins and Development",
+      "de": "Ursprung und Entwicklung",
+      "it": "Origini e sviluppo",
+      "es": "Orígenes y desarrollo",
+      "pl": "Początki i rozwój",
+      "ar": "الأصول والتطور",
+      "cn": "起源与发展",
+      "ja": "起源と発展"
+    },
+    "type": "media-gallery",
+    "file": "annex-Origines_et_developpement.html",
+    "showOnMainPage": true,
+    "icon": "🏛️"
+  },
+  {
+    "title": "Grandes périodes historiques",
+    "titleI18n": {
+      "fr": "Grandes périodes historiques",
+      "nl": "Belangrijke historische periodes",
+      "en": "Major Historical Periods",
+      "de": "Wichtige historische Epochen",
+      "it": "Grandi periodi storici",
+      "es": "Grandes periodos históricos",
+      "pl": "Najważniejsze okresy historyczne",
+      "ar": "الفترات التاريخية الكبرى",
+      "cn": "重要历史时期",
+      "ja": "歴史の主な時代"
+    },
+    "type": "media-gallery",
+    "file": "annex-Grandes_periodes_historiques.html",
+    "showOnMainPage": true,
+    "icon": "⏳"
+  },
+  {
+    "title": "Personnages marquants",
+    "titleI18n": {
+      "fr": "Personnages marquants",
+      "nl": "Opvallende figuren",
+      "en": "Notable Figures",
+      "de": "Bedeutende Persönlichkeiten",
+      "it": "Personaggi illustri",
+      "es": "Figuras destacadas",
+      "pl": "Wybitne postacie",
+      "ar": "شخصيات بارزة",
+      "cn": "重要人物",
+      "ja": "主な人物"
+    },
+    "type": "media-gallery",
+    "file": "annex-Personnages_marquants.html",
+    "showOnMainPage": true,
+    "icon": "👤"
+  },
+  {
+    "title": "Traditions et événements",
+    "titleI18n": {
+      "fr": "Traditions et événements",
+      "nl": "Tradities en evenementen",
+      "en": "Traditions and Events",
+      "de": "Traditionen und Veranstaltungen",
+      "it": "Tradizioni ed eventi",
+      "es": "Tradiciones y eventos",
+      "pl": "Tradycje i wydarzenia",
+      "ar": "التقاليد والفعاليات",
+      "cn": "传统与活动",
+      "ja": "伝統とイベント"
+    },
+    "type": "media-gallery",
+    "file": "annex-Traditions_et_evenements.html",
+    "showOnMainPage": true,
+    "icon": "🎉"
+  },
+  {
+    "title": "Architecture locale",
+    "titleI18n": {
+      "fr": "Architecture locale",
+      "nl": "Lokale architectuur",
+      "en": "Local Architecture",
+      "de": "Lokale Architektur",
+      "it": "Architettura locale",
+      "es": "Arquitectura local",
+      "pl": "Architektura lokalna",
+      "ar": "العمارة المحلية",
+      "cn": "本地建筑",
+      "ja": "地域の建築"
+    },
+    "type": "media-gallery",
+    "file": "annex-Architecture_locale.html",
+    "showOnMainPage": true,
+    "icon": "🏗️"
+  },
+  {
+    "title": "Quartiers et ambiances",
+    "titleI18n": {
+      "fr": "Quartiers et ambiances",
+      "nl": "Wijken en sferen",
+      "en": "Neighborhoods and Atmospheres",
+      "de": "Viertel und Atmosphäre",
+      "it": "Quartieri e atmosfere",
+      "es": "Barrios y ambientes",
+      "pl": "Dzielnice i atmosfera",
+      "ar": "الأحياء والأجواء",
+      "cn": "街区与氛围",
+      "ja": "地区と雰囲気"
+    },
+    "type": "media-gallery",
+    "file": "annex-Quartiers_et_ambiances.html",
+    "showOnMainPage": true,
+    "icon": "🧭"
+  },
+  {
+    "title": "Spécialités locales",
+    "titleI18n": {
+      "fr": "Spécialités locales",
+      "nl": "Lokale specialiteiten",
+      "en": "Local Specialties",
+      "de": "Lokale Spezialitäten",
+      "it": "Specialità locali",
+      "es": "Especialidades locales",
+      "pl": "Lokalne specjały",
+      "ar": "التخصصات المحلية",
+      "cn": "当地特色",
+      "ja": "郷土料理"
+    },
+    "type": "media-gallery",
+    "file": "annex-Specialites_locales.html",
+    "showOnMainPage": true,
+    "icon": "🧇"
+  },
+  {
+    "title": "Lieux et habitudes gourmandes",
+    "titleI18n": {
+      "fr": "Lieux et habitudes gourmandes",
+      "nl": "Eetplekken en eetgewoonten",
+      "en": "Food Spots and Habits",
+      "de": "Beliebte Orte und Essgewohnheiten",
+      "it": "Luoghi e abitudini golose",
+      "es": "Lugares y costumbres gastronómicas",
+      "pl": "Miejsca i zwyczaje kulinarne",
+      "ar": "أماكن وعادات الذواقة",
+      "cn": "美食地点与习惯",
+      "ja": "食のスポットと習慣"
+    },
+    "type": "media-gallery",
+    "file": "annex-Lieux_et_habitudes_gourmandes.html",
+    "showOnMainPage": true,
+    "icon": "☕"
+  },
+  {
+    "title": "Se déplacer",
+    "titleI18n": {
+      "fr": "Se déplacer",
+      "nl": "Je verplaatsen",
+      "en": "Getting Around",
+      "de": "Fortbewegung",
+      "it": "Come spostarsi",
+      "es": "Cómo moverse",
+      "pl": "Poruszanie się",
+      "ar": "التنقل",
+      "cn": "出行方式",
+      "ja": "移動手段"
+    },
+    "type": "media-gallery",
+    "file": "annex-Se_deplacer.html",
+    "showOnMainPage": true,
+    "icon": "🚶"
+  },
+  {
+    "title": "Meilleurs moments de visite",
+    "titleI18n": {
+      "fr": "Meilleurs moments de visite",
+      "nl": "Beste bezoektijden",
+      "en": "Best Times to Visit",
+      "de": "Beste Reisezeiten",
+      "it": "I periodi migliori per visitare",
+      "es": "Mejores momentos para visitar",
+      "pl": "Najlepszy czas na wizytę",
+      "ar": "أفضل أوقات الزيارة",
+      "cn": "最佳游览时间",
+      "ja": "おすすめの訪問時期"
+    },
+    "type": "media-gallery",
+    "file": "annex-Meilleurs_moments_de_visite.html",
+    "showOnMainPage": true,
+    "icon": "🌤️"
+  },
+  {
+    "title": "Conseils famille et accessibilité",
+    "titleI18n": {
+      "fr": "Conseils famille et accessibilité",
+      "nl": "Tips voor families en toegankelijkheid",
+      "en": "Family and Accessibility Tips",
+      "de": "Familien- und Barrierefreiheitstipps",
+      "it": "Consigli per famiglie e accessibilità",
+      "es": "Consejos para familias y accesibilidad",
+      "pl": "Porady dla rodzin i dostępność",
+      "ar": "نصائح للعائلات وسهولة الوصول",
+      "cn": "家庭与无障碍建议",
+      "ja": "家族向け・バリアフリーのヒント"
+    },
+    "type": "media-gallery",
+    "file": "annex-Conseils_famille_et_accessibilite.html",
+    "showOnMainPage": true,
+    "icon": "♿"
+  },
+  {
+    "title": "Anecdotes fiables et intéressantes",
+    "titleI18n": {
+      "fr": "Anecdotes fiables et intéressantes",
+      "nl": "Betrouwbare en interessante anekdotes",
+      "en": "Reliable and Interesting Anecdotes",
+      "de": "Verlässliche und interessante Anekdoten",
+      "it": "Curiosità affidabili e interessanti",
+      "es": "Anécdotas fiables e interesantes",
+      "pl": "Ciekawe i sprawdzone ciekawostki",
+      "ar": "طرائف موثوقة ومثيرة للاهتمام",
+      "cn": "可靠有趣的轶事",
+      "ja": "信頼できる面白い豆知識"
+    },
+    "type": "media-gallery",
+    "file": "annex-Anecdotes_fiables_et_interessantes.html",
+    "showOnMainPage": true,
+    "icon": "🧐"
+  }
+]

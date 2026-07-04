@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quartiers et ambiances - CityLoop Quest Liège</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="api-base.js"></script>
+  <script src="js/access-control.js"></script>
+  <script src="translations/translationManager.js"></script>
+  <script src="translations/languageSelector.js"></script>
+  <script src="js/access-guard.js" defer></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    h1 { margin-bottom: 30px; }
+    .generated-gallery { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); max-width: 900px; margin: 0 auto 24px; }
+    .generated-gallery img { width: 100%; border-radius: 12px; }
+    iframe { width: min(760px, 92vw); min-height: 48vh; border: 0; border-radius: 12px; }
+    .info-text { margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #c8102e; color: #333; max-width: 760px; margin-left: auto; margin-right: auto; text-align: left; line-height: 1.6; }
+    .culture-inline-photo { max-width: 320px; margin: 14px auto 22px; text-align: center; }
+    .culture-inline-photo img { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+    .culture-inline-photo figcaption { font-size: 0.9rem; color: #555; margin-top: 6px; font-style: italic; }
+  </style>
+</head>
+<body>
+<header class="main-header">
+  <div class="header-content">
+    <img src="images/icone titre0.png" alt="Icone 0" class="header-img left">
+    <h1>CityLoop Quest Liège</h1>
+    <img src="images/icone titre1.png" alt="Icone 1" class="header-img right">
+  </div>
+</header>
+<h1>Quartiers et ambiances</h1>
+<section class="generated-gallery"><figure><img src="images/culture/Quartiers_et_ambiances.jpg" alt="Quartiers et ambiances" /></figure></section>
+<section><iframe src="https://www.youtube.com/embed/n1JOYE0sc0w" title="Vidéo" loading="lazy" allowfullscreen></iframe></section>
+<div class="info-text"><p>Le centre historique concentre le pouvoir ancien : Saint-Lambert, le palais, la place du Marché, le Perron et les rues proches. On y sent une Liège institutionnelle, commerçante, parfois solennelle, mais jamais totalement figée tant les cafés et les passants réactivent l’espace.</p>
+<p>Hors-Château et les Coteaux donnent une atmosphère plus secrète. Les escaliers, les murs, les impasses et les jardins ouvrent une ville verticale, presque villageoise, qui contraste avec le tumulte des quais. C’est un secteur idéal pour comprendre le relief liégeois.</p>
+<p>Outremeuse possède son propre accent. L’île garde une mémoire populaire forte, associée aux marionnettes, aux fêtes d’août, aux rues plus modestes et aux sociabilités de quartier. Traverser la Meuse suffit parfois à changer de cadence.</p>
+<p>Guillemins, Boverie, Avroy et Longdoz racontent une Liège plus moderne, liée aux transports, aux parcs, aux musées et aux anciennes industries. La ville n’a pas un seul centre émotionnel : elle fonctionne par foyers, et c’est ce qui rend la visite plus riche qu’un simple aller-retour monumental.</p></div>
+<a class="back-button" href="culture.html" data-translate="back_button">BACK</a>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  window.languageSelector?.createSelector?.();
+  window.languageSelector?.updateSelectorValue?.();
+});
+</script>
+<script>
+window.CLQ_PAGE_I18N = {"title":{"fr":"Quartiers et ambiances","nl":"Wijken en sferen","en":"Neighborhoods and Atmospheres","de":"Viertel und Atmosphäre","it":"Quartieri e atmosfere","es":"Barrios y ambientes","pl":"Dzielnice i atmosfera","ar":"الأحياء والأجواء","cn":"街区与氛围","ja":"地区と雰囲気"},"content":{"fr":"Le centre historique concentre le pouvoir ancien : Saint-Lambert, le palais, la place du Marché, le Perron et les rues proches. On y sent une Liège institutionnelle, commerçante, parfois solennelle, mais jamais totalement figée tant les cafés et les passants réactivent l’espace.\n\nHors-Château et les Coteaux donnent une atmosphère plus secrète. Les escaliers, les murs, les impasses et les jardins ouvrent une ville verticale, presque villageoise, qui contraste avec le tumulte des quais. C’est un secteur idéal pour comprendre le relief liégeois.\n\nOutremeuse possède son propre accent. L’île garde une mémoire populaire forte, associée aux marionnettes, aux fêtes d’août, aux rues plus modestes et aux sociabilités de quartier. Traverser la Meuse suffit parfois à changer de cadence.\n\nGuillemins, Boverie, Avroy et Longdoz racontent une Liège plus moderne, liée aux transports, aux parcs, aux musées et aux anciennes industries. La ville n’a pas un seul centre émotionnel : elle fonctionne par foyers, et c’est ce qui rend la visite plus riche qu’un simple aller-retour monumental.","nl":"Het historische centrum concentreert de oude macht: Saint-Lambert, het paleis, de Place du Marché, het Perron en de nabijgelegen straten. Je voelt er een institutioneel, handelsgericht, soms plechtig Luik, maar nooit helemaal verstard, zozeer brengen de cafés en voorbijgangers de plek weer tot leven.\n\nHors-Château en de Coteaux zorgen voor een meer geheimzinnige sfeer. De trappen, muren, steegjes en tuinen onthullen een verticaal, bijna dorps Luik, dat contrasteert met de drukte van de kades. Het is een ideale wijk om het reliëf van Luik te begrijpen.\n\nOutremeuse heeft zijn eigen accent. Het eiland draagt een sterke populaire herinnering, verbonden met poppen, de augustusfeesten, bescheidener straten en buurtgebonden sociale contacten. Soms volstaat het de Maas over te steken om het ritme te veranderen.\n\nGuillemins, Boverie, Avroy en Longdoz vertellen het verhaal van een moderner Luik, verbonden met vervoer, parken, musea en voormalige industrieën. De stad heeft niet één enkel emotioneel centrum: ze functioneert via kernen, en juist dat maakt het bezoek rijker dan een louter monumentale heen-en-terugtocht.","en":"The historic center concentrates the old power: Saint-Lambert, the palace, the Place du Marché, the Perron, and the nearby streets. Here you can feel an institutional, commercial, sometimes solemn Liège, but never entirely still, so much do the cafés and passersby bring the space back to life.\n\nHors-Château and the Coteaux offer a more secretive atmosphere. The stairways, walls, dead ends, and gardens open onto a vertical city, almost village-like, in contrast with the bustle of the quays. This is an ideal area for understanding Liège’s relief.\n\nOutremeuse has its own accent. The island retains a strong popular memory, associated with puppets, the August festivities, the more modest streets, and neighborhood sociability. Simply crossing the Meuse is sometimes enough to change pace.\n\nGuillemins, Boverie, Avroy, and Longdoz tell the story of a more modern Liège, linked to transport, parks, museums, and former industries. The city does not have a single emotional center: it works through hubs, and that is what makes the visit richer than a simple monumental round trip.","de":"Das historische Zentrum bündelt die alte Macht: Saint-Lambert, der Palast, der Marktplatz, der Perron und die nahegelegenen Straßen. Hier spürt man ein institutionelles, geschäftiges, manchmal feierliches Lüttich, doch nie völlig erstarrt, denn Cafés und Passanten beleben den Raum immer wieder neu.\n\nHors-Château und die Coteaux vermitteln eine geheimnisvollere Atmosphäre. Treppen, Mauern, Sackgassen und Gärten eröffnen eine vertikale, fast dörfliche Stadt, die im Kontrast zum Trubel an den Ufern steht. Für das Verständnis des Lütticher Reliefs ist dies ein idealer Bereich.\n\nOutremeuse hat seinen ganz eigenen Ton. Die Insel bewahrt eine starke volkstümliche Erinnerung, verbunden mit Puppentheater, den Festen im August, bescheideneren Straßen und nachbarschaftlichem Zusammenleben. Schon das Überqueren der Maas genügt manchmal, um den Rhythmus zu verändern.\n\nGuillemins, Boverie, Avroy und Longdoz erzählen von einem moderneren Lüttich, verbunden mit Verkehr, Parks, Museen und der alten Industrie. Die Stadt hat nicht nur ein einziges emotionales Zentrum: Sie funktioniert über mehrere Brennpunkte, und genau das macht den Besuch reichhaltiger als einen bloßen monumentalen Hin- und Rückweg.","it":"Il centro storico concentra il potere antico: Saint-Lambert, il palazzo, place du Marché, il Perron e le strade vicine. Qui si percepisce una Liegi istituzionale, commerciale, a volte solenne, ma mai del tutto immobile, tanto i caffè e i passanti riattivano lo spazio.\n\nHors-Château e i Coteaux offrono un’atmosfera più segreta. Le scale, i muri, i vicoli ciechi e i giardini aprono una città verticale, quasi di paese, in contrasto con il tumulto dei quai. È un settore ideale per comprendere il rilievo di Liegi.\n\nOutremeuse possiede un accento tutto suo. L’isola conserva una forte memoria popolare, associata ai burattini, alle feste d’agosto, alle strade più modeste e alla vita di quartiere. Attraversare la Mosa basta talvolta per cambiare ritmo.\n\nGuillemins, Boverie, Avroy e Longdoz raccontano una Liegi più moderna, legata ai trasporti, ai parchi, ai musei e alle antiche industrie. La città non ha un solo centro emotivo: funziona per poli, ed è questo che rende la visita più ricca di un semplice andirivieni monumentale.","es":"El centro histórico concentra el poder antiguo: Saint-Lambert, el palacio, la plaza del Mercado, el Perron y las calles cercanas. Allí se percibe una Lieja institucional, comerciante, a veces solemne, pero nunca del todo inmóvil, tanto los cafés como los peatones reactivan el espacio.\n\nHors-Château y los Coteaux ofrecen una atmósfera más secreta. Las escaleras, los muros, los callejones sin salida y los jardines abren una ciudad vertical, casi de aire rural, que contrasta con el bullicio de los muelles. Es un sector ideal para comprender el relieve de Lieja.\n\nOutremeuse tiene su propio acento. La isla conserva una fuerte memoria popular, asociada a los títeres, a las fiestas de agosto, a las calles más modestas y a las sociabilidades de barrio. A veces basta con cruzar el Mosa para cambiar de ritmo.\n\nGuillemins, Boverie, Avroy y Longdoz cuentan una Lieja más moderna, vinculada al transporte, a los parques, a los museos y a las antiguas industrias. La ciudad no tiene un único centro emocional: funciona por focos, y eso hace que la visita sea más rica que un simple ir y venir monumental.","pl":"Historyczne centrum skupia dawną władzę: Saint-Lambert, pałac, place du Marché, Perron i pobliskie ulice. Czuje się tu Liège instytucjonalne, kupieckie, czasem uroczyste, lecz nigdy całkiem zastygłe, bo kawiarnie i przechodnie nieustannie ożywiają tę przestrzeń.\n\nHors-Château i Coteaux tworzą atmosferę bardziej tajemniczą. Schody, mury, zaułki i ogrody odsłaniają pionowe, niemal wiejskie miasto, które kontrastuje z zgiełkiem nabrzeży. To doskonały obszar, by zrozumieć ukształtowanie terenu Liège.\n\nOutremeuse ma swój własny akcent. Wyspa zachowuje silną pamięć ludową, związaną z marionetkami, sierpniowymi świętami, skromniejszymi ulicami i sąsiedzkimi więziami. Wystarczy czasem przejść przez Mozę, by zmienić rytm.\n\nGuillemins, Boverie, Avroy i Longdoz opowiadają o bardziej nowoczesnym Liège, związanym z transportem, parkami, muzeami i dawnym przemysłem. Miasto nie ma jednego emocjonalnego centrum: działa poprzez kilka ognisk, i to właśnie sprawia, że zwiedzanie jest bogatsze niż zwykły monumentalny spacer tam i z powrotem.","ar":"يركّز المركز التاريخي السلطة القديمة: سان لامبرت، القصر، ساحة السوق، البيرون، والشوارع القريبة. هناك تُحَسّ لييجٌ مؤسساتية وتجارية، وأحيانًا مهيبة، لكنها لا تتجمّد تمامًا أبدًا، إذ تعيد المقاهي والمارة تنشيط الفضاء.\n\nتمنح منطقتا أوه-شاتو والتلال أجواءً أكثر سرّية. فالدرج، والجدران، والأزقّة المغلقة، والحدائق تكشف عن مدينة عمودية، تكاد تكون قروية، على نقيض ضجيج الأرصفة النهرية. وهي منطقة مثالية لفهم تضاريس لييج.\n\nتمتلك أوترموز لهجتها الخاصة. فالجزيرة تحتفظ بذاكرة شعبية قوية، مرتبطة بالدمى المتحركة، واحتفالات أغسطس، والشوارع الأكثر تواضعًا، وروابط الجيرة المحلية. وأحيانًا يكفي عبور نهر الميز لتبديل الإيقاع.\n\nتحكي غيومان، وبوفري، وأفروي، ولونغدوز عن لييج أكثر حداثة، مرتبطة بالنقل، والحدائق، والمتاحف، والصناعات القديمة. فالمدينة لا تملك مركزًا عاطفيًا واحدًا: إنها تعمل عبر بؤر متعددة، وهذا ما يجعل الزيارة أغنى من مجرد ذهاب وإيابٍ معالمِيّ بسيط.","cn":"历史中心汇聚着古老的权力：圣朗贝尔、王宫、集市广场、佩隆以及附近街道。人们在这里能感受到列日的制度气息、商业气息，有时也带着庄重，却从未真正凝固，因为咖啡馆和行人不断为这片空间注入活力。\n\n奥特-沙托和山丘区则营造出更为隐秘的氛围。台阶、墙壁、死胡同和花园打开了一座垂直的、几乎带有乡村气息的城市，与河岸的喧嚣形成鲜明对比。这里是理解列日地形的理想区域。\n\n奥特姆兹拥有自己独特的口音。这座岛保留着浓厚的民间记忆，与木偶戏、八月节庆、更朴素的街道以及街区社交生活相关。只需穿过默兹河，有时就足以感受到节奏的改变。\n\n吉耶芒、博韦里、阿夫鲁瓦和隆多兹讲述的是一个更现代的列日，它与交通、公园、博物馆以及昔日工业息息相关。这座城市并没有唯一的情感中心：它由一个个核心共同运转，而这也让这次游览比一次简单的宏伟往返更加丰富。","ja":"歴史的中心部には古い権力が集まっています。サン＝ランベール、宮殿、市場広場、ペロン、そしてその周辺の通りです。そこでは、制度の気配、商業の息づかい、ときに厳かなリールの姿が感じられますが、カフェや行き交う人々が空間を再び生き生きとさせるため、完全に静止してしまうことはありません。\n\nオー・シャトーとコトー地区は、より秘めやかな雰囲気を漂わせています。階段、石垣、袋小路、庭園が、ほとんど村のようでもある縦に広がる街を開き、河岸の喧騒とは対照をなします。リールの起伏を理解するうえで理想的なエリアです。\n\nウートルムーズには独特の響きがあります。島には、操り人形、8月の祝祭、より素朴な通り、そして地域の人々のつながりと結びついた、強い庶民の記憶が残されています。ムーズ川を渡るだけで、時には歩調が変わることがあります。\n\nギユマン、ボヴェリー、アヴロワ、ロンドーズは、交通、公園、美術館、そしてかつての産業に結びついた、より現代的なリールの姿を語ります。この街にはただ一つの感情の中心があるわけではありません。いくつもの核によって機能しており、それが、単なる壮麗な往復以上に見学を豊かなものにしているのです。"}};
+window.CLQ_CULTURE_IMAGE_URLS = {"images/culture/Quartiers_et_ambiances.jpg":"images/culture/Quartiers_et_ambiances.jpg"};
+(function () {
+  function normalizeLang(lang) {
+    lang = String(lang || "").toLowerCase();
+    if (!lang) lang = String(localStorage.getItem("selectedLanguage") || "fr").toLowerCase();
+    if (lang === "jp") return "ja";
+    if (lang === "zh") return "cn";
+    return lang;
+  }
+  function resolveLang(event) {
+    var stored = normalizeLang(localStorage.getItem("selectedLanguage") || "");
+    var fromEvent = event && event.detail && event.detail.language;
+    if (fromEvent) return normalizeLang(fromEvent);
+    return stored || "fr";
+  }
+  function pick(map, lang) {
+    if (!map) return "";
+    var exact = map[lang];
+    if (exact != null && String(exact).trim() !== "") return exact;
+    if (map.fr && String(map.fr).trim() !== "") return map.fr;
+    if (map.en && String(map.en).trim() !== "") return map.en;
+    return "";
+  }
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>"']/g, function (ch) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch];
+    });
+  }
+  function resolveCultureImageSrc(src) {
+    var map = window.CLQ_CULTURE_IMAGE_URLS || {};
+    return map[src] || src;
+  }
+  function cultureTextToHtml(text) {
+    function esc(value) {
+      return String(value || "").replace(/[&<>"']/g, function (ch) {
+        return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch];
+      });
+    }
+    var blocks = String(text || "").split(/\n{2,}/).filter(Boolean);
+    return blocks.map(function (block) {
+      var inline = block.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)\s*$/);
+      if (inline) {
+        var caption = inline[1].trim();
+        var src = resolveCultureImageSrc(inline[2].trim());
+        return '<figure class="culture-inline-photo"><img src="' + esc(src) + '" alt="' + esc(caption) + '" loading="lazy" /><figcaption>' + esc(caption) + '</figcaption></figure>';
+      }
+      return "<p>" + esc(block).replace(/\n/g, "<br>") + "</p>";
+    }).join("\n");
+  }
+  function applyCultureI18n(event) {
+    var lang = resolveLang(event);
+    var data = window.CLQ_PAGE_I18N || {};
+    var title = pick(data.title, lang);
+    if (title) {
+      document.title = title + " - CityLoop Quest Liège";
+      var h1 = document.querySelector("body > h1");
+      if (h1) h1.textContent = title;
+    }
+    var content = pick(data.content, lang);
+    var container = document.querySelector(".info-text");
+    if (container && content) container.innerHTML = cultureTextToHtml(content);
+    document.querySelectorAll("[data-title-i18n]").forEach(function (el) {
+      try {
+        var map = JSON.parse(el.getAttribute("data-title-i18n") || "{}");
+        var label = pick(map, lang);
+        if (label) {
+          var prefix = el.getAttribute("data-title-prefix") || "";
+          el.textContent = prefix + label;
+        }
+      } catch (_) {}
+    });
+    document.documentElement.lang = lang === "cn" ? "zh" : lang;
+  }
+  document.addEventListener("languageChanged", applyCultureI18n);
+  function bootCultureI18n() {
+    applyCultureI18n();
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootCultureI18n);
+  } else {
+    bootCultureI18n();
+  }
+})();
+</script>
+</body>
+</html>
