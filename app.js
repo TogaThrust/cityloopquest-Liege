@@ -846,10 +846,7 @@ function updatePointPhotoForCurrentIndex() {
     if (textContainer && textContainer.style.display === 'block') {
         return;
     }
-    imageElement.style.display = 'block';
-    if (textContainer) {
-        textContainer.style.display = 'none';
-    }
+    showPointImageDisplay();
 }
 
 function refreshRouteToCurrentDestination() {
@@ -1741,6 +1738,66 @@ function applyPointImage(imageElement, location) {
     tryNext();
 }
 
+function showPointTextDisplay(text) {
+    const frame = document.getElementById('point-image-frame');
+    const imageElement = document.getElementById('point-image');
+    const textContainer = document.getElementById('media-display');
+    const infoContainer = document.getElementById('info-container');
+    if (!textContainer) return;
+
+    if (infoContainer) {
+        infoContainer.style.alignItems = 'stretch';
+        infoContainer.style.justifyContent = 'flex-start';
+    }
+
+    if (frame) {
+        frame.style.setProperty('display', 'none', 'important');
+        frame.style.removeProperty('background-image');
+    }
+    if (imageElement) {
+        imageElement.style.setProperty('display', 'none', 'important');
+    }
+    if (typeof text === 'string') {
+        currentDescriptionText = text;
+        textContainer.innerText = text;
+    }
+    textContainer.style.display = 'block';
+    textContainer.scrollTop = 0;
+}
+
+function showPointImageDisplay(options) {
+    const preserveText = !!(options && options.preserveText);
+    const frame = document.getElementById('point-image-frame');
+    const imageElement = document.getElementById('point-image');
+    const textContainer = document.getElementById('media-display');
+    const infoContainer = document.getElementById('info-container');
+
+    if (infoContainer) {
+        infoContainer.style.alignItems = 'center';
+        infoContainer.style.justifyContent = 'center';
+    }
+
+    if (textContainer) {
+        textContainer.style.display = 'none';
+        if (!preserveText) {
+            textContainer.innerText = '';
+        }
+    }
+    if (frame) {
+        frame.style.removeProperty('display');
+        frame.style.removeProperty('background-image');
+    }
+    if (imageElement) {
+        imageElement.style.removeProperty('display');
+        if (!/android/i.test(navigator.userAgent || '')) {
+            imageElement.style.display = 'block';
+        }
+    }
+    if (/android/i.test(navigator.userAgent || '') && typeof fitPointImageToFrame === 'function') {
+        fitPointImageToFrame(imageElement);
+    }
+}
+
 function stopAllAudio() {
     if (currentAudio) {
         maybeFinalizePoiAudioOnStop(currentAudio);
@@ -1855,12 +1912,8 @@ function playExclusiveAudio(src, textFile = null, imageElement = null, originalI
 
         if (imageElement && originalImageSrc) {
             imageElement.src = originalImageSrc;
-            imageElement.style.display = "block";
         }
-        if (textContainer) {
-            textContainer.style.display = "none";
-            textContainer.innerText = "";
-        }
+        showPointImageDisplay();
     }
 
     // Obtenir le chemin audio selon la langue
@@ -1900,11 +1953,7 @@ function playExclusiveAudio(src, textFile = null, imageElement = null, originalI
         if (pauseBtnEl) {
             pauseBtnEl.textContent = '▶️';
         }
-        const imageElement = document.getElementById('point-image');
-        if (imageElement && textContainer) {
-            imageElement.style.display = 'block';
-            textContainer.style.display = 'none';
-        }
+        showPointImageDisplay();
         if (
             poiDescriptionAudioIndex !== null &&
             poiDescriptionAudioIndex === currentIndex
@@ -1977,10 +2026,7 @@ function playExclusiveAudio(src, textFile = null, imageElement = null, originalI
         if (currentLocation) {
             const description = getDescription(currentLocation.name);
             if (description) {
-                currentDescriptionText = description;
-                textContainer.innerText = description;
-                imageElement.style.display = "none";
-                textContainer.style.display = "block";
+                showPointTextDisplay(description);
                 return;
             }
         }
@@ -1998,10 +2044,7 @@ function playExclusiveAudio(src, textFile = null, imageElement = null, originalI
                 }
                 const cleaned = stripLegacyPoiTextHeader(text);
                 if (!cleaned) return;
-                currentDescriptionText = cleaned;
-                textContainer.innerText = cleaned;
-                imageElement.style.display = "none";
-                textContainer.style.display = "block";
+                showPointTextDisplay(cleaned);
             })
             .catch(err => console.error("Erreur de chargement texte :", err));
     }
@@ -5252,13 +5295,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     pauseBtn.textContent = "⏸️";
                     // Restaurer le texte (description ou chanson) si on reprend la lecture
                     if (currentDescriptionText) {
-                        const imageElement = document.getElementById("point-image");
-                        const textContainer = document.getElementById("media-display");
-                        if (imageElement && textContainer) {
-                            imageElement.style.display = "none";
-                            textContainer.style.display = "block";
-                            textContainer.innerText = currentDescriptionText;
-                        }
+                        showPointTextDisplay(currentDescriptionText);
                     }
                 }
             }
@@ -5285,12 +5322,9 @@ document.addEventListener("DOMContentLoaded", () => {
             pauseBtn.textContent = "▶️";
 
             // Revert UI to image view, mais SANS vider le texte mémorisé
-            const imageElement = document.getElementById("point-image");
             const textContainer = document.getElementById("media-display");
-            if (imageElement && textContainer) {
-                imageElement.style.display = "block";
-                textContainer.style.display = "none";
-                textContainer.innerText = "";
+            if (textContainer) {
+                showPointImageDisplay({ preserveText: true });
             }
         }
     });
@@ -5305,13 +5339,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Ré-afficher le texte (description ou chanson) au redémarrage
             if (currentDescriptionText) {
-                const imageElement = document.getElementById("point-image");
-                const textContainer = document.getElementById("media-display");
-                if (imageElement && textContainer) {
-                    imageElement.style.display = "none";
-                    textContainer.style.display = "block";
-                    textContainer.innerText = currentDescriptionText;
-                }
+                showPointTextDisplay(currentDescriptionText);
             }
         }
     });

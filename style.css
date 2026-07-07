@@ -158,6 +158,29 @@ header h1 {
   overflow: hidden;
   max-width: calc(50vw - 20px);
   box-sizing: border-box;
+  position: relative;
+}
+
+#info-container:has(#media-display[style*="block"]) {
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+}
+
+#info-container:has(#media-display[style*="block"]) #point-image-frame {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden;
+}
+
+#info-container:has(#media-display[style*="block"]) #media-display {
+  display: block !important;
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
 }
 
 #point-image {
