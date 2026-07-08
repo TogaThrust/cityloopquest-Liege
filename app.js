@@ -2832,7 +2832,9 @@ function calculateRoute(from, to, fromName, toName) {
                     const selectedMuseum = localStorage.getItem("selectedMuseum");
                     
                     if (isMuseumMode && selectedMuseum) {
-                        const museumTarget = window.translationManager ? window.translationManager.translate('museum_target') : 'Musée :';
+                        const museumData = safeJsonParse(localStorage.getItem("museumData"), {});
+                        const emergencyPrefix = museumData?.targetType === "emergency" ? museumData?.targetLabelPrefix : null;
+                        const museumTarget = emergencyPrefix || (window.translationManager ? window.translationManager.translate('museum_target') : 'Musée :');
                         const estimatedTime = window.translationManager ? window.translationManager.translate('estimated_time') : 'Temps estimé :';
                         const distanceLabel = window.translationManager ? window.translationManager.translate('distance') : 'Distance :';
                         display.textContent = `${museumTarget} ${toName} - ${estimatedTime} ${formatDuration(duration)} - ${distanceLabel} ${distance}`;
@@ -2853,7 +2855,10 @@ function calculateRoute(from, to, fromName, toName) {
             } else {
                 const display = document.getElementById("location-name");
                 if (display) {
-                    display.textContent = `Musée : ${toName} - Temps estimé : ${formatDuration(duration)} - Distance : ${distance}`;
+                    const museumData = safeJsonParse(localStorage.getItem("museumData"), {});
+const emergencyPrefix = museumData?.targetType === "emergency" ? museumData?.targetLabelPrefix : null;
+const museumTarget = emergencyPrefix || 'Musée :';
+display.textContent = `${museumTarget} ${toName} - Temps estimé : ${formatDuration(duration)} - Distance : ${distance}`;
                 }
             }
         } else {
@@ -3314,11 +3319,27 @@ function clearQuizCompletionFromIndex(fromIdx) {
   localStorage.setItem('liege_completedQuizQuestions', JSON.stringify(completedQuizQuestions));
 }
 
+/** Mode guidage musée ou secours (Y aller) : pas de quiz. */
+function isMuseumOrSecoursGuidanceMode() {
+  return localStorage.getItem('museumMode') === 'true';
+}
+
 function updateQuizFooterButton() {
   if (!quizResumeBtn) quizResumeBtn = document.getElementById('quiz-resume-btn');
   if (!quizResumeBtn) return;
-  const show = localStorage.getItem('liege_quizEnabled') === 'false';
+  const guidanceMode = isMuseumOrSecoursGuidanceMode();
+  const show = !guidanceMode && localStorage.getItem('liege_quizEnabled') === 'false';
   quizResumeBtn.style.display = show ? '' : 'none';
+  quizResumeBtn.disabled = guidanceMode;
+  if (guidanceMode) {
+    quizResumeBtn.style.opacity = '0.5';
+    quizResumeBtn.style.cursor = 'not-allowed';
+    quizResumeBtn.style.pointerEvents = 'none';
+  } else {
+    quizResumeBtn.style.opacity = '';
+    quizResumeBtn.style.cursor = '';
+    quizResumeBtn.style.pointerEvents = '';
+  }
 }
 
 function setQuizEnabledRuntime(enabled) {
@@ -3370,6 +3391,7 @@ function confirmStopQuizPermanently() {
 }
 
 function resumeQuizFromFooter() {
+  if (isMuseumOrSecoursGuidanceMode()) return;
   showUniversalPopup({
     title: translateClq('quiz_resume_confirm_title', 'Reprendre le quiz ?'),
     message: translateClq(
@@ -3520,6 +3542,10 @@ function resolveQuizQuestionsForPoint(pointName) {
 
 function showQuizForPointIndex(index, callback, options = {}) {
   const runAfter = typeof callback === "function" ? callback : () => {};
+  if (isMuseumOrSecoursGuidanceMode()) {
+    runAfter();
+    return;
+  }
   const pointIndex = Number(index);
   const force = options.force === true;
 
@@ -5782,19 +5808,15 @@ function updateCurrentDisplay() {
     if (isMuseumMode) {
         const selectedMuseum = localStorage.getItem("selectedMuseum");
         if (selectedMuseum) {
-            const museumTarget = window.translationManager ? window.translationManager.translate('museum_target') : 'Musée :';
+            const museumData = safeJsonParse(localStorage.getItem("museumData"), {});
+                        const emergencyPrefix = museumData?.targetType === "emergency" ? museumData?.targetLabelPrefix : null;
+                        const museumTarget = emergencyPrefix || (window.translationManager ? window.translationManager.translate('museum_target') : '🎯 Musée :');
             const estimatedTime = window.translationManager ? window.translationManager.translate('estimated_time') : 'Temps estimé :';
             const distanceLabel = window.translationManager ? window.translationManager.translate('distance') : 'Distance :';
-            // On ne peut pas retrouver la durée et la distance sans recalcul, donc on laisse le texte existant traduit
-            const currentText = display.textContent;
-            const parts = currentText.split(/\s-\s|\s\uFFFD\s/);
-            const museumName = parts[0].replace('Musée : ', '').replace('Musee : ', '');
-            const timePart = parts[1] || '';
-            const distancePart = parts[2] || '';
-            if (timePart && distancePart) {
-                const translatedTimePart = formatDuration(timePart.replace(/^Temps estimé : |Estimated time: /, ''));
-                const newText = `${museumTarget} ${museumName} - ${estimatedTime} ${translatedTimePart} - ${distanceLabel} ${distancePart.replace(/^Distance : |Distance: /, '')}`;
-                display.textContent = newText;
+            const name = museumData?.name || selectedMuseum;
+
+            if (typeof currentPointDuration !== "undefined" && typeof currentPointDistance !== "undefined") {
+                display.textContent = `${museumTarget} ${name} – ${estimatedTime} ${formatDuration(currentPointDuration)} – ${distanceLabel} ${currentPointDistance}`;
             }
         }
     } else {
@@ -6147,3 +6169,14 @@ window.addEventListener('load', () => {
 
 
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const emergencyBtn = document.getElementById("emergency-btn");
+  if (!emergencyBtn) return;
+  emergencyBtn.addEventListener("click", () => {
+    try { stopAllAudio(); } catch (_) {}
+    try { if (typeof markGuidancePauseForLeave === "function") markGuidancePauseForLeave(); } catch (_) {}
+    try { if (typeof snapshotTourStateForExternalPage === "function") snapshotTourStateForExternalPage(); } catch (_) {}
+    window.location.href = (window.clqDevMode && window.clqDevMode.append) ? window.clqDevMode.append("secours.html") : "secours.html";
+  });
+});

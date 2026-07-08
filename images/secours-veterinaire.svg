@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Veterinaire">
+  <rect width="320" height="200" fill="#fff8f2"/>
+  <circle cx="160" cy="100" r="54" fill="#ffffff" stroke="#f0d9c4" stroke-width="3"/>
+  <circle cx="128" cy="72" r="18" fill="#f08a24"/>
+  <circle cx="192" cy="72" r="18" fill="#f08a24"/>
+  <circle cx="118" cy="118" r="14" fill="#f08a24"/>
+  <circle cx="160" cy="130" r="16" fill="#f08a24"/>
+  <circle cx="202" cy="118" r="14" fill="#f08a24"/>
+  <rect x="148" y="89" width="24" height="52" fill="#c8102e"/>
+  <rect x="134" y="104" width="52" height="24" fill="#c8102e"/>
+</svg>

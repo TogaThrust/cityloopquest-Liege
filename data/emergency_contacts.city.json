@@ -1,0 +1,1062 @@
+{
+  "meta": {
+    "updatedAt": "2026-07-08",
+    "distanceNote": "Distances approximatives a vol d'oiseau ; temps de marche indicatif."
+  },
+  "emergencyByCountry": {
+    "belgique": {
+      "general": "112",
+      "police": "101",
+      "firefighters": "112",
+      "medical": "-"
+    },
+    "france": {
+      "general": "112",
+      "police": "17",
+      "firefighters": "18",
+      "medical": "15"
+    },
+    "espagne": {
+      "general": "112",
+      "police": "-",
+      "firefighters": "080 / 085",
+      "medical": "061"
+    }
+  },
+  "guardInfoByCountry": {
+    "france": {
+      "pharmacyNumber": "3237",
+      "pharmacyNote": "Service officiel pharmacie de garde.",
+      "veterinaryNumber": "3115",
+      "veterinaryNote": "Urgences veterinaires nationales."
+    }
+  },
+  "cityAliases": {
+    "liege": "liege"
+  },
+  "cities": {
+    "liege": {
+      "country": "Belgique",
+      "onDuty": {},
+      "facilities": [
+        {
+          "category": "hospital",
+          "name": "CHR de la Citadelle",
+          "address": "Boulevard du 12e de Ligne 1, 4000 Liège",
+          "phone": "+32 43216111",
+          "sourceUrl": "https://www.citadelle.be/",
+          "lat": 50.651950939648124,
+          "lng": 5.5769286300873375
+        },
+        {
+          "category": "hospital",
+          "name": "CHU de Liège – Notre-Dame des Bruyères",
+          "address": "Rue de Gaillarmont 600, 4032 Chênée",
+          "phone": "+32 43239000",
+          "sourceUrl": "https://www.chuliege.be/",
+          "lat": 50.62252208776866,
+          "lng": 5.6369764648746665
+        },
+        {
+          "category": "hospital",
+          "name": "CHU de Liège – Sart Tilman",
+          "address": "Avenue de l'Hôpital 1, 4000 Liège",
+          "phone": "+32 43230000",
+          "sourceUrl": "https://www.chuliege.be/cms/c_41424/fr/contact",
+          "lat": 50.57326415514167,
+          "lng": 5.567577550634866
+        },
+        {
+          "category": "hospital",
+          "name": "Clinique CHC MontLégia",
+          "address": "Boulevard de Patience et Beaujonc 2, 4000 Liège",
+          "phone": "+32 43555000",
+          "sourceUrl": "https://www.chc.be/",
+          "lat": 50.64929803690523,
+          "lng": 5.5356908435791485
+        },
+        {
+          "category": "hospital",
+          "name": "ISoSL – Le Valdor",
+          "address": "Rue Basse-Wez 145, 4020 Liège",
+          "phone": "+32 43417011",
+          "sourceUrl": "https://www.isosl.be/",
+          "lat": 50.63402146520747,
+          "lng": 5.589153149511487
+        },
+        {
+          "category": "pharmacy",
+          "name": "AG Phar",
+          "address": "rue Saint-Gilles 54, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.639265608464186,
+          "lng": 5.566214193730345
+        },
+        {
+          "category": "pharmacy",
+          "name": "Avakian Pharma",
+          "address": "rue de Fléron 280/2, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.636280846824015,
+          "lng": 5.658176276702002
+        },
+        {
+          "category": "pharmacy",
+          "name": "BISQUERET",
+          "address": "RUE DE VISE 389, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.659066653835126,
+          "lng": 5.652243848900244
+        },
+        {
+          "category": "pharmacy",
+          "name": "BONANNO OLIVIER",
+          "address": "RUE VAUDREE 192, 4031 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.61350447144443,
+          "lng": 5.590325511606057
+        },
+        {
+          "category": "pharmacy",
+          "name": "BRONFORT",
+          "address": "RUE SAINT-NICOLAS 524, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.640543154120614,
+          "lng": 5.535493411266074
+        },
+        {
+          "category": "pharmacy",
+          "name": "Bogest",
+          "address": "rue Belvaux 105, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62184615793449,
+          "lng": 5.599573790143261
+        },
+        {
+          "category": "pharmacy",
+          "name": "CHAMPENOIS NATHALIE",
+          "address": "AVENUE DE JUPRELLE 2, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.68097578500443,
+          "lng": 5.552396937876549
+        },
+        {
+          "category": "pharmacy",
+          "name": "DE FAYEN-BOIS",
+          "address": "AVENUE DE LA ROUSSELIERE 2, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63097899003739,
+          "lng": 5.645650435607016
+        },
+        {
+          "category": "pharmacy",
+          "name": "Familia",
+          "address": "rue du Moulin 16, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.641402056183175,
+          "lng": 5.598065397051119
+        },
+        {
+          "category": "pharmacy",
+          "name": "Familia",
+          "address": "rue du Moulin 101, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64139858105865,
+          "lng": 5.59806595223608
+        },
+        {
+          "category": "pharmacy",
+          "name": "Familia",
+          "address": "rue Belvaux 20, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6193849414181,
+          "lng": 5.60318825540467
+        },
+        {
+          "category": "pharmacy",
+          "name": "Familia",
+          "address": "rue Carpay 20/0001, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.646176792470875,
+          "lng": 5.60238151605721
+        },
+        {
+          "category": "pharmacy",
+          "name": "Familia",
+          "address": "rue des Carmes 36-38, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63958678639868,
+          "lng": 5.573369875022455
+        },
+        {
+          "category": "pharmacy",
+          "name": "Faska Najat",
+          "address": "Place du Général-Leman 29, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62053555608302,
+          "lng": 5.5740355335162395
+        },
+        {
+          "category": "pharmacy",
+          "name": "GELLON",
+          "address": "RUE EMILE-VANDERVELDE 163, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.645563289320215,
+          "lng": 5.5400922598096765
+        },
+        {
+          "category": "pharmacy",
+          "name": "GOFFIN FRANCOIS-REGIS",
+          "address": "BOULEVARD KLEYER 134, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6255669993538,
+          "lng": 5.550517682227379
+        },
+        {
+          "category": "pharmacy",
+          "name": "LEURQUIN ANNE",
+          "address": "RUE NEUVE 10, 4032 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.61260119988398,
+          "lng": 5.6144432263439095
+        },
+        {
+          "category": "pharmacy",
+          "name": "Leclère",
+          "address": "rue Renory 78, 4031 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.613128045908724,
+          "lng": 5.578619605053859
+        },
+        {
+          "category": "pharmacy",
+          "name": "Les Pharmacies du Peuple-Réseau Solidaris",
+          "address": "rue Pont Saint-Nicolas 2, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64122246596126,
+          "lng": 5.581688825372274
+        },
+        {
+          "category": "pharmacy",
+          "name": "Les Pharmacies du Peuple-Réseau Solidaris",
+          "address": "rue Saint Gilles 584, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6328010700014,
+          "lng": 5.547421873154684
+        },
+        {
+          "category": "pharmacy",
+          "name": "MT Pharma",
+          "address": "rue de la Révision 104, 4032 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.607593153091834,
+          "lng": 5.6236660915827255
+        },
+        {
+          "category": "pharmacy",
+          "name": "Multipharma",
+          "address": "boulevard Frankignoul 3/A, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.627943547965415,
+          "lng": 5.587700641131534
+        },
+        {
+          "category": "pharmacy",
+          "name": "Multipharma",
+          "address": "rue Pont d’Avroy 15, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6406303,
+          "lng": 5.5703282
+        },
+        {
+          "category": "pharmacy",
+          "name": "Multipharma",
+          "address": "rue Jean de Wilde 4, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.65937958145679,
+          "lng": 5.567135850322617
+        },
+        {
+          "category": "pharmacy",
+          "name": "Multipharma",
+          "address": "place Saint Lambert 5, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64477275485302,
+          "lng": 5.5742727739443545
+        },
+        {
+          "category": "pharmacy",
+          "name": "Multipharma",
+          "address": "rue Ernest Solvay 227, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.60925435863251,
+          "lng": 5.555884112263781
+        },
+        {
+          "category": "pharmacy",
+          "name": "NINANE",
+          "address": "RUE BASSENGE 39, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6351467420992,
+          "lng": 5.55978177777713
+        },
+        {
+          "category": "pharmacy",
+          "name": "Newpharma",
+          "address": "rue Basse-Wez 315, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6322793739852,
+          "lng": 5.58819170568778
+        },
+        {
+          "category": "pharmacy",
+          "name": "PERALTA",
+          "address": "AVENUE HENRI-PIEDBOEUF 12, 4031 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.613342384134484,
+          "lng": 5.585738420125131
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE C. PIRON",
+          "address": "RUE NICOLAS SPIROUX 221, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62504133668485,
+          "lng": 5.616726867941041
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE COLSON",
+          "address": "RUE LAIRESSE 15, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.636029917425326,
+          "lng": 5.586843254958961
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE DES ECOLES",
+          "address": "RUE SAINTE-MARGUERITE 90, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64562186194632,
+          "lng": 5.560330918107993
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE DU LAVEU",
+          "address": "RUE DU LAVEU 57, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.631821736661706,
+          "lng": 5.557959418113766
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE LERUTH",
+          "address": "PLACE HENRI SIMON 18, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6284263537324,
+          "lng": 5.553215485940284
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE LONNEUX",
+          "address": "PLACE ANDREA JADOULLE 6/8, 4031 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.611201352061855,
+          "lng": 5.599335723309509
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE MARIE-ANNE TYCHON",
+          "address": "RUE SAINT-LAURENT 254, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63741094799467,
+          "lng": 5.554332712285152
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE MILIS",
+          "address": "RUE DU LAVEU 7, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63182022137063,
+          "lng": 5.5579618147194125
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE PAHAUT",
+          "address": "RUE HAUTE-WEZ 135, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62644547183263,
+          "lng": 5.590480642993755
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMACIE SWINNEN",
+          "address": "RUE SAINT-LEONARD 518, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.65384522785762,
+          "lng": 5.604662399322336
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMASCHMIDT",
+          "address": "RUE HIPPOLYTE CORNET 4, 4032 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.61141510276587,
+          "lng": 5.619568059666238
+        },
+        {
+          "category": "pharmacy",
+          "name": "PHARMAX",
+          "address": "RUE DE VISE 26, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.644570104240174,
+          "lng": 5.624020565647231
+        },
+        {
+          "category": "pharmacy",
+          "name": "Peeters Pharma Wandre",
+          "address": "rue du Pont de Wandre 58, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.67014056915061,
+          "lng": 5.65881589102846
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharma Force Liège",
+          "address": "quai de Rome 49/C, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62291019015675,
+          "lng": 5.576538659368798
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharma Hesbaye",
+          "address": "rue de Hesbaye 99, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.648689745011154,
+          "lng": 5.55388680688388
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie 360 Rocourt",
+          "address": "Place Reine-Astrid 2, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.675833716542904,
+          "lng": 5.54621613847293
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie 360 Sainte Walburge",
+          "address": "rue Sainte-Walburge 11, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.65485031486649,
+          "lng": 5.572941195942117
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Alen",
+          "address": "Rue de Herve 458, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.627253685660605,
+          "lng": 5.632856491892661
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Bastin Médiacité",
+          "address": "Boulevard Raymond Poincaré 7/11, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63521443925448,
+          "lng": 5.580792956985727
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Boden",
+          "address": "rue Saint-Gilles 469, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63250914904823,
+          "lng": 5.547044630922627
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Cathédrale",
+          "address": "rue Cathédrale 102, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64156935386292,
+          "lng": 5.572223905541388
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Dantoin",
+          "address": "rue des Maraichers 90, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63889041962711,
+          "lng": 5.594618299682371
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Dartois -Guillemins",
+          "address": "rue Dartois 41, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62768215101821,
+          "lng": 5.566746465587755
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Figas-Iovine",
+          "address": "rue Saint-Gilles 278, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.636855537434315,
+          "lng": 5.560279677447989
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Gare des Guillemins",
+          "address": "place des Guillemins 2, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62438710085014,
+          "lng": 5.566844950168531
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Goffin",
+          "address": "avenue de l'Observatoire 341, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62000368681329,
+          "lng": 5.565064096321695
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Gonay",
+          "address": "rue du Parc 5, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63197165941556,
+          "lng": 5.574976059764104
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Graas",
+          "address": "avenue du Luxembourg 92, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62229059561424,
+          "lng": 5.5900227986976025
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Hamacker Baillien",
+          "address": "rue du Centenaire 21, 4032 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62012052943297,
+          "lng": 5.618935340460532
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Heynen",
+          "address": "rue du Perron 147, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.61986449704821,
+          "lng": 5.5571274603801735
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Jonruelle",
+          "address": "Jonruelle 62, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.65074415856902,
+          "lng": 5.5883747117742955
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie LIVE UP",
+          "address": "avenue de l'Hôpital 1/35, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.573141152656106,
+          "lng": 5.567447076242469
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie La Sauvegarde",
+          "address": "route de Herve 483, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.628781600827665,
+          "lng": 5.621492936499785
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Lambert",
+          "address": "route du Condroz 473, 4031 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.59323226148044,
+          "lng": 5.573401634340149
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Lambion-Lamalle",
+          "address": "rue Fraischamps 162, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.629802599726375,
+          "lng": 5.6056699689417835
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Leyens",
+          "address": "rue Saint-Laurent 160, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64053195871718,
+          "lng": 5.557488755683631
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Live Up CHR",
+          "address": "Boulevard du 12ième de Ligne 1, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.65470063956567,
+          "lng": 5.573410612286881
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Léopold",
+          "address": "rue Léopold 20, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64443884717679,
+          "lng": 5.575847365062487
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Mathy",
+          "address": "avenue Cardinal Mercier 4, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63667954008453,
+          "lng": 5.602834670625961
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Molinvaux",
+          "address": "rue Molinvaux 136, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.65322985302919,
+          "lng": 5.553647141132532
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie N. Wolfs",
+          "address": "rue Jean-Hermesse 45/01, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64273974801137,
+          "lng": 5.634828823414281
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Neujean",
+          "address": "place Xavier Neujean 13/E, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6428826507554,
+          "lng": 5.568591155532952
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Neuve",
+          "address": "rue Neuve 9, 4032 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.61271158403069,
+          "lng": 5.614317720468257
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Pasteur",
+          "address": "rue St Léonard 3, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64816577202026,
+          "lng": 5.586357058919864
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Philippet Caprasse",
+          "address": "rue de Fétinne 92, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62486505765219,
+          "lng": 5.582660455452201
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Rosen",
+          "address": "rue de l'Université 8, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64278859047088,
+          "lng": 5.572644417778403
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Sacré",
+          "address": "Avenue Reine Elisabeth 13, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.621830008944706,
+          "lng": 5.588402619961073
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Spelmans",
+          "address": "rue de Beaufraipont 33B, 4032 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.60726351648615,
+          "lng": 5.613465386145418
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie by Medi-Market - Belle-Ile",
+          "address": "quai des Vennes 1/103, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.615647756136944,
+          "lng": 5.593633474236866
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie by Medi-Market Group-Rocourt",
+          "address": "chaussée de Tongres 255, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.66967474081257,
+          "lng": 5.550259978995492
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie d'Amercoeur",
+          "address": "rue d'Amercoeur 15, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6376977042995,
+          "lng": 5.588570038444008
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie d'Avroy",
+          "address": "Boulevard d'Avroy 136, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63478668774383,
+          "lng": 5.567314035097163
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie de Bavière",
+          "address": "rue des Bonnes Villes 9, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64296686932366,
+          "lng": 5.589860054022211
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie de Campine",
+          "address": "rue du Limbourg 2, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.65563364609451,
+          "lng": 5.565412008737025
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie de Robermont",
+          "address": "avenue Cardinal Mercier 3, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6370790502701,
+          "lng": 5.602625141120291
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie des Franchises",
+          "address": "place des Franchises 3, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62388614345826,
+          "lng": 5.570910212685067
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie des Hauteurs",
+          "address": "boulevard des Hauteurs 15, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.65644464457214,
+          "lng": 5.56295899645911
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie du Bois de Breux - Valérie Senterre",
+          "address": "rue de Herve 507, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62857015664491,
+          "lng": 5.622907530069581
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie du Botanique",
+          "address": "rue Louvrex 56, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63374953526164,
+          "lng": 5.564182882702651
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie du Thier à Liège",
+          "address": "rue du Haut Pavé 3, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.662984654303884,
+          "lng": 5.595413646999089
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacie Çakir Selçuk",
+          "address": "rue Froidart 50, 4020 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64353583897212,
+          "lng": 5.597585243574759
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmacies Populaires de Verviers PPVA",
+          "address": "rue des Guillemins 12, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62682174969728,
+          "lng": 5.572546704351674
+        },
+        {
+          "category": "pharmacy",
+          "name": "Pharmakaiser Grivegnée",
+          "address": "rue Fraischamps 24, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62747724858992,
+          "lng": 5.599838645600837
+        },
+        {
+          "category": "pharmacy",
+          "name": "Phidelta Pharma",
+          "address": "rue Sainte Marguerite 279, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64740008369615,
+          "lng": 5.553947007493071
+        },
+        {
+          "category": "pharmacy",
+          "name": "RADOUX P",
+          "address": "AVENUE DE L'AGRICULTURE 66, 4030 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62818192489865,
+          "lng": 5.60828249710266
+        },
+        {
+          "category": "pharmacy",
+          "name": "Ruth",
+          "address": "rue de Tilff 45, 4031 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.6098254418393,
+          "lng": 5.601310997285501
+        },
+        {
+          "category": "pharmacy",
+          "name": "SCHOENAERTS MARIE-FLORE",
+          "address": "RUE RENORY 44, 4031 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.61396542690665,
+          "lng": 5.579262303170197
+        },
+        {
+          "category": "pharmacy",
+          "name": "Santis Pharma Rocourt",
+          "address": "chaussée de Tongres 41, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.66511224943695,
+          "lng": 5.560036821001488
+        },
+        {
+          "category": "pharmacy",
+          "name": "VPharma Burenville",
+          "address": "rue Saint-Nicolas 305, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63900835227363,
+          "lng": 5.539901823330605
+        },
+        {
+          "category": "pharmacy",
+          "name": "VPharma Liège Blonden",
+          "address": "avenue Blonden 38, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62912926250548,
+          "lng": 5.5698185546408405
+        },
+        {
+          "category": "pharmacy",
+          "name": "VPharma Liège Paradis",
+          "address": "rue de Fragnée 4, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.62682287046734,
+          "lng": 5.572536280233337
+        },
+        {
+          "category": "pharmacy",
+          "name": "Vpharma Liège Avroy",
+          "address": "Avenue Maurice Destenay 16, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.63840145563162,
+          "lng": 5.569123958912456
+        },
+        {
+          "category": "pharmacy",
+          "name": "Wagener Corinne",
+          "address": "rue Eugène-Houdret 57, 4000 Liège",
+          "phone": "",
+          "sourceUrl": "https://www.afmps.be/fr/humain/medicaments/medicaments/distribution/pharmacies_ouvertes_au_public",
+          "lat": 50.64965404168385,
+          "lng": 5.548095083781859
+        },
+        {
+          "category": "veterinary",
+          "name": "CABVET Saint-Nicolas",
+          "address": "290 rue Saint-Nicolas, 4000 Liège",
+          "phone": "+32 43362784",
+          "sourceUrl": "https://cabvet.be/",
+          "lat": 50.63890264799933,
+          "lng": 5.542584545271225
+        },
+        {
+          "category": "veterinary",
+          "name": "Cabinet vétérinaire Laventure",
+          "address": "Rue Soeurs-de-Hasque 15, 4000 Liège",
+          "phone": "+32 42236830",
+          "sourceUrl": "https://veterinairelaventure.be/contact/",
+          "lat": 50.640246519478076,
+          "lng": 5.573016595852616
+        },
+        {
+          "category": "veterinary",
+          "name": "Cabinet vétérinaire la Campine",
+          "address": "468 rue de Campine, 4020 Liège",
+          "phone": "+32 42269813",
+          "sourceUrl": "https://veterinaireliege.com/",
+          "lat": 50.65520647340756,
+          "lng": 5.57108609384368
+        },
+        {
+          "category": "veterinary",
+          "name": "Centre vétérinaire de la Boverie",
+          "address": "49 Quai de la Boverie, 4020 Liège",
+          "phone": "+32 43426850 / +32 43428466",
+          "sourceUrl": "https://veterinaireliege.com/",
+          "lat": 50.63315477802981,
+          "lng": 5.576831718632874
+        },
+        {
+          "category": "veterinary",
+          "name": "Clinique Vétérinaire Universitaire ULiège",
+          "address": "Boulevard de Colonster 20, 4000 Liège",
+          "phone": "+32 43664200",
+          "sourceUrl": "https://www.cvu.uliege.be/",
+          "lat": 50.57750012712951,
+          "lng": 5.578303950054895
+        },
+        {
+          "category": "veterinary",
+          "name": "Dr Léopold Leclercq",
+          "address": "Avenue du Luxembourg 33, 4020 Liège",
+          "phone": "+32 43435125",
+          "sourceUrl": "https://veterinaireleclercq.be/contact.html",
+          "lat": 50.62256491539294,
+          "lng": 5.585389748959401
+        }
+      ]
+    }
+  }
+}

@@ -1,4 +1,4 @@
-// Gestionnaire de traductions pour CityLoop Quest Liège
+// Gestionnaire de traductions pour CityLoop Quest {{CITY_NAME}}
 class TranslationManager {
     constructor() {
         this.currentLanguage = 'fr'; // Langue par défaut
@@ -90,7 +90,11 @@ class TranslationManager {
             return value;
         };
 
-        const translatedValue = resolveTranslation(this.currentLanguage) || resolveTranslation('fr');
+        const langAliases = { jp: 'ja', zh: 'cn' };
+        const aliasLang = langAliases[this.currentLanguage];
+        const translatedValue = resolveTranslation(this.currentLanguage)
+            || (aliasLang ? resolveTranslation(aliasLang) : null)
+            || resolveTranslation('fr');
         if (translatedValue) return translatedValue;
 
         const keys = key.split('.');
@@ -160,25 +164,25 @@ class TranslationManager {
         }
         
         // Récupérer la langue sauvegardée
-        const normalizeAppLang = (lang) => {
-            const code = String(lang || 'fr').toLowerCase();
-            if (code === 'jp') return 'ja';
-            if (code === 'zh') return 'cn';
-            return code;
-        };
         const resolveStoredLang = () => {
-            const saved = normalizeAppLang(localStorage.getItem('selectedLanguage') || '');
-            if (this.translations[saved]) return saved;
-            const aliases = { ja: 'jp', jp: 'ja', cn: 'zh', zh: 'cn' };
-            const alt = aliases[saved];
-            if (alt && this.translations[alt]) return alt;
-            if (this.translations.fr) return 'fr';
-            return Object.keys(this.translations)[0] || 'fr';
+            const saved = String(localStorage.getItem('selectedLanguage') || '').toLowerCase().trim();
+            if (!saved) {
+                if (this.translations.fr) return 'fr';
+                return Object.keys(this.translations)[0] || 'fr';
+            }
+            const candidates = [saved];
+            if (saved === 'ja') candidates.push('jp');
+            if (saved === 'jp') candidates.push('ja');
+            if (saved === 'zh' || saved === 'zh-cn') candidates.push('cn');
+            if (saved === 'cn') candidates.push('zh');
+            for (const code of candidates) {
+                if (this.translations[code]) return code;
+            }
+            return saved;
         };
         const savedLanguage = localStorage.getItem('selectedLanguage');
         if (savedLanguage) {
             this.currentLanguage = resolveStoredLang.call(this);
-            localStorage.setItem('selectedLanguage', this.currentLanguage);
         } else {
             this.currentLanguage = 'fr';
             localStorage.setItem('selectedLanguage', 'fr');
@@ -187,9 +191,9 @@ class TranslationManager {
         // Appliquer les traductions
         this.applyTranslations();
         
-        // Notifier le changement de langue pour synchroniser le sélecteur
+        // Notifier les autres composants (culture ignore source=init pour ne pas repasser en FR)
         document.dispatchEvent(new CustomEvent('languageChanged', { 
-            detail: { language: this.currentLanguage } 
+            detail: { language: this.currentLanguage, source: 'init' } 
         }));
         
         // Forcer la mise à jour du splash screen spécifiquement

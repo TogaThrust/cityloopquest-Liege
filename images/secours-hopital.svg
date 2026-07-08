@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Hopital">
+  <rect width="320" height="200" fill="#f5f7fb"/>
+  <rect x="95" y="35" width="130" height="140" rx="8" fill="#ffffff" stroke="#d3dae6" stroke-width="3"/>
+  <rect x="145" y="75" width="30" height="70" fill="#d7263d"/>
+  <rect x="125" y="95" width="70" height="30" fill="#d7263d"/>
+  <rect x="45" y="110" width="50" height="65" fill="#e8edf6" stroke="#d3dae6" stroke-width="3"/>
+  <rect x="225" y="110" width="50" height="65" fill="#e8edf6" stroke="#d3dae6" stroke-width="3"/>
+  <rect x="52" y="120" width="12" height="12" fill="#9db0cd"/>
+  <rect x="66" y="120" width="12" height="12" fill="#9db0cd"/>
+  <rect x="232" y="120" width="12" height="12" fill="#9db0cd"/>
+  <rect x="246" y="120" width="12" height="12" fill="#9db0cd"/>
+</svg>

@@ -1,6 +1,6 @@
 {
-  "version": "26.07.01",
-  "savedAt": "2026-07-04T17:27:22.997Z",
+  "version": "26.07.07",
+  "savedAt": "2026-07-08T20:50:31.950Z",
   "citySummary": {
     "cityName": "Liège",
     "appTitle": "CityLoop Quest Liège",
@@ -128,12 +128,12 @@
     "sourceLanguage": "fr"
   },
   "files": {
-    "app.js": "685184477097a8d18b11ec30631191eae8ff335bb16f13f629cb936af1e8fa1e",
-    "main.html": "08924cccc2c6d40cb955394ffdc2005ab81a682ee478e1f1488e36ca1ed8431f",
-    "parcours.html": "21e3c0478b3d7236a1531fea469c881a9da9532fd8f3e8a1d59e52489e6c1917",
+    "app.js": "f1790d66e847d8fcbe04c370361f3bf0ec70bd42d8dd951076e7fa436924a4ad",
+    "main.html": "439b2852ea6f94aa01181166b67e1fafa4b15259310f2b14b1cda827d45140f3",
+    "parcours.html": "f9fd0880f6e6993d30f8d72e23e86d6138f470eb03956025e446e58a6ebe305d",
     "circuit.html": "6510fd6c7e7c473d80cd4b129d83a9d69b40e73cc7509e8a74e4d90a9ab8bbe3",
     "circuit-data.js": "f88a399eca0aca2040d7eca014abdb6e16aaa92d08458b4048de06ee99f2969b",
     "service-worker.js": "98fd60624ed6b183b739dc6ef7d2703b8c061155ec4b738102fab7c3b2157b43",
-    "instructions.html": "ec9f014fa717e8c7ff765a6fd9d90a6d1f191e40ed621fd40c21f980754f90c5"
+    "instructions.html": "006590a75acf62e739dc0c5264428c83db03fbf9f0e69052da18e93d3dbdafe5"
   }
 }

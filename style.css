@@ -1129,3 +1129,13 @@ body.no-scroll {
 #quiz-question-overlay .quiz-answer-btn { display: block !important; appearance: none !important; -webkit-appearance: none !important; flex: 0 0 auto !important; min-width: 0 !important; width: 100% !important; max-width: 100% !important; min-height: 0 !important; height: auto !important; max-height: none !important; margin: 0 !important; padding: 12px 14px !important; font-size: 0.95rem !important; line-height: 1.45 !important; text-align: left !important; white-space: normal !important; word-break: break-word !important; overflow-wrap: anywhere !important; overflow: visible !important; text-overflow: clip !important; -webkit-line-clamp: unset !important; line-clamp: unset !important; background: #b30000 !important; color: #fff !important; font-weight: bold !important; border: none !important; border-radius: 8px !important; cursor: pointer !important; font-family: 'MedievalSharp', Arial, serif !important; box-sizing: border-box !important; touch-action: manipulation !important; }
 #quiz-question-overlay .quiz-answer-btn__label { display: block !important; width: 100% !important; white-space: normal !important; word-break: break-word !important; overflow-wrap: anywhere !important; overflow: visible !important; text-overflow: clip !important; line-height: 1.45 !important; }
 #quiz-question-overlay .quiz-answer-btn:hover { background: #8f0000 !important; transform: scale(1.01); }
+
+#main-footer #emergency-btn {
+  background-color: #fff6bf;
+  border: 2px solid #d9a400;
+  color: #1a1a1a;
+}
+
+#main-footer #emergency-btn:hover {
+  background-color: #ffe866;
+}

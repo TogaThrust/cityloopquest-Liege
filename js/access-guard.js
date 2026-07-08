@@ -1,3 +1,4 @@
+try { if ((window.location.search || "").includes("dev=1")) sessionStorage.setItem("clq_dev_mode", "1"); } catch (_) {}
 /**
  * js/access-guard.js
  * Garde d'accès : bloque l'affichage des pages si aucun code d'activation valide (clq_short_code).
@@ -20,11 +21,26 @@
   }
 
   // Bypass pour tests locaux : localhost OU paramètre ?dev=1
-  const isLocalDev =
-    /^localhost$|^127\.0\.0\.1$|^\[::1\]$/.test(window.location.hostname) ||
-    window.location.search.includes('dev=1');
-  if (isLocalDev) {
-    return; // Ne pas bloquer - tests locaux uniquement
+  function isDevBypass() {
+    try {
+      if (window.clqDevMode && typeof window.clqDevMode.isActive === 'function') {
+        return window.clqDevMode.isActive();
+      }
+      const host = String(window.location.hostname || '').toLowerCase();
+      if (/^localhost$|^127\.0\.0\.1$|^\[::1\]$/.test(host)) return true;
+      const search = window.location.search || '';
+      if (search.includes('dev=1')) {
+        sessionStorage.setItem('clq_dev_mode', '1');
+        return true;
+      }
+      return sessionStorage.getItem('clq_dev_mode') === '1';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  if (isDevBypass()) {
+    return;
   }
 (function () {
   const SHORT_CODE_KEY = 'clq_short_code';

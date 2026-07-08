@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CityLoop Quest Liège - Secours</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="translations/translationManager.js"></script>
+  <script src="translations/languageSelector.js"></script>
+  <script src="js/clq-dev-mode.js"></script>
+  <script src="js/access-guard.js" defer></script>
+  <style>
+    body { font-family: sans-serif; padding: 16px; line-height: 1.5; }
+    h1, h2 { text-align: center; }
+    .top-nav { display: flex; gap: 10px; justify-content: center; flex-wrap: nowrap; margin: 0 auto 12px; max-width: 980px; overflow-x: auto; }
+    .top-nav button { padding: 8px 12px; width: clamp(120px, 28vw, 220px); flex: 0 0 clamp(120px, 28vw, 220px); text-align: center; }
+    .emergency-box { background: #fff6bf; border: 2px solid #d9a400; border-radius: 10px; padding: 12px; margin: 12px auto; max-width: 900px; }
+    .section { margin-top: 24px; }
+    .section-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .guard-box { background: #f8f9fb; border: 1px solid #cfd6e5; border-radius: 8px; padding: 10px; margin: 10px 0 12px; }
+    .guard-box-live { border-color: #c8102e; background: #fff8f8; }
+    .guard-loading { color: #666; font-style: italic; }
+    .facility { display: flex; align-items: flex-start; gap: 12px; margin: 12px 0; padding: 10px; border: 1px solid #ececec; border-radius: 8px; background: #fff; }
+    .facility-on-duty { background: #ffe8e8; border: 2px solid #c8102e; }
+    .on-duty-title { display: block; font-weight: 700; color: #a30d25; margin-bottom: 6px; font-size: 1.05em; }
+    .facility img { width: 100px; height: 70px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd; }
+    .facility-info { flex: 1; min-width: 220px; }
+    .meta { display: block; margin-top: 3px; }
+    .small-note { font-size: 0.9em; color: #444; margin-top: 4px; }
+    .web-link-btn {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: #14365c;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+    .back-top { margin-top: 6px; }
+    .back-button { display: block; margin: 30px auto 10px; }
+  </style>
+</head>
+<body id="top">
+  <header class="main-header">
+    <div class="header-content">
+      <img src="images/icone titre0.png" alt="Icone 0" class="header-img left">
+      <h1 id="mainTitle">CityLoop Quest Liège</h1>
+      <img src="images/icone titre1.png" alt="Icone 1" class="header-img right">
+    </div>
+  </header>
+
+  <h1 id="page-title">Secours sante</h1>
+  <p style="text-align:center" id="page-subtitle">Urgences, pharmacies et veterinaires</p>
+
+  <div class="top-nav">
+    <button type="button" onclick="scrollToSection('hospitals')" id="jump-hospitals">Hopitaux</button>
+    <button type="button" onclick="scrollToSection('pharmacies')" id="jump-pharmacies">Pharmacies</button>
+    <button type="button" onclick="scrollToSection('vets')" id="jump-vets">Veterinaires</button>
+  </div>
+
+  <div class="emergency-box" id="emergency-box"></div>
+
+  <section class="section" id="hospitals">
+    <div class="section-head">
+      <h2 id="section-h-title">Hopitaux</h2>
+      <button type="button" class="back-top" onclick="scrollToTop()" id="to-top-h">Retour en haut</button>
+    </div>
+    <div id="hospital-list"></div>
+  </section>
+
+  <section class="section" id="pharmacies">
+    <div class="section-head">
+      <h2 id="section-p-title">Pharmacies</h2>
+      <button type="button" class="back-top" onclick="scrollToTop()" id="to-top-p">Retour en haut</button>
+    </div>
+    <div class="guard-box" id="pharmacy-guard"></div>
+    <div id="pharmacy-list"></div>
+  </section>
+
+  <section class="section" id="vets">
+    <div class="section-head">
+      <h2 id="section-v-title">Veterinaires</h2>
+      <button type="button" class="back-top" onclick="scrollToTop()" id="to-top-v">Retour en haut</button>
+    </div>
+    <div class="guard-box" id="veterinary-guard"></div>
+    <div id="veterinary-list"></div>
+  </section>
+
+  <button class="back-button" id="back-button">RETOUR</button>
+  <script src="js/clq-city-config.js"></script>
+  <script>
+    let texts = {};
+    let emergencyData = null;
+    let currentCityRecord = null;
+    let userPosition = null;
+    let liveOnDuty = null;
+    let liveOnDutyLoading = false;
+
+    const CATEGORY_META = {
+      hospital: { listId: "hospital-list", image: "images/secours-hopital.svg" },
+      pharmacy: { listId: "pharmacy-list", image: "images/secours-pharmacie.svg" },
+      veterinary: { listId: "veterinary-list", image: "images/secours-veterinaire.svg" }
+    };
+
+    function langCode() {
+      let lang = (localStorage.getItem("selectedLanguage") || "fr").toLowerCase();
+      if (lang === "cn") lang = "zh";
+      if (lang === "jp") lang = "ja";
+      if (lang === "zh" && texts.cn) return "cn";
+      if (lang === "ja" && texts.jp) return "jp";
+      if (!texts[lang]) return "fr";
+      return lang;
+    }
+
+    function t(key, fallback) {
+      const lang = langCode();
+      return (texts[lang] && texts[lang][key]) || (texts.fr && texts.fr[key]) || fallback || "";
+    }
+
+    function localizedNote(value, fallbackKey, fallbackText) {
+      const lang = langCode();
+      if (value && typeof value === "object" && !Array.isArray(value)) {
+        return value[lang] || value.fr || fallbackText;
+      }
+      if (typeof value === "string" && value.trim()) {
+        if (lang === "fr") return value;
+        return t(fallbackKey, fallbackText);
+      }
+      return t(fallbackKey, fallbackText);
+    }
+
+    function parseDutyDate(value) {
+      if (!value) return null;
+      const d = new Date(value);
+      return Number.isFinite(d.getTime()) ? d : null;
+    }
+
+    function namesMatch(a, b) {
+      const left = normalizeSlug(a);
+      const right = normalizeSlug(b);
+      if (!left || !right) return false;
+      if (left === right) return true;
+      return left.includes(right) || right.includes(left);
+    }
+
+    function facilityCoreName(value) {
+      return normalizeSlug(value)
+        .replace(/^(pharmacie|pharmacy|apotheek|benu)-/, "")
+        .replace(/-+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    }
+
+    function namesMatchStrict(a, b) {
+      const left = facilityCoreName(a);
+      const right = facilityCoreName(b);
+      if (!left || !right) return false;
+      if (left === right) return true;
+      const shorter = left.length <= right.length ? left : right;
+      const longer = left.length > right.length ? left : right;
+      if (shorter.length < 8) return false;
+      return longer.includes(shorter);
+    }
+
+    function facilityMatchesLive(local, live) {
+      if (!local || !live) return false;
+      const localExt = String(local.externalId || "").trim();
+      const liveExt = String(live.externalId || "").trim();
+      if (localExt && liveExt && localExt === liveExt) return true;
+      if (namesMatchStrict(local.name, live.name)) return true;
+
+      const lat1 = Number(local.lat);
+      const lng1 = Number(local.lng);
+      const lat2 = Number(live.lat);
+      const lng2 = Number(live.lng);
+      if (Number.isFinite(lat1) && Number.isFinite(lng1) && Number.isFinite(lat2) && Number.isFinite(lng2)) {
+        const dist = distanceKm({ lat: lat1, lng: lng1 }, { lat: lat2, lng: lng2 });
+        if (dist < 0.08 && namesMatch(local.name, live.name)) return true;
+      }
+
+      const localAddress = normalizeSlug(local.address || "");
+      const liveAddress = normalizeSlug(live.address || "");
+      if (localAddress && liveAddress && localAddress.length > 14 && liveAddress.length > 14) {
+        if (localAddress === liveAddress) return true;
+        if (namesMatchStrict(localAddress, liveAddress)) return true;
+      }
+      return false;
+    }
+
+    function buildOnDutyView(category) {
+      const items = (currentCityRecord?.record?.facilities || []).filter((f) => f.category === category);
+      const liveItems = getLiveOnDutyItems(category);
+      const consumedLive = new Set();
+      const localOnDuty = [];
+
+      items.forEach((item, index) => {
+        const match = liveItems.find((live) => {
+          const key = liveItemKey(live);
+          return !consumedLive.has(key) && facilityMatchesLive(item, live);
+        });
+        if (match) {
+          consumedLive.add(liveItemKey(match));
+          localOnDuty.push({ item, index });
+        }
+      });
+
+      const liveOnly = liveItems.filter((live) => {
+        const key = liveItemKey(live);
+        if (consumedLive.has(key)) return false;
+        return !items.some((item) => facilityMatchesLive(item, live));
+      });
+
+      return { localOnDuty, liveOnly };
+    }
+
+    function displayedOnDutyNames(category) {
+      const view = buildOnDutyView(category);
+      const names = [
+        ...view.liveOnly.map((item) => item.name),
+        ...view.localOnDuty.map(({ item }) => item.name),
+      ];
+      const unique = [];
+      const seen = new Set();
+      names.forEach((name) => {
+        const key = normalizeSlug(name);
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        unique.push(name);
+      });
+      return unique;
+    }
+
+    function liveCategoryKey(category) {
+      if (category === "pharmacy") return "pharmacy";
+      if (category === "veterinary") return "veterinary";
+      return "";
+    }
+
+    function getLiveOnDutyItems(category) {
+      const key = liveCategoryKey(category);
+      if (!key || !liveOnDuty || !liveOnDuty[key]) return [];
+      return Array.isArray(liveOnDuty[key].items) ? liveOnDuty[key].items : [];
+    }
+
+    function getLiveOnDutyMeta(category) {
+      const key = liveCategoryKey(category);
+      if (!key || !liveOnDuty || !liveOnDuty[key]) return null;
+      return liveOnDuty[key];
+    }
+
+    function isWithinOnDutyWindow(fromValue, untilValue) {
+      const now = new Date();
+      const from = parseDutyDate(fromValue);
+      const until = parseDutyDate(untilValue);
+      if (from && now < from) return false;
+      if (until && now > until) return false;
+      return true;
+    }
+
+    function isFacilityOnDutyNow(item, category) {
+      if (!item) return false;
+      const view = buildOnDutyView(category);
+      if (view.localOnDuty.some(({ item: localItem }) => localItem === item || namesMatchStrict(localItem.name, item.name))) {
+        return true;
+      }
+      if (!currentCityRecord) return false;
+
+      const onDuty = currentCityRecord.record.onDuty || {};
+      const dutyKey = category === "pharmacy" ? "pharmacy" : category === "veterinary" ? "veterinary" : "";
+      if (!dutyKey) return false;
+
+      if (item.onDuty === true && isWithinOnDutyWindow(item.onDutyFrom, item.onDutyUntil)) {
+        return true;
+      }
+
+      const dutyName = String(onDuty[dutyKey] || "").trim();
+      if (!dutyName || !namesMatch(dutyName, item.name)) return false;
+      return isWithinOnDutyWindow(onDuty[`${dutyKey}From`], onDuty[`${dutyKey}Until`]);
+    }
+
+    function activeOnDutyFacilities(category) {
+      const items = (currentCityRecord?.record?.facilities || []).filter((f) => f.category === category);
+      return items.filter((item, index, all) => {
+        if (!isFacilityOnDutyNow(item, category)) return false;
+        return all.findIndex((other) => namesMatch(other.name, item.name)) === index;
+      });
+    }
+
+    function onDutyTitleForCategory(category) {
+      if (category === "pharmacy") return t("pharmacyOnDutyTitle", "Pharmacie de garde");
+      if (category === "veterinary") return t("veterinaryOnDutyTitle", "Veterinaire de garde");
+      return "";
+    }
+
+    function currentOnDutyLabel(category) {
+      const displayed = displayedOnDutyNames(category);
+      if (displayed.length) return displayed.join(", ");
+      const liveItems = getLiveOnDutyItems(category);
+      if (!liveItems.length) {
+        if (liveOnDutyLoading) return t("onDutyLoading", "recherche en cours...");
+        const meta = getLiveOnDutyMeta(category);
+        if (meta?.status === "fallback") return t("onDutyFallback", "consultez le service officiel ci-dessous");
+        return t("noOnDutyNow", "aucun etablissement de garde trouve pour le moment");
+      }
+      const active = activeOnDutyFacilities(category);
+      if (active.length) return active.map((item) => item.name).join(", ");
+      return t("noOnDutyNow", "aucun etablissement de garde trouve pour le moment");
+    }
+
+    function formatDutyWindow(item) {
+      const from = parseDutyDate(item?.onDutyFrom);
+      const until = parseDutyDate(item?.onDutyUntil);
+      if (!from && !until) return "";
+      const fmt = (d) => d.toLocaleString(langCode() === "fr" ? "fr-FR" : "en-GB", {
+        day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit"
+      });
+      if (from && until) return `${fmt(from)} → ${fmt(until)}`;
+      if (until) return `${t("onDutyUntilLabel", "jusqu'au")} ${fmt(until)}`;
+      return "";
+    }
+
+    function esc(v) {
+      return String(v || "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[ch]));
+    }
+
+    function liveItemKey(item) {
+      return `${normalizeSlug(item?.name || "")}|${normalizeSlug(item?.address || "")}`;
+    }
+
+    function liveFacilityRef(category, item) {
+      const externalId = String(item?.externalId || "").trim();
+      if (externalId) return `live:${category}:id-${externalId}`;
+      return `live:${category}:${liveItemKey(item)}`;
+    }
+
+    function resolveLiveFacility(category, key) {
+      const liveItems = getLiveOnDutyItems(category);
+      if (!key || !liveItems.length) return null;
+      if (key.startsWith("id-")) {
+        const externalId = key.slice(3);
+        return liveItems.find((live) => String(live.externalId || "") === externalId) || null;
+      }
+      if (/^\d+$/.test(key)) {
+        const index = Number(key);
+        if (Number.isFinite(index) && index >= 0 && liveItems[index]) return liveItems[index];
+      }
+      let matched = liveItems.find((live) => liveItemKey(live) === key);
+      if (matched) return matched;
+      matched = liveItems.find((live) => namesMatch(live.name, key) || normalizeSlug(live.name) === normalizeSlug(key));
+      return matched || null;
+    }
+
+    function parseFacilityRef(ref) {
+      const parts = String(ref || "").split(":");
+      return {
+        kind: parts[0] || "",
+        category: parts[1] || "",
+        key: parts.slice(2).join(":"),
+      };
+    }
+
+    function readCoordsFromCard(card) {
+      if (!card) return null;
+      const lat = Number(card.dataset.lat);
+      const lng = Number(card.dataset.lng);
+      if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+      const country = currentCityRecord?.record?.country || "";
+      if (isBelgiumCountryValue(country) && !isPlausibleBelgiumCoords(lat, lng)) return null;
+      return { lat, lng };
+    }
+
+    function renderFacilityCard(item, category, index, { highlightOnDuty = false, isLive = false } = {}) {
+      const dutyTitle = highlightOnDuty ? onDutyTitleForCategory(category) : "";
+      const dutyWindow = highlightOnDuty ? formatDutyWindow(item) : "";
+      const facilityRef = isLive ? liveFacilityRef(category, item) : `local:${category}:${index}`;
+      const itemLat = Number(item?.lat);
+      const itemLng = Number(item?.lng);
+      const coordAttrs = (Number.isFinite(itemLat) && Number.isFinite(itemLng))
+        ? ` data-lat="${itemLat}" data-lng="${itemLng}"`
+        : "";
+      return `
+        <div class="facility${highlightOnDuty ? " facility-on-duty" : ""}" data-category="${esc(category)}" data-facility-ref="${esc(facilityRef)}" data-on-duty="${highlightOnDuty ? "1" : "0"}"${coordAttrs}>
+          <img src="${CATEGORY_META[category].image}" alt="${esc(category)}"/>
+          <div class="facility-info">
+            ${dutyTitle ? `<span class="on-duty-title">${esc(dutyTitle)}</span>` : ""}
+            <strong>${esc(item.name || "")}</strong>
+            ${item.address ? `<span class="meta">${t("addressLabel", "Adresse :")} ${esc(item.address)}</span>` : ""}
+            ${item.phone ? `<span class="meta">${t("phoneLabel", "Tel :")} ${esc(item.phone)}</span>` : ""}
+            ${dutyWindow ? `<span class="meta small-note">${esc(dutyWindow)}</span>` : ""}
+            <span class="meta">${t("distanceLabel", "Distance :")} <span class="distance-value">${t("distancePending", "calcul...")}</span></span>
+            <span class="meta">${t("walkingLabel", "Temps a pied :")} <span class="walk-value">${t("distancePending", "calcul...")}</span></span>
+            ${item.sourceUrl ? `<div class="small-note"><a class="web-link-btn" href="${esc(item.sourceUrl)}" target="_blank" rel="noreferrer">${t("websiteLink", "Site web")}</a></div>` : ""}
+            <button type="button" class="facility-go-btn">${t("goButton", "Y aller ?")}</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function resolveFacilityByRef(ref) {
+      if (!ref || !currentCityRecord) return null;
+      const { kind, category, key } = parseFacilityRef(ref);
+      if (kind === "live") {
+        const matched = resolveLiveFacility(category, key);
+        return matched ? { item: matched, category, live: true } : null;
+      }
+      const index = Number(key);
+      const items = (currentCityRecord.record.facilities || []).filter((f) => f.category === category);
+      const item = items[index];
+      return item ? { item, category, live: false } : null;
+    }
+
+    function normalizeSlug(raw) {
+      return String(raw || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    }
+
+    function citySlugCandidates() {
+      const city = window.CLQ_CITY || {};
+      const values = [city.slug, city.name, "{{CITY_NAME}}", "{{CITY_SLUG}}"];
+      return values.map((v) => normalizeSlug(v)).filter(Boolean);
+    }
+
+    function resolveCityRecord(data) {
+      const candidates = citySlugCandidates();
+      for (const slug of candidates) {
+        const mapped = (data.cityAliases && data.cityAliases[slug]) || slug;
+        if (data.cities && data.cities[mapped]) return { slug: mapped, record: data.cities[mapped] };
+      }
+      return null;
+    }
+
+    function forceTargetStorageKey() {
+      const prefix = (window.CLQ_CITY && window.CLQ_CITY.storagePrefix) || "{{CITY_SLUG}}";
+      return prefix + "_forceTarget";
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function distanceKm(a, b) {
+      const toRad = (v) => (v * Math.PI) / 180;
+      const dLat = toRad(b.lat - a.lat);
+      const dLng = toRad(b.lng - a.lng);
+      const sa = Math.sin(dLat / 2) ** 2 +
+        Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLng / 2) ** 2;
+      return 6371 * (2 * Math.atan2(Math.sqrt(sa), Math.sqrt(1 - sa)));
+    }
+
+    function walkDurationLabel(km) {
+      const minutes = Math.max(1, Math.round((km / 4.5) * 60));
+      if (minutes < 60) return `${minutes} min`;
+      const h = Math.floor(minutes / 60);
+      const m = minutes % 60;
+      return m ? `${h} h ${m} min` : `${h} h`;
+    }
+
+    function isBelgiumCountryValue(country) {
+      const slug = normalizeSlug(country);
+      return slug === "be" || slug === "belgique" || slug === "belgium" || slug === "belgie";
+    }
+
+    function isPlausibleBelgiumCoords(lat, lng) {
+      return lat >= 49 && lat <= 51.8 && lng >= 2.4 && lng <= 6.5;
+    }
+
+    async function geocodeAddress(query) {
+      const q = String(query || "").trim();
+      if (!q) return null;
+      const country = currentCityRecord?.record?.country || "";
+      const belgium = isBelgiumCountryValue(country);
+
+      // api-adresse.data.gouv.fr = France uniquement ; ne pas l'utiliser en Belgique.
+      if (!belgium) {
+        try {
+          const url = `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(q)}&limit=1`;
+          const response = await fetch(url, { headers: { "Accept": "application/json" } });
+          if (response.ok) {
+            const data = await response.json();
+            const coords = data?.features?.[0]?.geometry?.coordinates;
+            if (Array.isArray(coords) && coords.length >= 2) {
+              const lng = Number(coords[0]);
+              const lat = Number(coords[1]);
+              if (Number.isFinite(lat) && Number.isFinite(lng)) return { lat, lng };
+            }
+          }
+        } catch (_) {}
+      }
+
+      const nominatimQuery = belgium && !/belg/i.test(q) ? `${q}, Belgique` : q;
+      try {
+        const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(nominatimQuery)}`;
+        const response = await fetch(url, { headers: { "Accept": "application/json" } });
+        if (!response.ok) return null;
+        const data = await response.json();
+        if (!Array.isArray(data) || !data[0]) return null;
+        const lat = Number(data[0].lat);
+        const lng = Number(data[0].lon);
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
+        return { lat, lng };
+      } catch (_) {
+        return null;
+      }
+    }
+
+    async function ensureCoords(item) {
+      const country = currentCityRecord?.record?.country || "";
+      const belgium = isBelgiumCountryValue(country);
+      const lat = Number(item.lat);
+      const lng = Number(item.lng);
+      if (Number.isFinite(lat) && Number.isFinite(lng)) {
+        if (!belgium || isPlausibleBelgiumCoords(lat, lng)) return { lat, lng };
+      }
+      const cityName = (currentCityRecord && currentCityRecord.record && currentCityRecord.record.city) || "{{CITY_NAME}}";
+      const cacheKey = `clq_emergency_geo_v2_${normalizeSlug(cityName)}_${normalizeSlug(item.name)}_${normalizeSlug(item.address || "")}`;
+      try {
+        const cached = JSON.parse(localStorage.getItem(cacheKey) || "null");
+        if (cached && Number.isFinite(cached.lat) && Number.isFinite(cached.lng)) {
+          if (!belgium || isPlausibleBelgiumCoords(cached.lat, cached.lng)) return cached;
+        }
+      } catch (_) {}
+      const candidate = [item.address, cityName].filter(Boolean).join(", ");
+      const coords = await geocodeAddress(candidate);
+      if (coords) localStorage.setItem(cacheKey, JSON.stringify(coords));
+      return coords;
+    }
+
+    async function updateDistanceLabels() {
+      if (!userPosition) return;
+      const cards = Array.from(document.querySelectorAll(".facility[data-facility-ref]"));
+      for (const card of cards) {
+        const ref = card.getAttribute("data-facility-ref");
+        let coords = readCoordsFromCard(card);
+        const resolved = ref ? resolveFacilityByRef(ref) : null;
+        const item = (resolved && resolved.item) || {};
+        try {
+          if (!coords) coords = await ensureCoords(item);
+          const distEl = card.querySelector(".distance-value");
+          const walkEl = card.querySelector(".walk-value");
+          if (!coords || !distEl || !walkEl) {
+            if (distEl) distEl.textContent = t("distanceUnknown", "indisponible");
+            if (walkEl) walkEl.textContent = t("distanceUnknown", "indisponible");
+            continue;
+          }
+          const km = distanceKm(userPosition, coords);
+          card.dataset.distanceKm = String(km);
+          card.dataset.lat = String(coords.lat);
+          card.dataset.lng = String(coords.lng);
+          distEl.textContent = `${km.toFixed(1)} km`;
+          walkEl.textContent = walkDurationLabel(km);
+        } catch (_) {
+          const distEl = card.querySelector(".distance-value");
+          const walkEl = card.querySelector(".walk-value");
+          if (distEl) distEl.textContent = t("distanceUnknown", "indisponible");
+          if (walkEl) walkEl.textContent = t("distanceUnknown", "indisponible");
+        }
+      }
+      ["hospital-list", "pharmacy-list", "veterinary-list"].forEach((listId) => {
+        const list = document.getElementById(listId);
+        if (!list) return;
+        const sorted = Array.from(list.querySelectorAll("[data-facility-ref]"))
+          .sort((a, b) => {
+            const dutyDiff = Number(b.dataset.onDuty || 0) - Number(a.dataset.onDuty || 0);
+            if (dutyDiff !== 0) return dutyDiff;
+            return Number(a.dataset.distanceKm || 999999) - Number(b.dataset.distanceKm || 999999);
+          });
+        sorted.forEach((card) => list.appendChild(card));
+      });
+    }
+
+    function showConfirmPopup(payload) {
+      if (document.getElementById("emergency-confirm-popup")) return;
+      const overlay = document.createElement("div");
+      overlay.id = "emergency-confirm-popup";
+      overlay.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,0.65);display:flex;align-items:center;justify-content:center;z-index:9999;";
+
+      const box = document.createElement("div");
+      box.style.cssText = "background:#fff;border-radius:14px;padding:20px;max-width:420px;width:90%;text-align:center;";
+      box.innerHTML = `<h3 style="margin-top:0">${t("popupTitle", "Confirmation")}</h3><p>${t("popupMessage", "Continuer ?")}</p>`;
+
+      const actions = document.createElement("div");
+      actions.style.cssText = "display:flex;gap:12px;justify-content:center;";
+      const yes = document.createElement("button");
+      const no = document.createElement("button");
+      yes.textContent = t("yes", "Oui");
+      no.textContent = t("no", "Non");
+      yes.style.cssText = "background:#1f9d55;color:#fff;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;min-width:120px;width:auto;display:inline-flex;justify-content:center;";
+      no.style.cssText = "background:#c8102e;color:#fff;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;min-width:120px;width:auto;display:inline-flex;justify-content:center;";
+      yes.onclick = () => {
+        localStorage.setItem(forceTargetStorageKey(), JSON.stringify(payload));
+        const target = (window.clqDevMode && window.clqDevMode.append)
+          ? window.clqDevMode.append("main.html")
+          : "main.html";
+        window.location.href = target;
+      };
+      no.onclick = () => overlay.remove();
+      actions.appendChild(yes);
+      actions.appendChild(no);
+      box.appendChild(actions);
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+    }
+
+    async function goToFacilityRef(ref, sourceCard) {
+      const card = sourceCard
+        || document.querySelector(`[data-facility-ref="${String(ref || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"')}"]`);
+      let coords = readCoordsFromCard(card);
+      const resolved = resolveFacilityByRef(ref);
+      if (!resolved && !coords) return;
+      const item = (resolved && resolved.item) || {};
+      if (!coords) coords = await ensureCoords(item);
+      if (!coords) {
+        alert("Coordonnees indisponibles pour ce lieu.");
+        return;
+      }
+      const category = (resolved && resolved.category) || card?.dataset?.category || "pharmacy";
+      const displayName = item.name || card?.querySelector("strong")?.textContent?.trim() || "Secours";
+      const targetLabelPrefix = category === "hospital"
+        ? `${t("sectionHospitals", "Hôpitaux")} :`
+        : category === "pharmacy"
+          ? `${t("sectionPharmacies", "Pharmacies")} :`
+          : `${t("sectionVeterinaries", "Vétérinaires")} :`;
+      showConfirmPopup({
+        targetType: "emergency",
+        emergencyCategory: category,
+        targetLabelPrefix,
+        name: displayName,
+        lat: coords.lat,
+        lng: coords.lng,
+        image: CATEGORY_META[category]?.image || CATEGORY_META.pharmacy.image,
+        info: [item.address, item.phone].filter(Boolean).join(" - ")
+      });
+    }
+
+    async function goToFacility(category, index) {
+      return goToFacilityRef(`local:${category}:${index}`);
+    }
+
+    function renderCategory(category) {
+      if (!currentCityRecord) return;
+      const target = document.getElementById(CATEGORY_META[category].listId);
+      if (!target) return;
+      const items = (currentCityRecord.record.facilities || []).filter((f) => f.category === category);
+      const view = buildOnDutyView(category);
+      const onDutyIndexes = new Set(view.localOnDuty.map(({ index }) => index));
+
+      if (!items.length && !view.liveOnly.length) {
+        target.innerHTML = `<p>${t("emptyCategory", "Aucun etablissement renseigne.")}</p>`;
+        return;
+      }
+
+      const onDutyItems = [];
+      const regularItems = [];
+      items.forEach((item, index) => {
+        if (onDutyIndexes.has(index)) onDutyItems.push({ item, index, live: false });
+        else regularItems.push({ item, index, live: false });
+      });
+
+      const html = [
+        ...view.liveOnly.map((item) => renderFacilityCard(item, category, null, { highlightOnDuty: true, isLive: true })),
+        ...onDutyItems.map(({ item, index }) => renderFacilityCard(item, category, index, { highlightOnDuty: true })),
+        ...regularItems.map(({ item, index }) => renderFacilityCard(item, category, index)),
+      ].join("");
+      target.innerHTML = html;
+    }
+
+    function renderGuardBox(category, elementId, guardNumberKey, guardNoteKey, guardDefaultNote, guardCurrentKey, guardNumberFallback) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const countrySlug = normalizeSlug(currentCityRecord.record.country);
+      const guard = emergencyData.guardInfoByCountry[countrySlug] || {};
+      const meta = getLiveOnDutyMeta(category);
+      const hotline = meta?.hotline || guardNumberFallback || "-";
+      const liveClass = liveOnDutyLoading || (meta && meta.items && meta.items.length) ? " guard-box-live" : "";
+      const fallbackLink = meta?.fallbackUrl
+        ? `<div class="small-note"><a class="web-link-btn" href="${esc(meta.fallbackUrl)}" target="_blank" rel="noreferrer">${t("officialOnDutyService", "Service officiel de garde")}</a></div>`
+        : "";
+      const liveNote = liveOnDutyLoading
+        ? `<span class="guard-loading">${t("onDutyLoading", "recherche en cours...")}</span>`
+        : (meta?.status === "ok" && meta?.items?.length)
+          ? `<span class="small-note">${t("onDutyLiveNote", "Mis a jour en direct a l'ouverture de la page.")}</span>`
+          : meta?.status === "fallback"
+            ? esc(t("onDutyFallback", guardDefaultNote))
+            : esc(meta?.message || localizedNote(guard[guardNoteKey], guardNoteKey, guardDefaultNote));
+      el.className = `guard-box${liveClass}`;
+      el.innerHTML = `
+        <strong>${t(guardNumberKey, guardNumberKey)} : ${esc(hotline)}</strong><br/>
+        ${liveNote}<br/>
+        <span class="small-note">${t(guardCurrentKey, guardCurrentKey)} : ${esc(currentOnDutyLabel(category))}</span>
+        ${fallbackLink}
+      `;
+    }
+
+    function renderUrgencyBoxes() {
+      if (!currentCityRecord || !emergencyData) return;
+      const countrySlug = normalizeSlug(currentCityRecord.record.country);
+      const emergency = emergencyData.emergencyByCountry[countrySlug] || {};
+      const guard = emergencyData.guardInfoByCountry[countrySlug] || {};
+
+      const emergencyBox = document.getElementById("emergency-box");
+      if (emergencyBox) {
+        emergencyBox.innerHTML = `
+          <strong>${t("priorityEmergencyNumber", "Numero d'urgence prioritaire")} : ${emergency.general || "112"}</strong><br/>
+          ${t("policeLabel", "Police")}: ${emergency.police || "-"} | ${t("firefightersLabel", "Pompiers")}: ${emergency.firefighters || "-"} | ${t("medicalLabel", "Medical")}: ${emergency.medical || "-"}<br/>
+          <span class="small-note">${t("distanceNote", emergencyData.meta.distanceNote || "Distances approximatives a vol d'oiseau ; temps de marche indicatif.")}</span>
+        `;
+      }
+
+      const pharm = document.getElementById("pharmacy-guard");
+      if (pharm) renderGuardBox(
+        "pharmacy",
+        "pharmacy-guard",
+        "pharmacyGuardNumber",
+        "pharmacyNote",
+        "Service officiel pharmacie de garde.",
+        "pharmacyGuardCurrent",
+        guard.pharmacyNumber || "3237"
+      );
+
+      const vet = document.getElementById("veterinary-guard");
+      if (vet) renderGuardBox(
+        "veterinary",
+        "veterinary-guard",
+        "veterinaryGuardNumber",
+        "veterinaryNote",
+        "Urgences veterinaires nationales.",
+        "veterinaryGuardCurrent",
+        guard.veterinaryNumber || "3115"
+      );
+    }
+
+    function buildOnDutyQuery() {
+      const params = new URLSearchParams();
+      if (userPosition) {
+        params.set("lat", String(userPosition.lat));
+        params.set("lng", String(userPosition.lng));
+      }
+      const record = currentCityRecord?.record || {};
+      if (record.country) params.set("country", record.country);
+      if (record.city) params.set("city", record.city);
+      const postal = (window.CLQ_CITY && window.CLQ_CITY.postalCode) || record.postalCode || "";
+      if (postal) params.set("postalCode", postal);
+      params.set("_", String(Date.now()));
+      return params;
+    }
+
+    async function fetchLiveOnDuty() {
+      if (!currentCityRecord) return null;
+      liveOnDutyLoading = true;
+      renderUrgencyBoxes();
+      const params = buildOnDutyQuery();
+      const endpoints = [`/.netlify/functions/emergency-on-duty?${params.toString()}`];
+      const host = String(location.hostname || "").toLowerCase();
+      if (host === "localhost" || host === "127.0.0.1") {
+        endpoints.push(`http://localhost:3847/api/emergency/on-duty?${params.toString()}`);
+      }
+      let payload = null;
+      for (const url of endpoints) {
+        try {
+          const response = await fetch(url, { cache: "no-store", headers: { "ngrok-skip-browser-warning": "true" } });
+          if (!response.ok) continue;
+          payload = await response.json();
+          if (payload && payload.ok !== false) break;
+        } catch (_) {}
+      }
+      liveOnDuty = payload;
+      liveOnDutyLoading = false;
+      return payload;
+    }
+
+    async function loadUserPosition() {
+      if (!navigator.geolocation) return null;
+      return new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+          () => resolve(null),
+          { enableHighAccuracy: true, timeout: 9000, maximumAge: 60000 }
+        );
+      });
+    }
+
+    async function loadTexts() {
+      try {
+        const stamp = Date.now();
+        const r = await fetch(`translations/translations_secours.json?v=${stamp}`, { cache: "no-store" });
+        texts = await r.json();
+      } catch (_) {
+        texts = { fr: {} };
+      }
+      document.getElementById("page-title").textContent = t("title", "Secours sante");
+      document.getElementById("page-subtitle").textContent = t("subtitle", "Urgences, pharmacies et veterinaires");
+      document.getElementById("jump-hospitals").textContent = t("jumpHospitals", "Hopitaux");
+      document.getElementById("jump-pharmacies").textContent = t("jumpPharmacies", "Pharmacies");
+      document.getElementById("jump-vets").textContent = t("jumpVets", "Veterinaires");
+      document.getElementById("section-h-title").textContent = t("sectionHospitals", "Hopitaux");
+      document.getElementById("section-p-title").textContent = t("sectionPharmacies", "Pharmacies");
+      document.getElementById("section-v-title").textContent = t("sectionVeterinaries", "Veterinaires");
+      document.getElementById("to-top-h").textContent = t("toTop", "Retour en haut");
+      document.getElementById("to-top-p").textContent = t("toTop", "Retour en haut");
+      document.getElementById("to-top-v").textContent = t("toTop", "Retour en haut");
+      document.getElementById("back-button").textContent = t("backButton", "RETOUR");
+    }
+
+    async function init() {
+      await loadTexts();
+      const cityName = (window.CLQ_CITY && window.CLQ_CITY.name) || "{{CITY_NAME}}";
+      const mainTitle = document.getElementById("mainTitle");
+      if (mainTitle) mainTitle.textContent = "CityLoop Quest Liège";
+
+      const stamp = Date.now();
+      const r = await fetch(`data/emergency_contacts.city.json?v=${stamp}`, { cache: "no-store" });
+      emergencyData = await r.json();
+      currentCityRecord = resolveCityRecord(emergencyData);
+
+      if (!currentCityRecord) {
+        document.getElementById("emergency-box").textContent = `Aucune donnee secours disponible pour ${cityName}.`;
+        return;
+      }
+
+      renderUrgencyBoxes();
+      renderCategory("hospital");
+
+      userPosition = await loadUserPosition();
+      await fetchLiveOnDuty();
+      renderUrgencyBoxes();
+      renderCategory("pharmacy");
+      renderCategory("veterinary");
+      await updateDistanceLabels();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      init().catch((err) => {
+        console.error("Erreur page secours:", err);
+      });
+      if (window.languageSelector) {
+        window.languageSelector.createSelector();
+        window.languageSelector.updateSelectorValue?.();
+      }
+      document.addEventListener("languageChanged", () => init().catch(() => {}));
+      document.addEventListener("click", (event) => {
+        const btn = event.target.closest(".facility-go-btn");
+        if (!btn) return;
+        const card = btn.closest(".facility[data-facility-ref]");
+        if (!card) return;
+        goToFacilityRef(card.getAttribute("data-facility-ref"), card);
+      });
+      const backButton = document.getElementById("back-button");
+      if (backButton) backButton.addEventListener("click", () => {
+        const target = (window.clqDevMode && window.clqDevMode.append)
+          ? window.clqDevMode.append("main.html")
+          : "main.html";
+        window.location.href = target;
+      });
+    });
+
+    window.goToFacility = goToFacility;
+    window.goToFacilityRef = goToFacilityRef;
+    window.scrollToSection = scrollToSection;
+    window.scrollToTop = scrollToTop;
+  </script>
+</body>
+</html>

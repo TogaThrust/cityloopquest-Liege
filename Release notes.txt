@@ -1,4 +1,48 @@
 CityLoop Quest Liège - Release notes
+Version 26.07.07
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+
+CityLoop Quest Liège - Release notes
+Version 26.07.07
+----------------------------------------
+- Secours : coords GPS corrigées (hôpitaux, pharmacies, vétérinaires).
+- Secours : 27 pharmacies retirées (doublons / fermées / hors périmètre).
+
+CityLoop Quest Liège - Release notes
+Version 26.07.06
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated main tour app logic.
+
+CityLoop Quest Liège - Release notes
+Version 26.07.05
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated main tour app logic.
+
+CityLoop Quest Liège - Release notes
+Version 26.07.04
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated main tour app logic.
+- Updated instructions and help page.
+- Updated main tour page.
+- Updated tour selection page.
+
+CityLoop Quest Liège - Release notes
+Version 26.07.03
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+
+CityLoop Quest Liège - Release notes
+Version 26.07.02
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated main tour app logic.
+- Updated main tour page.
+
+CityLoop Quest Liège - Release notes
 Version 26.07.01
 ----------------------------------------
 - Factory regeneration for Liège.

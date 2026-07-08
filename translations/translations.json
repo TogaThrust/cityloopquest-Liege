@@ -1793,7 +1793,11 @@
     "checkout_api_unreachable": "APIに到達できません：<meta name='api-base'> のngrok URLを確認してください。",
     "checkout_module_not_loaded": "決済モジュールが読み込まれませんでした。ページを更新してください。",
     "checkout_module_not_loaded_refresh": "決済モジュールが読み込まれませんでした。ページを更新してください (Ctrl/Cmd + F5)。",
-    "checkout_cancelled_message": "お支払いはキャンセルされました。請求はありません。再度お試しいただくか、認証コードを入力してください。"
+    "checkout_cancelled_message": "お支払いはキャンセルされました。請求はありません。再度お試しいただくか、認証コードを入力してください。",
+    "quiz_resume_confirm_title": "クイズを再開しますか？",
+    "quiz_resume_confirm_message": "この地点からクイズを再開しますか？この場所以降の地点で問題が出題されます。",
+    "quiz_stop_confirm_title": "クイズを停止しますか？",
+    "quiz_stop_confirm_message": "今すぐクイズを停止しますか？"
   },
   "ja": {
     "victory_message": "お見事です。広場、階段、河岸、博物館、そして各地区を巡り、あなたは今まさにリエージュを横断しました。どうぞ少しだけ元気を残しておいてください。ワッフル、ブーレット・フリット、それともムーズ川への最後のひと目――それも、この旅の自然な締めくくりの一部です。",
@@ -1815,6 +1819,10 @@
     "medium_circuit": "中线<br>6.3 km · 1h40 步行 · 3h30 总计",
     "short_circuit": "短线<br>3.6 km · 58 min 步行 · 1h53 总计",
     "circuit_walk_label": "步行",
-    "circuit_total_label": "总计"
+    "circuit_total_label": "总计",
+    "quiz_resume_confirm_title": "继续测验？",
+    "quiz_resume_confirm_message": "你想从这一点继续测验吗？将为此地点及后续地点提供问题。",
+    "quiz_stop_confirm_title": "停止测验？",
+    "quiz_stop_confirm_message": "你现在要停止测验吗？"
   }
 }

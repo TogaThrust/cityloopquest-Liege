@@ -42,6 +42,8 @@
   <script src="js/access-control.js"></script>
 
   <!-- Garde d'accès : bloque l'accès si aucun code d'activation valide (clq_short_code) -->
+  <script src="js/clq-dev-mode.js"></script>
+
   <script src="js/access-guard.js" defer></script>
 
   <!-- Gestion de la langue depuis l'URL (activation, retour de checkout, etc.) -->
@@ -476,6 +478,7 @@
       // Si on vient d'une activation (activated=1), vérifier la langue depuis l'URL
       const isActivated = urlParams.get('activated') === '1';
       const urlLang = urlParams.get('lang');
+      const isFromCheckout = urlParams.get('from') === 'checkout';
       
       // Si on vient d'une activation avec une langue dans l'URL, on ne redirige pas
       if (isActivated && urlLang) {
@@ -1092,9 +1095,7 @@
 
   <!-- 0CRAN D'AVERTISSEMENT INTERM0DIAIRE -->
   <div id="warning-screen">
-    <button id="warning-continue-btn" onclick="continueToSplash()">
-      <span id="warning-text" data-translate="warning_button_text">Certaines plateformes n'acceptent pas l'installation en tant que app. Si tel est le cas, vous pouvez utiliser le système en tant que page web. Le choix vous est donné dans l'écran suivant.<br><br><strong>Pour continuer, cliquez ici.</strong></span>
-    </button>
+    <div id="warning-text" data-translate="warning_button_text">Certaines plateformes n'acceptent pas l'installation en tant que app. Si tel est le cas, vous pouvez utiliser le système en tant que page web. Le choix vous est donné dans l'écran suivant.<br><br><strong>Pour continuer, cliquez ici.</strong></div>
   </div>
 
   <!-- Bouton d'installation PWA -->

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="Pharmacie">
+  <rect width="320" height="200" fill="#f4fbf7"/>
+  <rect x="65" y="38" width="190" height="130" rx="10" fill="#ffffff" stroke="#cfe5d8" stroke-width="3"/>
+  <rect x="85" y="58" width="150" height="30" rx="6" fill="#1f9d55"/>
+  <text x="160" y="79" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">PHARMACIE</text>
+  <rect x="145" y="95" width="30" height="55" fill="#1f9d55"/>
+  <rect x="132" y="108" width="56" height="30" fill="#1f9d55"/>
+  <rect x="96" y="102" width="20" height="48" fill="#e8f5ee"/>
+  <rect x="204" y="102" width="20" height="48" fill="#e8f5ee"/>
+</svg>
