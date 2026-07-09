@@ -1095,7 +1095,7 @@
 
   <!-- 0CRAN D'AVERTISSEMENT INTERM0DIAIRE -->
   <div id="warning-screen">
-    <div id="warning-text" data-translate="warning_button_text">Certaines plateformes n'acceptent pas l'installation en tant que app. Si tel est le cas, vous pouvez utiliser le système en tant que page web. Le choix vous est donné dans l'écran suivant.<br><br><strong>Pour continuer, cliquez ici.</strong></div>
+    <div id="warning-text" data-translate="warning_button_text">Certaines plateformes n'acceptent pas l'installation en tant que app. Si tel est le cas, vous pouvez utiliser le système en tant que page web.</div>
   </div>
 
   <!-- Bouton d'installation PWA -->
@@ -1244,7 +1244,7 @@
         const warningText = document.getElementById('warning-text');
         if (warningText) {
           warningText.setAttribute('data-translate', 'warning_button_text_installed');
-          warningText.innerHTML = 'L\'application est déjà installée sur cet appareil.<br><br><strong>Pour continuer, cliquez ici.</strong>';
+          warningText.innerHTML = 'L\'application est déjà installée sur cet appareil.';
         }
         
         // Modifier le bouton d'installation
