@@ -136,7 +136,7 @@
     "circuit_default": "Parcours de CityLoop Quest Liège",
     "continue_title": "Continuer",
     "have_code_button": "J'AI UNE IDENTIFICATION CLIENT RECUE PAR MAIL APRES PAIEMENT (Pas un code promo)",
-    "buy_full_button": "Acheter une licence de 7 jours",
+    "buy_full_button": "Acheter une licence valable 7 jours",
     "buy_lite_button": "Acheter version Lite",
     "activation_info_notice": "Un code d'activation va vous parvenir par mail, conservez-le pendant la période de validité, il vous permettra d'activer l'application non installée (page web) pendant la période de validité. Si vous utilisez l'application installée, celle-ci est automatiquement activée pour la période de validité.",
     "promo_code_payment_notice": "SI VOUS AVEZ UN CODE PROMO, VOUS DEVREZ LE RENTRER DANS LA PAGE DES PAIEMENTS QUI SUIT",
@@ -319,7 +319,7 @@
     "circuit_default": "Tour of CityLoop Quest Liège",
     "continue_title": "Continue",
     "have_code_button": "I HAVE A CLIENT ID RECEIVED BY EMAIL AFTER PAYMENT (Not a promo code)",
-    "buy_full_button": "Buy a 7-day license",
+    "buy_full_button": "Buy a license valid for 7 days",
     "buy_lite_button": "Buy Lite version",
     "activation_info_notice": "An activation code will be sent to you by email. Keep it during its validity period: it will allow you to activate the non-installed version of the app (web page) during that period. If you use the installed app, it is automatically activated for the same validity period.",
     "promo_code_payment_notice": "IF YOU HAVE A PROMO CODE, YOU MUST ENTER IT ON THE PAYMENT PAGE THAT FOLLOWS",
@@ -502,7 +502,7 @@
     "circuit_default": "Route van CityLoop Quest Liège",
     "continue_title": "Doorgaan",
     "have_code_button": "IK HEB EEN KLANTIDENTIFICATIE VIA E-MAIL ONTVANGEN NA BETALING (Geen promotiecode)",
-    "buy_full_button": "Koop een licentie van 7 dagen",
+    "buy_full_button": "Koop een licentie geldig voor 7 dagen",
     "buy_lite_button": "Koop Lite versie",
     "activation_info_notice": "U ontvangt een activeringscode per e-mail. Bewaar deze gedurende de geldigheidsperiode: hiermee kunt u de niet-geïnstalleerde versie van de app (webpagina) activeren zolang de code geldig is. Als u de geïnstalleerde app gebruikt, wordt deze automatisch geactiveerd voor de geldigheidsperiode.",
     "promo_code_payment_notice": "ALS U EEN PROMOCODE HEBT, MOET U DEZE INVULLEN OP DE BETALINGSPAGINA DIE VOLGT",
@@ -860,7 +860,7 @@
     "circuit_default": "Percorso di CityLoop Quest Liège",
     "continue_title": "Continua",
     "have_code_button": "HO UN'IDENTIFICAZIONE CLIENT RICEVUTA VIA E-MAIL DOPO IL PAGAMENTO (Non è un codice promo)",
-    "buy_full_button": "Acquista una licenza di 7 giorni",
+    "buy_full_button": "Acquista una licenza valida per 7 giorni",
     "buy_lite_button": "Acquista versione Lite",
     "activation_info_notice": "Un codice di attivazione ti verrà inviato via e-mail. Conservalo per tutto il periodo di validità: ti permetterà di attivare la versione non installata dell'app (pagina web) durante questo periodo. Se utilizzi l'app installata, questa viene automaticamente attivata per l'intero periodo di validità.",
     "promo_code_payment_notice": "SE HAI UN CODICE PROMO, DEVI INSERIRLO NELLA PAGINA DI PAGAMENTO CHE SEGUE",
@@ -1039,7 +1039,7 @@
     "circuit_default": "Recorrido de CityLoop Quest Liège",
     "continue_title": "Continuar",
     "have_code_button": "TENGO UNA IDENTIFICACIÓN DE CLIENTE RECIBIDA POR CORREO TRAS EL PAGO (No es un código promocional)",
-    "buy_full_button": "Comprar una licencia de 7 días",
+    "buy_full_button": "Comprar una licencia válida por 7 días",
     "buy_lite_button": "Comprar versión Lite",
     "activation_info_notice": "Recibirás un código de activación por correo electrónico. Consérvalo durante todo el período de validez: te permitirá activar la versión no instalada de la aplicación (página web) durante dicho período. Si utilizas la aplicación instalada, ésta se activa automáticamente durante el período de validez.",
     "promo_code_payment_notice": "SI TIENE UN CÓDIGO PROMOCIONAL, DEBE INTRODUCIRLO EN LA PÁGINA DE PAGO QUE SIGUE",
@@ -1218,7 +1218,7 @@
     "circuit_default": "Trasa CityLoop Quest Liège",
     "continue_title": "Kontynuuj",
     "have_code_button": "MAM IDENTYFIKACJĘ KLIENTA OTRZYMANĄ E-MAILEM PO ZAPŁACIE (To nie kod promocyjny)",
-    "buy_full_button": "Kup licencję na 7 dni",
+    "buy_full_button": "Kup licencję ważną przez 7 dni",
     "buy_lite_button": "Kup wersję Lite",
     "activation_info_notice": "Kod aktywacyjny zostanie wysłany do Ciebie mailem. Zachowaj go przez cały okres ważności – pozwoli Ci on aktywować nieinstalowaną wersję aplikacji (stronę internetową) w tym czasie. Jeśli korzystasz z zainstalowanej aplikacji, jest ona automatycznie aktywowana na okres ważności.",
     "promo_code_payment_notice": "JEŚLI MASZ KOD PROMOCYJNY, MUSISZ WPISAĆ GO NA KOLEJNEJ STRONIE PŁATNOŚCI",
@@ -1398,7 +1398,7 @@
     "circuit_default": "مسار CityLoop Quest Liège",
     "continue_title": "متابعة",
     "have_code_button": "لديّ تعريف عميل وصلني بالبريد الإلكتروني بعد الدفع (وليس رمزًا ترويجيًا)",
-    "buy_full_button": "شراء ترخيص لمدة 7 أيام",
+    "buy_full_button": "شراء ترخيص صالح لمدة 7 أيام",
     "buy_lite_button": "شراء النسخة المختصرة",
     "activation_info_notice": "سيصلك رمز تفعيل عبر البريد الإلكتروني. احتفظ به طوال فترة صلاحيته، إذ سيسمح لك بتفعيل التطبيق غير المُثبَّت (صفحة الويب) خلال هذه الفترة. إذا استخدمت التطبيق المُثبَّت، فسيتم تفعيله تلقائيًا طوال فترة الصلاحية.",
     "promo_code_payment_notice": "إذا كان لديك رمز ترويجي، يجب إدخاله في صفحة الدفع التالية",
@@ -1812,7 +1812,8 @@
     "medium_circuit": "ミドルコース<br>6.3 km · 1h40 徒歩 · 3h30 合計",
     "short_circuit": "ショートコース<br>3.6 km · 58 min 徒歩 · 1h53 合計",
     "circuit_walk_label": "徒歩",
-    "circuit_total_label": "合計"
+    "circuit_total_label": "合計",
+    "buy_full_button": "7日間有効なライセンスを購入"
   },
   "zh": {
     "grand_circuit": "长线<br>9.4 km · 2h28 步行 · 4h43 总计",
@@ -1823,6 +1824,7 @@
     "quiz_resume_confirm_title": "继续测验？",
     "quiz_resume_confirm_message": "你想从这一点继续测验吗？将为此地点及后续地点提供问题。",
     "quiz_stop_confirm_title": "停止测验？",
-    "quiz_stop_confirm_message": "你现在要停止测验吗？"
+    "quiz_stop_confirm_message": "你现在要停止测验吗？",
+    "buy_full_button": "购买有效期 7 天的许可证"
   }
 }

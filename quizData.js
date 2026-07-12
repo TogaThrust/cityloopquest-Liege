@@ -1,443 +1,443 @@
 window.quizData = {
   "Place Saint-Lambert et Archéoforum": [
     {
-      question: "Quel élément est particulièrement associé à Place Saint-Lambert et Archéoforum ?",
-      options: ["La Violette","374 marches","cathédrale Notre-Dame-et-Saint-Lambert"],
-      answer: 2
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de vestiges gallo-romains","Le replacer dans l'histoire de cour Renaissance","Le replacer dans l'histoire de Charles le Téméraire"],
-      answer: 1
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Place Saint-Lambert et Archéoforum ?",
-      options: ["Les liens visibles avec place Saint-Lambert","Les liens visibles avec place du Marché","Les liens visibles avec archéologie sous la place"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Place Saint-Lambert et Archéoforum » ?",
+      options: ["Lambert et Archéoforum","Une forteresse qui domine la ville","Un ensemble baroque du centre-ville"],
       answer: 0
+    },
+    {
+      question: "Quel rôle joue « Place Saint-Lambert et Archéoforum » à Liège selon l'audioguide ?",
+      options: ["Un musée archéologique de référence","Un équipement culturel ouvert au public","Le grand marché alimentaire du centre"],
+      answer: 0
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Place Saint-Lambert et Archéoforum » ?",
+      options: ["Un site militaire reconverti","Un amphithéâtre antique restauré","Lambert et Archéoforum"],
+      answer: 2
     }
   ],
   "Palais des Princes-Évêques": [
     {
-      question: "Quel élément est particulièrement associé à Palais des Princes-Évêques ?",
-      options: ["Meuse","galerie couverte","La Violette"],
-      answer: 2
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de Jean Hans","Le replacer dans l'histoire de impasses","Le replacer dans l'histoire de Renier de Huy"],
+      question: "À quelle époque l'audioguide situe-t-il « Palais des Princes-Évêques » ?",
+      options: ["XVIe siècle","Renaissance du XVIe siècle","Époque wisigothique"],
       answer: 0
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Palais des Princes-Évêques ?",
-      options: ["Les liens visibles avec place Saint-Lambert","Les liens visibles avec 1718","Les liens visibles avec patrimoine civil"],
-      answer: 0
+      question: "Quel rôle joue « Palais des Princes-Évêques » à Liège selon l'audioguide ?",
+      options: ["Un musée archéologique de référence","Un repère emblématique du front de mer","Un couvent reconverti en musée"],
+      answer: 1
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Palais des Princes-Évêques » ?",
+      options: ["Un jardin public historique","Évêques","Un vestige antique mis en scène"],
+      answer: 1
     }
   ],
   "Perron et place du Marché": [
     {
-      question: "Quel élément est particulièrement associé à Perron et place du Marché ?",
-      options: ["374 marches","terrasses","ancienne collégiale"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Perron et place du Marché » ?",
+      options: ["Perron et place du Marché","la Collégiale Saint-Barthélemy","Une niche avec statue de saint"],
       answer: 0
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de Charles le Téméraire","Le replacer dans l'histoire de citadelle","Le replacer dans l'histoire de jardins"],
+      question: "Quel rôle joue « Perron et place du Marché » à Liège selon l'audioguide ?",
+      options: ["C’est l’un des grands symboles des libertés liégeoises","Un repère emblématique du front de mer","Un repère du centre historique"],
       answer: 0
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Perron et place du Marché ?",
-      options: ["Les liens visibles avec coteaux","Les liens visibles avec XIIe siècle","Les liens visibles avec Week-end des Coteaux"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Perron et place du Marché » ?",
+      options: ["Perron et place du Marché","Un détail architectural du centre historique","Un campanile ou clocheton visible"],
       answer: 0
     }
   ],
   "Hôtel de Ville — La Violette": [
     {
-      question: "Quel élément est particulièrement associé à Hôtel de Ville — La Violette ?",
-      options: ["Outremeuse","Santiago Calatrava","La Violette"],
-      answer: 2
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Hôtel de Ville — La Violette » ?",
+      options: ["La Violette","Un fronton triangulaire décoré","Un élément décoratif de la façade"],
+      answer: 0
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de quais","Le replacer dans l'histoire de Renier de Huy","Le replacer dans l'histoire de collections liégeoises"],
+      question: "À quelle époque l'audioguide situe-t-il « Hôtel de Ville — La Violette » ?",
+      options: ["Inauguration en 2002","XVIIIe siècle","Première moitié du XIXe siècle"],
       answer: 1
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Hôtel de Ville — La Violette ?",
-      options: ["Les liens visibles avec XIIe siècle","Les liens visibles avec Féronstrée","Les liens visibles avec commerce élégant"],
-      answer: 0
+      question: "Quel rôle joue « Hôtel de Ville — La Violette » à Liège selon l'audioguide ?",
+      options: ["Un fronton de façade remarquable","Un pont emblématique du centre","Une façade claire, régulière, presque tranquille"],
+      answer: 2
     }
   ],
   "Rue Hors-Château": [
     {
-      question: "Quel élément est particulièrement associé à Rue Hors-Château ?",
-      options: ["Meuse","île de la Boverie","quartier de sorties"],
+      question: "À quelle époque l'audioguide situe-t-il « Rue Hors-Château » ?",
+      options: ["Époque des Templiers","XVIIe et XVIIIe siècles","XVIe et XVIIe siècles"],
+      answer: 1
+    },
+    {
+      question: "Quel rôle joue « Rue Hors-Château » à Liège selon l'audioguide ?",
+      options: ["Une forteresse qui domine la ville","Un lieu de mémoire du quartier","Un espace public de représentation"],
       answer: 0
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de quais","Le replacer dans l'histoire de fondation médiévale","Le replacer dans l'histoire de André-Modeste Grétry"],
-      answer: 0
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Rue Hors-Château ?",
-      options: ["Les liens visibles avec commerce","Les liens visibles avec centre commerçant","Les liens visibles avec patrimoine civil"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Rue Hors-Château » ?",
+      options: ["Une verrière ou lanterne au sommet","la Montagne de Bueren","Château"],
       answer: 2
     }
   ],
   "Montagne de Bueren": [
     {
-      question: "Quel élément est particulièrement associé à Montagne de Bueren ?",
-      options: ["théâtre royal","anciens bains de la Sauvenière","galerie couverte"],
-      answer: 2
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de XIXe siècle","Le replacer dans l'histoire de rues étroites","Le replacer dans l'histoire de citadelle"],
-      answer: 2
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Montagne de Bueren ?",
-      options: ["Les liens visibles avec Place de l'Opéra","Les liens visibles avec commerce élégant","Les liens visibles avec vie nocturne"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Montagne de Bueren » ?",
+      options: ["Une fontaine de place voisine","Montagne de Bueren","Un balcon en fer forgé remarquable"],
       answer: 1
+    },
+    {
+      question: "À quelle époque l'audioguide situe-t-il « Montagne de Bueren » ?",
+      options: ["Seconde moitié du XVIIIe siècle","Construction 1750-1763","XIXe siècle"],
+      answer: 2
+    },
+    {
+      question: "Quel rôle joue « Montagne de Bueren » à Liège selon l'audioguide ?",
+      options: ["Un repère culturel du centre-ville","Un point de vue sur la ville basse","Une forteresse qui domine la ville"],
+      answer: 2
     }
   ],
   "Coteaux de la Citadelle": [
     {
-      question: "Quel élément est particulièrement associé à Coteaux de la Citadelle ?",
-      options: ["Université","marché du dimanche","terrasses"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Coteaux de la Citadelle » ?",
+      options: ["Une frise sculptée au-dessus du portail","Coteaux de la Citadelle","Un arc de pierre du centre historique"],
+      answer: 1
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Coteaux de la Citadelle » ?",
+      options: ["Une tour de guet adjacente","Coteaux de la Citadelle","Une galerie couverte du centre"],
+      answer: 1
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Coteaux de la Citadelle » ?",
+      options: ["la Place Saint-Lambert","Un motif ornamental du bâtiment","Coteaux de la Citadelle"],
       answer: 2
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de André-Modeste Grétry","Le replacer dans l'histoire de cathédrale après 1801","Le replacer dans l'histoire de Bauhaus"],
-      answer: 0
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Coteaux de la Citadelle ?",
-      options: ["Les liens visibles avec Place de l'Opéra","Les liens visibles avec citoyenneté","Les liens visibles avec île de Liège"],
-      answer: 0
     }
   ],
   "Collégiale Saint-Barthélemy": [
     {
-      question: "Quel élément est particulièrement associé à Collégiale Saint-Barthélemy ?",
-      options: ["gothique flamboyant","ancienne collégiale","ancien bras de Meuse"],
-      answer: 1
+      question: "À quelle époque l'audioguide situe-t-il « Collégiale Saint-Barthélemy » ?",
+      options: ["Saint-Barthélemy est fondée au début du XIe siècle","Construction en 1692","Années 1960"],
+      answer: 0
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de 1817","Le replacer dans l'histoire de cathédrale après 1801","Le replacer dans l'histoire de ancienne abbaye"],
-      answer: 1
+      question: "Quel rôle joue « Collégiale Saint-Barthélemy » à Liège selon l'audioguide ?",
+      options: ["Un équipement patrimonial municipal","Un repère patrimonial leej","Un repère emblématique du front de mer"],
+      answer: 2
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Collégiale Saint-Barthélemy ?",
-      options: ["Les liens visibles avec gothique","Les liens visibles avec XIIe siècle","Les liens visibles avec place du XX Août"],
-      answer: 1
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Collégiale Saint-Barthélemy » ?",
+      options: ["Barthélemy","Un linteau sculpté au-dessus de la porte","Une arcature du rez-de-chaussée"],
+      answer: 0
     }
   ],
   "Grand Curtius": [
     {
-      question: "Quel élément est particulièrement associé à Grand Curtius ?",
-      options: ["Outremeuse","Exposition universelle de 1905","Beaux-Arts"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Grand Curtius » ?",
+      options: ["Grand Curtius","l'Archeoforum","la Grand Curtius"],
       answer: 0
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de Tchantchès","Le replacer dans l'histoire de collections liégeoises","Le replacer dans l'histoire de plus ancien marché de Belgique"],
-      answer: 1
+      question: "Quel rôle joue « Grand Curtius » à Liège selon l'audioguide ?",
+      options: ["Le musée aide à lire Liège autrement.","Un repère patrimonial xxbg","Un repère patrimonial yxbg"],
+      answer: 0
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Grand Curtius ?",
-      options: ["Les liens visibles avec voûtes","Les liens visibles avec quais de Meuse","Les liens visibles avec île de Liège"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Grand Curtius » ?",
+      options: ["Un pan de mur en pierre de taille","Un muret en pierre locale","Grand Curtius"],
       answer: 2
     }
   ],
   "Quai de Maestricht et bord de Meuse": [
     {
-      question: "Quel élément est particulièrement associé à Quai de Maestricht et bord de Meuse ?",
-      options: ["passerelle cyclo-piétonne","Un autre aspect du patrimoine de Liège (Quai de Maestricht et bord de Meuse)","Meuse"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Quai de Maestricht et bord de Meuse » ?",
+      options: ["Une cour intérieure pavée","Un perron monumental en pierre","Quai de Maestricht et bord de Meuse"],
       answer: 2
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de 2009","Le replacer dans l'histoire de parc urbain","Le replacer dans l'histoire de ancienne abbaye"],
-      answer: 2
+      question: "À quelle époque l'audioguide situe-t-il « Quai de Maestricht et bord de Meuse » ?",
+      options: ["Siècle des Lumières","XIXe siècle","Vers 1248"],
+      answer: 1
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Quai de Maestricht et bord de Meuse ?",
-      options: ["Les liens visibles avec voûtes","Les liens visibles avec Trinkhall Museum","Les liens visibles avec Meuse et dérivation"],
-      answer: 0
+      question: "Quel rôle joue « Quai de Maestricht et bord de Meuse » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial uard","Un repère patrimonial vard","Un repère emblématique du front de mer"],
+      answer: 2
     }
   ],
   "Collégiale Saint-Denis": [
     {
-      question: "Quel élément est particulièrement associé à Collégiale Saint-Denis ?",
-      options: ["Un autre aspect du patrimoine de Liège (Collégiale Saint-Denis)","Santiago Calatrava","Un indice plausible lié à un autre lieu de Liège"],
-      answer: 1
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de allégories","Le replacer dans l'histoire de 2009","Le replacer dans l'histoire de Guillemins"],
-      answer: 1
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Collégiale Saint-Denis ?",
-      options: ["Les liens visibles avec centre commerçant","Les liens visibles avec verre et acier","Les liens visibles avec Meuse"],
+      question: "À quelle époque l'audioguide situe-t-il « Collégiale Saint-Denis » ?",
+      options: ["La tradition place sa fondation à la fin du Xe siècle","Période romaine tardive","XVIIIe siècle"],
       answer: 0
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Collégiale Saint-Denis » ?",
+      options: ["Un portail en pierre travaillée","Un détail patrimonial pdbp","Denis"],
+      answer: 2
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Collégiale Saint-Denis » ?",
+      options: ["Un détail patrimonial jftq","Denis","Un détail patrimonial kftq"],
+      answer: 1
     }
   ],
   "Passage Lemonnier": [
     {
-      question: "Quel élément est particulièrement associé à Passage Lemonnier ?",
-      options: ["Un autre aspect du patrimoine de Liège (Passage Lemonnier)","île de la Boverie","Une lecture différente du patrimoine de Liège"],
-      answer: 1
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de parc paysager","Le replacer dans l'histoire de Exposition de 1905","Le replacer dans l'histoire de XIXe siècle"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Passage Lemonnier » ?",
+      options: ["Un détail patrimonial ickx","Un détail patrimonial jckx","Passage Lemonnier"],
       answer: 2
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Passage Lemonnier ?",
-      options: ["Les liens visibles avec Boverie","Les liens visibles avec 2016","Les liens visibles avec Meuse et dérivation"],
-      answer: 2
+      question: "À quelle époque l'audioguide situe-t-il « Passage Lemonnier » ?",
+      options: ["XIXe siècle","Début du XXe siècle","Époque romaine impériale"],
+      answer: 0
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Passage Lemonnier » ?",
+      options: ["Passage Lemonnier","Un détail patrimonial yfua","Un détail patrimonial zfua"],
+      answer: 0
     }
   ],
   "Le Carré": [
     {
-      question: "Quel élément est particulièrement associé à Le Carré ?",
-      options: ["Un autre aspect du patrimoine de Liège (Le Carré)","Un détail architectural typique ailleurs à Liège","quartier de sorties"],
-      answer: 2
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de Guillemins","Piste alternative Q2-2 — Le Carré","Piste alternative Q2-3 — Le Carré"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Le Carré » ?",
+      options: ["Le Carré","Un détail patrimonial nnoo","Un détail patrimonial onoo"],
       answer: 0
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Le Carré ?",
-      options: ["Piste alternative Q3-2 — Le Carré","Les liens visibles avec Boverie","Piste alternative Q3-3 — Le Carré"],
+      question: "À quelle époque l'audioguide situe-t-il « Le Carré » ?",
+      options: ["Moyen Âge (XIIe siècle)","XIXe siècle","XIXe siècle (1912)"],
+      answer: 1
+    },
+    {
+      question: "Quel rôle joue « Le Carré » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial dryr","Un repère emblématique du front de mer","Un repère patrimonial eryr"],
       answer: 1
     }
   ],
   "Opéra Royal de Wallonie": [
     {
-      question: "Quel élément est particulièrement associé à Opéra Royal de Wallonie ?",
-      options: ["Un autre aspect du patrimoine de Liège (Opéra Royal de Wallonie)","théâtre royal","Piste alternative Q1-3 — Opéra Royal de Wallonie"],
+      question: "À quelle époque l'audioguide situe-t-il « Opéra Royal de Wallonie » ?",
+      options: ["XIXe siècle","Frontière médiévale","Fin du XVIIe siècle"],
+      answer: 0
+    },
+    {
+      question: "Quel rôle joue « Opéra Royal de Wallonie » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial gtqk","Un repère emblématique du front de mer","Un repère patrimonial htqk"],
       answer: 1
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-1 — Opéra Royal de Wallonie","Le replacer dans l'histoire de André-Modeste Grétry","Piste alternative Q2-2 — Opéra Royal de Wallonie"],
-      answer: 1
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Opéra Royal de Wallonie ?",
-      options: ["Piste alternative Q3-2 — Opéra Royal de Wallonie","Les liens visibles avec Place de l'Opéra","Piste alternative Q3-3 — Opéra Royal de Wallonie"],
-      answer: 1
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Opéra Royal de Wallonie » ?",
+      options: ["Un détail patrimonial bvim","Un détail patrimonial cvim","Opéra Royal de Wallonie"],
+      answer: 2
     }
   ],
   "Cité Miroir": [
     {
-      question: "Quel élément est particulièrement associé à Cité Miroir ?",
-      options: ["Un autre aspect du patrimoine de Liège (Cité Miroir)","anciens bains de la Sauvenière","Piste alternative Q1-2 — Cité Miroir"],
-      answer: 1
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de Bauhaus","Piste alternative Q2-2 — Cité Miroir","Piste alternative Q2-3 — Cité Miroir"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Cité Miroir » ?",
+      options: ["Cité Miroir","Un détail patrimonial yxla","Un détail patrimonial zxla"],
       answer: 0
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Cité Miroir ?",
-      options: ["Piste alternative Q3-1 — Cité Miroir","Les liens visibles avec citoyenneté","Piste alternative Q3-3 — Cité Miroir"],
+      question: "Quel rôle joue « Cité Miroir » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial tzdc","Le musée aide à lire Liège autrement.","Un repère patrimonial uzdc"],
       answer: 1
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Cité Miroir » ?",
+      options: ["Cité Miroir","Un détail patrimonial obwd","Un détail patrimonial pbwd"],
+      answer: 0
     }
   ],
   "Cathédrale Saint-Paul": [
     {
-      question: "Quel élément est particulièrement associé à Cathédrale Saint-Paul ?",
-      options: ["ancienne collégiale","Un autre aspect du patrimoine de Liège (Cathédrale Saint-Paul)","Piste alternative Q1-3 — Cathédrale Saint-Paul"],
-      answer: 0
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-1 — Cathédrale Saint-Paul","Le replacer dans l'histoire de cathédrale après 1801","Piste alternative Q2-3 — Cathédrale Saint-Paul"],
+      question: "Quel rôle joue « Cathédrale Saint-Paul » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial okyg","Un repère emblématique du front de mer","Un repère patrimonial pkyg"],
       answer: 1
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Cathédrale Saint-Paul ?",
-      options: ["Piste alternative Q3-1 — Cathédrale Saint-Paul","Piste alternative Q3-2 — Cathédrale Saint-Paul","Les liens visibles avec gothique"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Cathédrale Saint-Paul » ?",
+      options: ["Paul","Un détail patrimonial jmqi","Un détail patrimonial kmqi"],
+      answer: 0
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Cathédrale Saint-Paul » ?",
+      options: ["Un détail patrimonial eoik","Un détail patrimonial foik","Paul"],
       answer: 2
     }
   ],
   "Université de Liège — place du XX Août": [
     {
-      question: "Quel élément est particulièrement associé à Université de Liège — place du XX Août ?",
-      options: ["Université","Un autre aspect du patrimoine de Liège (Université de Liège — place du XX Août)","Piste alternative Q1-3 — Université de Liège — place du XX Août"],
-      answer: 0
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de 1817","Piste alternative Q2-1 — Université de Liège — place du XX Août","Piste alternative Q2-2 — Université de Liège — place du XX Août"],
-      answer: 0
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Université de Liège — place du XX Août ?",
-      options: ["Piste alternative Q3-2 — Université de Liège — place du XX Août","Piste alternative Q3-3 — Université de Liège — place du XX Août","Les liens visibles avec place du XX Août"],
+      question: "Quel rôle joue « Université de Liège — place du XX Août » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial gnpw","Un repère patrimonial hnpw","Un repère emblématique du front de mer"],
       answer: 2
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Université de Liège — place du XX Août » ?",
+      options: ["Un détail patrimonial bphy","place du XX Août","Un détail patrimonial cphy"],
+      answer: 1
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Université de Liège — place du XX Août » ?",
+      options: ["Un détail patrimonial wqzz","place du XX Août","Un détail patrimonial xqzz"],
+      answer: 1
     }
   ],
   "Passerelle Saucy et Outremeuse": [
     {
-      question: "Quel élément est particulièrement associé à Passerelle Saucy et Outremeuse ?",
-      options: ["Un autre aspect du patrimoine de Liège (Passerelle Saucy et Outremeuse)","Piste alternative Q1-2 — Passerelle Saucy et Outremeuse","Outremeuse"],
-      answer: 2
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-2 — Passerelle Saucy et Outremeuse","Le replacer dans l'histoire de Tchantchès","Piste alternative Q2-3 — Passerelle Saucy et Outremeuse"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Passerelle Saucy et Outremeuse » ?",
+      options: ["Un détail patrimonial ddrp","Passerelle Saucy et Outremeuse","Un détail patrimonial edrp"],
       answer: 1
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Passerelle Saucy et Outremeuse ?",
-      options: ["Les liens visibles avec île de Liège","Piste alternative Q3-1 — Passerelle Saucy et Outremeuse","Piste alternative Q3-3 — Passerelle Saucy et Outremeuse"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Passerelle Saucy et Outremeuse » ?",
+      options: ["Un détail patrimonial yejr","Passerelle Saucy et Outremeuse","Un détail patrimonial zejr"],
+      answer: 1
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Passerelle Saucy et Outremeuse » ?",
+      options: ["Passerelle Saucy et Outremeuse","Un détail patrimonial tgbt","Un détail patrimonial ugbt"],
       answer: 0
     }
   ],
   "La Batte": [
     {
-      question: "Quel élément est particulièrement associé à La Batte ?",
-      options: ["Un autre aspect du patrimoine de Liège (La Batte)","Piste alternative Q1-3 — La Batte","marché du dimanche"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « La Batte » ?",
+      options: ["Un détail patrimonial ersz","La Batte","Un détail patrimonial frsz"],
+      answer: 1
+    },
+    {
+      question: "À quelle époque l'audioguide situe-t-il « La Batte » ?",
+      options: ["Vers 218 av. J.-C.","XXe siècle","XVIe siècle"],
       answer: 2
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de plus ancien marché de Belgique","Piste alternative Q2-1 — La Batte","Piste alternative Q2-3 — La Batte"],
-      answer: 0
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à La Batte ?",
-      options: ["Piste alternative Q3-1 — La Batte","Piste alternative Q3-2 — La Batte","Les liens visibles avec quais de Meuse"],
-      answer: 2
+      question: "Quel rôle joue « La Batte » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial uucd","Un repère emblématique du front de mer","Un repère patrimonial vucd"],
+      answer: 1
     }
   ],
   "Église Saint-Jacques": [
     {
-      question: "Quel élément est particulièrement associé à Église Saint-Jacques ?",
-      options: ["gothique flamboyant","Un autre aspect du patrimoine de Liège (Église Saint-Jacques)","Piste alternative Q1-3 — Église Saint-Jacques"],
-      answer: 0
+      question: "Quel rôle joue « Église Saint-Jacques » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial ivyb","Un repère emblématique du front de mer","Un repère patrimonial jvyb"],
+      answer: 1
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Le replacer dans l'histoire de ancienne abbaye","Piste alternative Q2-1 — Église Saint-Jacques","Piste alternative Q2-2 — Église Saint-Jacques"],
-      answer: 0
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Église Saint-Jacques » ?",
+      options: ["Un détail patrimonial dxqd","Jacques","Un détail patrimonial exqd"],
+      answer: 1
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Église Saint-Jacques ?",
-      options: ["Les liens visibles avec voûtes","Piste alternative Q3-2 — Église Saint-Jacques","Piste alternative Q3-3 — Église Saint-Jacques"],
-      answer: 0
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Église Saint-Jacques » ?",
+      options: ["Un détail patrimonial yyif","Un détail patrimonial zyif","Jacques"],
+      answer: 2
     }
   ],
   "Parc d’Avroy et Trinkhall": [
     {
-      question: "Quel élément est particulièrement associé à Parc d’Avroy et Trinkhall ?",
-      options: ["Un autre aspect du patrimoine de Liège (Parc d’Avroy et Trinkhall)","ancien bras de Meuse","Piste alternative Q1-2 — Parc d’Avroy et Trinkhall"],
-      answer: 1
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-2 — Parc d’Avroy et Trinkhall","Piste alternative Q2-3 — Parc d’Avroy et Trinkhall","Le replacer dans l'histoire de parc urbain"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Parc d’Avroy et Trinkhall » ?",
+      options: ["Un détail patrimonial dcmd","Un détail patrimonial ecmd","Parc d’Avroy et Trinkhall"],
       answer: 2
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Parc d’Avroy et Trinkhall ?",
-      options: ["Piste alternative Q3-1 — Parc d’Avroy et Trinkhall","Les liens visibles avec Trinkhall Museum","Piste alternative Q3-3 — Parc d’Avroy et Trinkhall"],
-      answer: 1
+      question: "À quelle époque l'audioguide situe-t-il « Parc d’Avroy et Trinkhall » ?",
+      options: ["XIXe siècle","Restauration du XIXe siècle","XVIIIe siècle"],
+      answer: 0
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Parc d’Avroy et Trinkhall » ?",
+      options: ["Un détail patrimonial tfwg","Un détail patrimonial ufwg","Parc d’Avroy et Trinkhall"],
+      answer: 2
     }
   ],
   "Gare de Liège-Guillemins": [
     {
-      question: "Quel élément est particulièrement associé à Gare de Liège-Guillemins ?",
-      options: ["Un autre aspect du patrimoine de Liège (Gare de Liège-Guillemins)","Piste alternative Q1-3 — Gare de Liège-Guillemins","Santiago Calatrava"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Gare de Liège-Guillemins » ?",
+      options: ["Un détail patrimonial yzxu","Un détail patrimonial zzxu","Guillemins"],
       answer: 2
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-1 — Gare de Liège-Guillemins","Le replacer dans l'histoire de 2009","Piste alternative Q2-3 — Gare de Liège-Guillemins"],
+      question: "À quelle époque l'audioguide situe-t-il « Gare de Liège-Guillemins » ?",
+      options: ["XVIIIe siècle","XIXe siècle","XVIIIe siècle"],
       answer: 1
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Gare de Liège-Guillemins ?",
-      options: ["Piste alternative Q3-1 — Gare de Liège-Guillemins","Piste alternative Q3-2 — Gare de Liège-Guillemins","Les liens visibles avec verre et acier"],
-      answer: 2
+      question: "Quel rôle joue « Gare de Liège-Guillemins » à Liège selon l'audioguide ?",
+      options: ["Un repère emblématique du front de mer","Un repère patrimonial odiy","Un repère patrimonial pdiy"],
+      answer: 0
     }
   ],
   "Pont de Fragnée": [
     {
-      question: "Quel élément est particulièrement associé à Pont de Fragnée ?",
-      options: ["Un autre aspect du patrimoine de Liège (Pont de Fragnée)","Piste alternative Q1-3 — Pont de Fragnée","Exposition universelle de 1905"],
+      question: "À quelle époque l'audioguide situe-t-il « Pont de Fragnée » ?",
+      options: ["XVIIIe siècle","XVIIIe siècle","Le XXe siècle"],
       answer: 2
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-1 — Pont de Fragnée","Le replacer dans l'histoire de allégories","Piste alternative Q2-2 — Pont de Fragnée"],
+      question: "Quel rôle joue « Pont de Fragnée » à Liège selon l'audioguide ?",
+      options: ["Un repère patrimonial ommk","Un repère emblématique du front de mer","Un repère patrimonial pmmk"],
       answer: 1
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Pont de Fragnée ?",
-      options: ["Piste alternative Q3-2 — Pont de Fragnée","Les liens visibles avec Meuse","Piste alternative Q3-3 — Pont de Fragnée"],
-      answer: 1
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Pont de Fragnée » ?",
+      options: ["Un détail patrimonial joem","Un détail patrimonial koem","Pont de Fragnée"],
+      answer: 2
     }
   ],
   "Parc de la Boverie": [
     {
-      question: "Quel élément est particulièrement associé à Parc de la Boverie ?",
-      options: ["Un autre aspect du patrimoine de Liège (Parc de la Boverie)","Piste alternative Q1-2 — Parc de la Boverie","île de la Boverie"],
-      answer: 2
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-2 — Parc de la Boverie","Piste alternative Q2-3 — Parc de la Boverie","Le replacer dans l'histoire de parc paysager"],
-      answer: 2
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Parc de la Boverie ?",
-      options: ["Les liens visibles avec Meuse et dérivation","Piste alternative Q3-1 — Parc de la Boverie","Piste alternative Q3-3 — Parc de la Boverie"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Parc de la Boverie » ?",
+      options: ["Parc de la Boverie","Un détail patrimonial fnpd","Un détail patrimonial gnpd"],
       answer: 0
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Parc de la Boverie » ?",
+      options: ["Un détail patrimonial aphf","Parc de la Boverie","Un détail patrimonial bphf"],
+      answer: 1
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Parc de la Boverie » ?",
+      options: ["Un détail patrimonial vqzg","Parc de la Boverie","Un détail patrimonial wqzg"],
+      answer: 1
     }
   ],
   "Musée de La Boverie": [
     {
-      question: "Quel élément est particulièrement associé à Musée de La Boverie ?",
-      options: ["Un autre aspect du patrimoine de Liège (Musée de La Boverie)","Piste alternative Q1-3 — Musée de La Boverie","Beaux-Arts"],
-      answer: 2
-    },
-    {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-1 — Musée de La Boverie","Le replacer dans l'histoire de Exposition de 1905","Piste alternative Q2-3 — Musée de La Boverie"],
-      answer: 1
-    },
-    {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Musée de La Boverie ?",
-      options: ["Les liens visibles avec 2016","Piste alternative Q3-1 — Musée de La Boverie","Piste alternative Q3-2 — Musée de La Boverie"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Musée de La Boverie » ?",
+      options: ["Musée de La Boverie","Un détail patrimonial gfow","Un détail patrimonial hfow"],
       answer: 0
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Musée de La Boverie » ?",
+      options: ["Musée de La Boverie","Un détail patrimonial bhgy","Un détail patrimonial chgy"],
+      answer: 0
+    },
+    {
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Musée de La Boverie » ?",
+      options: ["Un détail patrimonial wiyz","Un détail patrimonial xiyz","Musée de La Boverie"],
+      answer: 2
     }
   ],
   "Passerelle La Belle Liégeoise": [
     {
-      question: "Quel élément est particulièrement associé à Passerelle La Belle Liégeoise ?",
-      options: ["Un autre aspect du patrimoine de Liège (Passerelle La Belle Liégeoise)","passerelle cyclo-piétonne","Piste alternative Q1-3 — Passerelle La Belle Liégeoise"],
-      answer: 1
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Passerelle La Belle Liégeoise » ?",
+      options: ["Un détail patrimonial kymv","Un détail patrimonial lymv","Passerelle La Belle Liégeoise"],
+      answer: 2
     },
     {
-      question: "Quelle lecture du lieu l’audioguide propose-t-il ?",
-      options: ["Piste alternative Q2-1 — Passerelle La Belle Liégeoise","Le replacer dans l'histoire de Guillemins","Piste alternative Q2-2 — Passerelle La Belle Liégeoise"],
-      answer: 1
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Passerelle La Belle Liégeoise » ?",
+      options: ["Un détail patrimonial fafx","Un détail patrimonial gafx","Passerelle La Belle Liégeoise"],
+      answer: 2
     },
     {
-      question: "Quel détail faut-il surtout prendre le temps d’observer à Passerelle La Belle Liégeoise ?",
-      options: ["Piste alternative Q3-2 — Passerelle La Belle Liégeoise","Piste alternative Q3-3 — Passerelle La Belle Liégeoise","Les liens visibles avec Boverie"],
+      question: "Quel élément emblématique l'audioguide met-il en avant à « Passerelle La Belle Liégeoise » ?",
+      options: ["Un détail patrimonial acxy","Un détail patrimonial bcxy","Passerelle La Belle Liégeoise"],
       answer: 2
     }
   ]

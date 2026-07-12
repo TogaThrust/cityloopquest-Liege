@@ -595,6 +595,11 @@
                 }
                 
                 if (isPWAInstalled) {
+                  if (isFromCheckout) {
+                    sessionStorage.setItem('webLanguageSelected', 'true');
+                    showWarningScreen();
+                    return;
+                  }
                   await routePwaToParcours();
                   return;
                 } else {
@@ -685,8 +690,13 @@
                   }
                   
                   if (isPWAInstalled) {
-                    await routePwaToParcours();
+                  if (isFromCheckout) {
+                    sessionStorage.setItem('webLanguageSelected', 'true');
+                    showWarningScreen();
                     return;
+                  }
+                  await routePwaToParcours();
+                  return;
                   } else {
                     // non-PWA : on continue l"écran d"avertissement
                   }
@@ -758,6 +768,10 @@
         }
         
         if (isLikelyInstalledPwa()) {
+          if (isFromCheckout) {
+            showWarningScreen();
+            return;
+          }
           await routePwaToParcours();
           return;
         }
@@ -1195,6 +1209,10 @@
             }
             return;
           } else if (hasAccess) {
+            if (urlParams.get('from') === 'checkout') {
+              showWarningScreen();
+              return;
+            }
             routePwaToParcours();
             return;
           } else {
@@ -1322,38 +1340,19 @@
 
     // Fonction pour afficher l'écran d'avertissement
     function showWarningScreen() {
-      const warningScreen = document.getElementById('warning-screen');
-      
-      if (warningScreen) {
-        warningScreen.style.display = 'flex';
-        
-        // MARQUER QUE L'0CRAN D'AVERTISSEMENT A 0T0 AFFICH0 (éviter la boucle)
-        sessionStorage.setItem('warningScreenShown', 'true');
-        
-        // Appliquer les traductions au bouton d'avertissement
-        loadInstallTranslations().then(t => {
-          if (t.warning_button_text) {
-            const warningBtn = document.getElementById('warning-continue-btn');
-            if (warningBtn) {
-              const span = warningBtn.querySelector('[data-translate="warning_button_text"]');
-              if (span) span.innerHTML = t.warning_button_text;
-            }
-          }
-        });
-        
-        // Masquer le body pour éviter le scroll
-        document.body.style.overflow = 'hidden';
-        
-      } else {
-      }
+      // Suppression de l'étape "cartouche" : on affiche directement les 2 choix
+      sessionStorage.setItem('warningScreenShown', 'true');
+      showButtonsDirectly();
     }
 
     // Fonction pour afficher directement les boutons (éviter la boucle)
     function showButtonsDirectly() {
       const warningScreen = document.getElementById('warning-screen');
       if (warningScreen) {
-        warningScreen.style.display = 'none';
+        warningScreen.style.display = 'flex';
       }
+      // Masquer le body pour éviter le scroll
+      document.body.style.overflow = 'hidden';
       const pwaInstallBtn = document.getElementById('pwa-install-btn');
       const webUsageBtn = document.getElementById('web-usage-btn');
       
@@ -1374,6 +1373,19 @@
           if (t.recommended) {
             const recommendedLabel = document.getElementById('recommended-label');
             if (recommendedLabel) recommendedLabel.textContent = t.recommended;
+          }
+
+          // Texte d'avertissement : dans tous les cas, on le remet sur l'écran de choix.
+          const warningEl = document.getElementById('warning-text');
+          if (warningEl) {
+            const translateKey = warningEl.getAttribute('data-translate');
+            let html = null;
+            if (translateKey === 'warning_button_text_installed') {
+              html = t.warning_button_text_installed || t.warning_button_text;
+            } else {
+              html = t.warning_button_text || t.warning_button_text_installed;
+            }
+            if (html) warningEl.innerHTML = html;
           }
         });
       }
@@ -1418,9 +1430,9 @@
       // Vérifier si l'app est déjà installée
       const isAppInstalled = isRunningAsInstalledPwa() ||
                              window.location.search.includes('installed=true');
+      const isFromCheckout = new URLSearchParams(window.location.search).get('from') === 'checkout';
       
-      if (isAppInstalled) {
-        // Afficher le popup "vous pouvez fermer cette fenêtre !"
+      if (isAppInstalled && !isFromCheckout) {
         showCloseWindowPopup();
         return;
       }

@@ -107,21 +107,42 @@
       return prefix + '_forceTarget';
     }
 
-    function museumImage(museum) {
+    function encodeAssetPath(assetPath) {
+      if (/^(https?:|data:|blob:)/i.test(String(assetPath || ''))) {
+        return String(assetPath);
+      }
+      return String(assetPath)
+        .split('/')
+        .map(function (part) {
+          try {
+            part = decodeURIComponent(part);
+          } catch (_) {}
+          return encodeURIComponent(part);
+        })
+        .join('/');
+    }
+
+    function museumImageRaw(museum) {
       const photo = museum.photos?.[0] || {};
-      return (
+      return String(
+        museum.image ||
+        museum.imagePath ||
+        museum.remoteImage ||
+        photo.savedPath ||
+        photo.sourcePath ||
         photo.directImageUrl ||
         photo.downloadUrl ||
         photo.fileUrl ||
         photo.imageUrl ||
         photo.url ||
-        museum.image ||
-        museum.imagePath ||
-        photo.savedPath ||
-        photo.sourcePath ||
         photo.dataUrl ||
         ''
-      );
+      ).trim();
+    }
+
+    function museumImage(museum) {
+      const raw = museumImageRaw(museum);
+      return raw ? encodeAssetPath(raw) : '';
     }
 
     function showMuseumConfirmPopup(museum, payload) {
@@ -188,6 +209,9 @@
       btnYes.style.cursor = 'pointer';
       btnYes.addEventListener('click', () => {
         document.body.removeChild(overlay);
+        try {
+          sessionStorage.setItem('clq_museum_guidance', '1');
+        } catch (_) { /* ignore */ }
         localStorage.setItem(forceTargetStorageKey(), JSON.stringify(payload));
         window.location.href = 'main.html';
       });
@@ -226,7 +250,7 @@
         lat,
         lng,
         audio: museum.audio || '',
-        image: museumImage(museum),
+        image: museumImageRaw(museum),
         info: [museum.address, museumDescription(museum)].filter(Boolean).join(' - '),
       });
     }
@@ -247,6 +271,7 @@
       }
       target.innerHTML = museumsData.map((museum, index) => {
         const image = museumImage(museum);
+        const fallbackImage = museum.remoteImage ? encodeAssetPath(museum.remoteImage) : '';
         const hasCoords = Number.isFinite(Number(museum.lat)) && Number.isFinite(Number(museum.lng));
         const description = museumDescription(museum);
         const addressLine = museum.address
@@ -263,7 +288,7 @@
           : '';
         return `
           <div class="museum">
-            ${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(museum.name || 'Musée')}" />` : ''}
+            ${image ? `<img src="${escapeHtml(image)}"${fallbackImage ? ` data-fallback="${escapeHtml(fallbackImage)}" onerror="if(this.dataset.fallback&&!this.dataset.fallbackTried){this.dataset.fallbackTried='1';this.src=this.dataset.fallback;}"` : ''} alt="${escapeHtml(museum.name || 'Musée')}" />` : ''}
             <div class="museum-info">
               <strong>${escapeHtml(museum.name || 'Musée')}</strong>
               ${addressLine}

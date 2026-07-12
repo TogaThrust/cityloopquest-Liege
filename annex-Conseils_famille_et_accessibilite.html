@@ -17,7 +17,9 @@
     h1 { margin-bottom: 30px; }
     .generated-gallery { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); max-width: 900px; margin: 0 auto 24px; }
     .generated-gallery img { width: 100%; border-radius: 12px; }
-    iframe { width: min(760px, 92vw); min-height: 48vh; border: 0; border-radius: 12px; }
+    .culture-video { width: min(760px, 92vw); margin: 0 auto 24px; }
+    .culture-video__frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #111; }
+    .culture-video__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .info-text { margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border-left: 4px solid #c8102e; color: #333; max-width: 760px; margin-left: auto; margin-right: auto; text-align: left; line-height: 1.6; }
     .culture-inline-photo { max-width: 320px; margin: 14px auto 22px; text-align: center; }
     .culture-inline-photo img { width: 100%; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
@@ -34,7 +36,7 @@
 </header>
 <h1>Conseils famille et accessibilité</h1>
 <section class="generated-gallery"><figure><img src="images/culture/Conseils_famille_et_accessibilite.jpg" alt="Conseils famille et accessibilité" /></figure></section>
-<section><iframe src="https://www.youtube.com/embed/up0cBqIpZSs" title="Vidéo" loading="lazy" allowfullscreen></iframe></section>
+<section class="culture-video"><div class="culture-video__frame"><iframe src="https://www.youtube.com/embed/up0cBqIpZSs" title="Vidéo" loading="lazy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div></section>
 <div class="info-text"><p>Avec des enfants, alternez patrimoine dense et espaces de respiration. La Boverie, Avroy, les quais et certains musées conviennent très bien pour couper une journée. Bueren peut devenir un défi amusant, mais mieux vaut le présenter comme une aventure que comme un simple raccourci.</p>
 <p>Pour les poussettes et les personnes à mobilité réduite, le centre plat, les quais, la Boverie et plusieurs musées sont plus confortables que les Coteaux. Certaines rues anciennes, pavées ou en pente, demandent de prévoir des détours.</p>
 <p>L’Aquarium-Muséum, la Maison de la Métallurgie, le Musée de la Vie wallonne ou La Boverie peuvent très bien fonctionner en famille, car ils offrent des objets concrets, des animaux, des machines, des images ou des espaces plus vastes qu’une simple succession de façades.</p>

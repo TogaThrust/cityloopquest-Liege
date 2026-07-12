@@ -294,7 +294,40 @@ function clearPoiTourMuseumState() {
     localStorage.removeItem('museumMode');
     localStorage.removeItem('museumData');
     localStorage.removeItem('selectedMuseum');
-    localStorage.removeItem('liege_forceTarget');
+    localStorage.removeItem(museumForceTargetStorageKey());
+    try {
+        sessionStorage.removeItem('clq_museum_guidance');
+    } catch (_) { /* ignore */ }
+    if (typeof hidePointImageDisplay === 'function') hidePointImageDisplay();
+}
+
+function museumForceTargetStorageKey() {
+    const prefix = (window.CLQ_CITY && window.CLQ_CITY.storagePrefix) || 'liege';
+    return `${prefix}_forceTarget`;
+}
+
+function hasPendingMuseumForceTarget() {
+    try {
+        return Boolean(localStorage.getItem(museumForceTargetStorageKey()));
+    } catch (_) {
+        return false;
+    }
+}
+
+function beginMuseumGuidanceSession() {
+    try {
+        sessionStorage.setItem('clq_museum_guidance', '1');
+    } catch (_) { /* ignore */ }
+}
+
+function isMuseumGuidanceActive() {
+    if (localStorage.getItem('museumMode') !== 'true') return false;
+    if (!localStorage.getItem('museumData')) return false;
+    try {
+        return sessionStorage.getItem('clq_museum_guidance') === '1';
+    } catch (_) {
+        return false;
+    }
 }
 
 function isPointUnlockedForNext(idx) {
@@ -354,7 +387,7 @@ function syncNextButtonState() {
             ? atLastPoint
             : !isPointUnlockedForNext(currentIndex);
 
-        if (localStorage.getItem('museumMode') === 'true') {
+        if (isMuseumGuidanceActive()) {
             shouldDisable = true;
         } else if (
             isPointUnlockedForNext(currentIndex) &&
@@ -763,7 +796,7 @@ function updateCourseHeadingFromMovement(pos) {
 }
 
 function getRouteDestination() {
-    if (localStorage.getItem('museumMode') === 'true') {
+    if (isMuseumGuidanceActive()) {
         try {
             const museum = JSON.parse(localStorage.getItem('museumData'));
             const lat = Number(museum?.lat);
@@ -1608,6 +1641,7 @@ function resolveMuseumImage(museum) {
     return (
         museum.image ||
         museum.imagePath ||
+        museum.remoteImage ||
         photo.directImageUrl ||
         photo.downloadUrl ||
         photo.fileUrl ||
@@ -1622,14 +1656,46 @@ function resolveMuseumImage(museum) {
 
 function showMuseumPointImage(museum) {
     const imageElement = document.getElementById("point-image");
-    const imagePath = resolveMuseumImage(museum);
-    if (!imageElement || !imagePath) return false;
+    if (!imageElement || !museum) return false;
+    if (typeof hidePointImageDisplay === 'function') hidePointImageDisplay();
     const textContainer = document.getElementById("media-display");
-    imageElement.src = encodeAssetPath(imagePath);
+    const imagePath = resolveMuseumImage(museum);
+    if (!imagePath) {
+        applyPointImage(imageElement, museum);
+        return true;
+    }
     imageElement.alt = museum.name || "";
-    imageElement.style.display = "block";
-    if (textContainer) textContainer.style.display = "none";
+    imageElement.onerror = function onMuseumImageError() {
+        imageElement.onerror = null;
+        applyPointImage(imageElement, { ...museum, image: imagePath });
+    };
+    imageElement.onload = function onMuseumImageLoad() {
+        imageElement.onerror = null;
+        if (textContainer) textContainer.style.display = "none";
+        showPointImageDisplay();
+    };
+    imageElement.src = encodeAssetPath(imagePath);
     return true;
+}
+
+function hidePointImageDisplay() {
+    const frame = document.getElementById('point-image-frame');
+    const imageElement = document.getElementById('point-image');
+    const textContainer = document.getElementById('media-display');
+    if (frame) {
+        frame.style.setProperty('display', 'none', 'important');
+        frame.style.removeProperty('background-image');
+    }
+    if (imageElement) {
+        imageElement.onerror = null;
+        imageElement.onload = null;
+        imageElement.style.setProperty('display', 'none', 'important');
+        imageElement.removeAttribute('src');
+        imageElement.alt = '';
+    }
+    if (textContainer) {
+        textContainer.style.display = 'none';
+    }
 }
 
 /** Liste ordonnée de chemins images à essayer (local d'abord, URLs distantes en dernier). */
@@ -1721,6 +1787,7 @@ function applyPointImage(imageElement, location) {
     function tryNext() {
         if (index >= candidates.length) {
             imageElement.onerror = null;
+            if (typeof hidePointImageDisplay === 'function') hidePointImageDisplay();
             return;
         }
         const path = candidates[index++];
@@ -1729,9 +1796,10 @@ function applyPointImage(imageElement, location) {
             tryNext();
         };
         imageElement.onload = function () {
-            imageElement.style.display = "block";
+            imageElement.onerror = null;
             const textContainer = document.getElementById("media-display");
             if (textContainer) textContainer.style.display = "none";
+            showPointImageDisplay();
         };
         imageElement.src = encodeAssetPath(path);
     }
@@ -2498,7 +2566,7 @@ function safeJsonParse(raw, fallback) {
 }
 
 function bootstrapMainTourDisplay() {
-    if (localStorage.getItem("museumMode") === "true") return;
+    if (isMuseumGuidanceActive()) return;
     updatePointPhotoForCurrentIndex();
     const dest = getRouteDestination();
     const display = document.getElementById("location-name");
@@ -2738,6 +2806,9 @@ function calculateDistanceBetweenPositions(pos1, pos2) {
 
 function calculateRoute(from, to, fromName, toName) {
     if (isUpdating) {
+        return;
+    }
+    if (!directionsService || !directionsRenderer) {
         return;
     }
 
@@ -3073,15 +3144,25 @@ function hasStoredClqAccess() {
     return false;
 }
 
+function isOnMainTourPage() {
+    try {
+        const path = window.location.pathname || '';
+        const href = window.location.href || '';
+        return path.includes('main.html') || href.includes('main.html');
+    } catch (_) {
+        return false;
+    }
+}
+
 function shouldResetToParcours() {
     if (hasStoredClqAccess()) return true;
     try {
+        if (isOnMainTourPage()) return true;
+        if (isMuseumOrSecoursGuidanceMode()) return true;
         const lang = localStorage.getItem('selectedLanguage') || localStorage.getItem('lang');
         if (!lang) return false;
         if (sessionStorage.getItem('webLanguageSelected') === 'true') return true;
         if (localStorage.getItem('currentCircuit')) return true;
-        if (localStorage.getItem('museumMode') === 'true') return false;
-        if ((window.location.pathname || '').includes('main.html')) return true;
         if (isLocalWebDev()) return true;
     } catch (_) { /* ignore */ }
     return false;
@@ -3278,8 +3359,9 @@ async function validateToken(token) {
 // === Fonction principale pour gérer la réinitialisation avec vérification du code ===
 async function handleResetWithCodeCheck() {
     const savedOrientationPerm = localStorage.getItem('orientationPermissionGranted');
+    const forceParcoursReset = isOnMainTourPage() || isMuseumOrSecoursGuidanceMode();
 
-    if (!shouldResetToParcours()) {
+    if (!forceParcoursReset && !shouldResetToParcours()) {
         localStorage.clear();
         if (savedOrientationPerm) {
             localStorage.setItem('orientationPermissionGranted', savedOrientationPerm);
@@ -3789,20 +3871,43 @@ function initializeMainLogic() {
         enableTourExplorationMode();
     }
     
-    const forceTarget = localStorage.getItem("liege_forceTarget");
+    let forceTarget = localStorage.getItem(museumForceTargetStorageKey());
+    if (!forceTarget) {
+        const fromUrl = new URLSearchParams(window.location.search).get('forceTarget');
+        if (fromUrl) {
+            forceTarget = decodeURIComponent(fromUrl);
+            localStorage.setItem(museumForceTargetStorageKey(), forceTarget);
+        }
+    }
 
     if (forceTarget) {
         try {
             const museum = JSON.parse(forceTarget);
-
-            if (!museum.name || museum.lat == null || museum.lng == null) {
+            const lat = Number(museum.lat);
+            const lng = Number(museum.lng);
+            if (!museum.name || !Number.isFinite(lat) || !Number.isFinite(lng)) {
                 console.error("Données du musée incomplètes:", museum);
             } else {
+                const museumPayload = {
+                    ...museum,
+                    lat,
+                    lng,
+                    image:
+                        museum.image ||
+                        museum.imagePath ||
+                        museum.remoteImage ||
+                        museum.photos?.[0]?.savedPath ||
+                        museum.photos?.[0]?.sourcePath ||
+                        museum.photos?.[0]?.dataUrl ||
+                        "",
+                };
                 localStorage.setItem("museumMode", "true");
-                localStorage.setItem("selectedMuseum", museum.name);
-                localStorage.setItem("museumData", JSON.stringify(museum));
+                localStorage.setItem("selectedMuseum", museumPayload.name);
+                localStorage.setItem("museumData", JSON.stringify(museumPayload));
+                localStorage.removeItem(museumForceTargetStorageKey());
+                beginMuseumGuidanceSession();
 
-                if (!showMuseumPointImage(museum)) {
+                if (!showMuseumPointImage(museumPayload)) {
                     console.warn("Image du musée non trouvée ou élément image non trouvé");
                 }
 
@@ -3811,7 +3916,14 @@ function initializeMainLogic() {
         } catch (e) {
             console.error("Erreur lors du traitement du mode musée:", e);
         }
+    } else if (isMuseumGuidanceActive()) {
+        disableFooterButtons();
+        try {
+            const museumData = JSON.parse(localStorage.getItem("museumData") || "null");
+            if (museumData) showMuseumPointImage(museumData);
+        } catch (_) {}
     } else {
+        clearPoiTourMuseumState();
 
         // Restaurer l'état du bouton selfie
         const selfieBtn = document.getElementById('selfie-btn');
@@ -3947,33 +4059,8 @@ function disableFooterButtons() {
         selfieBtn.style.display = 'none';
     }
     
-    // Le bouton Home reste actif mais redirige vers parcours.html
-    const homeButton = document.getElementById('home-btn');
-    if (homeButton) {
-        homeButton.onclick = () => {
-            const isMuseumMode = localStorage.getItem("museumMode") === "true";
-            
-            if (isMuseumMode) {
-                // En mode musée, rediriger vers la sélection de langue
-                showHomeConfirmPopup(() => {
-                    stopAllAudio();
-                    const orientationPerm = localStorage.getItem('orientationPermissionGranted');
-                    localStorage.clear();
-                    if (orientationPerm) localStorage.setItem('orientationPermissionGranted', orientationPerm);
-                    window.location.href = "language-selection.html";
-                });
-            } else {
-                // En mode parcours normal : réinitialiser la progression et revenir au choix du circuit
-                showHomeConfirmPopup(() => {
-                    stopAllAudio();
-                    handleResetWithCodeCheck();
-                });
-            }
-        };
-    } else {
-        console.warn("a️ Bouton Home non trouvé");
-    }
-    
+    // Le bouton Home reste actif : handler global (DOMContentLoaded), pas de onclick ici
+    // pour éviter un double déclenchement en mode guidage musée/secours.
 }
 
 // Variables globales pour la rotation de la flèche
@@ -5086,6 +5173,15 @@ function showEndOfTourPopup() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    try {
+        if (
+            sessionStorage.getItem('clq_museum_guidance') !== '1'
+            && !hasPendingMuseumForceTarget()
+        ) {
+            clearPoiTourMuseumState();
+        }
+    } catch (_) { /* ignore */ }
+
     nextButton = document.getElementById('next-btn');
     prevButton = document.getElementById('prev-btn');
     homeButton = document.getElementById('home-btn');
@@ -5226,24 +5322,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (homeButton) {
     homeButton.addEventListener("click", () => {
-        const isMuseumMode = localStorage.getItem("museumMode") === "true";
-        
-        if (isMuseumMode) {
-            // En mode musée, rediriger vers la sélection de langue
-            showHomeConfirmPopup(() => {
-                stopAllAudio();
-                const orientationPerm = localStorage.getItem('orientationPermissionGranted');
-                localStorage.clear();
-                if (orientationPerm) localStorage.setItem('orientationPermissionGranted', orientationPerm);
-                window.location.href = "language-selection.html";
-            });
-        } else {
-            // En mode parcours normal, vérifier si l'app est installée et si un code valide existe
-            showHomeConfirmPopup(() => {
-                stopAllAudio();
-                handleResetWithCodeCheck();
-            });
-        }
+        showHomeConfirmPopup(() => {
+            stopAllAudio();
+            handleResetWithCodeCheck();
+        });
     });
     }
 
@@ -5824,6 +5906,10 @@ function updateCurrentDisplay() {
         const currentLocation = filteredLocations[currentIndex];
         if (currentLocation) {
             const nextPoint = window.translationManager ? window.translationManager.translate('next_point') : 'Prochain point :';
+            if (!currentPointDistance || !currentPointDuration) {
+                display.textContent = `${nextPoint} ${currentLocation.name}`;
+                return;
+            }
             const estimatedTime = window.translationManager ? window.translationManager.translate('estimated_time') : 'Temps estimé :';
             const distanceLabel = window.translationManager ? window.translationManager.translate('distance') : 'Distance :';
             const totalDistanceLabel = window.translationManager ? window.translationManager.translate('total_distance') : 'Distance totale :';

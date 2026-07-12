@@ -1,5 +1,5 @@
-const PRECACHE = 'precache-v52-scrollfix';
-const RUNTIME  = 'runtime-v37-scrollfix';
+const PRECACHE = 'precache-v53-culture-video';
+const RUNTIME  = 'runtime-v38-culture-video';
 
 const PRECACHE_URLS = [
   './',                       // ok si tu sers à la racine du dossier
@@ -90,6 +90,11 @@ self.addEventListener('fetch', (event) => {
       path.endsWith('checkout.js') ||
       path.endsWith('/circuit-data.js') ||
       path.endsWith('circuit-data.js') ||
+      path.endsWith('/culture.html') ||
+      path.endsWith('culture.html') ||
+      path.endsWith('/musees.html') ||
+      path.endsWith('musees.html') ||
+      (decodedPath.includes('annex-') && path.endsWith('.html')) ||
       decodedPath.includes('/images/points interets/') ||
       decodedPath.includes('/images/POI explorer/');
 

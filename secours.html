@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
   <script src="translations/translationManager.js"></script>
   <script src="translations/languageSelector.js"></script>
+  <script src="api-base.js"></script>
+  <script src="js/access-control.js"></script>
   <script src="js/clq-dev-mode.js"></script>
   <script src="js/access-guard.js" defer></script>
   <style>
@@ -596,6 +598,9 @@
       yes.style.cssText = "background:#1f9d55;color:#fff;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;min-width:120px;width:auto;display:inline-flex;justify-content:center;";
       no.style.cssText = "background:#c8102e;color:#fff;border:none;border-radius:8px;padding:9px 16px;cursor:pointer;min-width:120px;width:auto;display:inline-flex;justify-content:center;";
       yes.onclick = () => {
+        try {
+          sessionStorage.setItem('clq_museum_guidance', '1');
+        } catch (_) { /* ignore */ }
         localStorage.setItem(forceTargetStorageKey(), JSON.stringify(payload));
         const target = (window.clqDevMode && window.clqDevMode.append)
           ? window.clqDevMode.append("main.html")

@@ -1,4 +1,62 @@
 CityLoop Quest Liège - Release notes
+Version 26.07.19
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+
+CityLoop Quest Liège - Release notes
+Version 26.07.18
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+
+CityLoop Quest Liège - Release notes
+Version 26.07.17
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+
+CityLoop Quest Liège - Release notes
+Version 26.07.16
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+
+CityLoop Quest Liège - Release notes
+Version 26.07.15
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated offline cache and service worker.
+
+CityLoop Quest Liège - Release notes
+Version 26.07.14
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated main tour app logic.
+- Updated main tour page.
+- Updated tour selection page.
+
+CityLoop Quest Liège - Release notes
+Version 26.07.13
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated main tour page.
+
+CityLoop Quest Liège - Release notes
+Version 26.07.12
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated main tour page.
+
+CityLoop Quest Liège - Release notes
+Version 26.07.11
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+- Updated main tour app logic.
+- Updated main tour page.
+
+CityLoop Quest Liège - Release notes
+Version 26.07.10
+----------------------------------------
+- Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).
+
+CityLoop Quest Liège - Release notes
 Version 26.07.09
 ----------------------------------------
 - Quiz coverage updated: 26 tour stop(s) now have quizzes (was 0).

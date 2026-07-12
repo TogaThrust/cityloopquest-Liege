@@ -648,6 +648,7 @@
       localStorage.removeItem('museumData');
       localStorage.removeItem('selectedMuseum');
       localStorage.removeItem('liege_forceTarget');
+      try { sessionStorage.removeItem('clq_museum_guidance'); } catch (e) { /* ignore */ }
 
       var parcoursType = { grand: 'long', moyen: 'moyen', petit: 'court' }[selectedCircuit];
       if (parcoursType) {

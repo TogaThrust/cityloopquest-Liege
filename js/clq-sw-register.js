@@ -25,7 +25,7 @@
     return;
   }
 
-  navigator.serviceWorker.register('service-worker.js?v=36')
+  navigator.serviceWorker.register('service-worker.js?v=37')
     .then(function () {
       console.log('Service Worker enregistré.');
     })
